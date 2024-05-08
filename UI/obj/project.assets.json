@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Term 4 assignments\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
+      "projectUniqueName": "C:\\Users\\semel\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
       "projectName": "UI",
-      "projectPath": "C:\\Users\\semel\\source\\repos\\Term 4 assignments\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
+      "projectPath": "C:\\Users\\semel\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
       "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\semel\\source\\repos\\Term 4 assignments\\Restaurant-Ordering-System-Project\\UI\\obj\\",
+      "outputPath": "C:\\Users\\semel\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
