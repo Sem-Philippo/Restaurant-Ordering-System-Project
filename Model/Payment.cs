@@ -13,5 +13,14 @@ namespace Model
         public decimal PaymentAmount { get; set; }
         public int InvoiceId { get; set; }
         public decimal Tip { get; set; }
+        public Payment(int paymentId, string paymentType, decimal paymentAmount, int invoiceId, decimal tip)
+        {
+            PaymentId = paymentId;
+            PaymentType = paymentType;
+            PaymentAmount = paymentAmount;
+            InvoiceId = invoiceId;
+            Tip = tip;
+        }
     }
+    
 }

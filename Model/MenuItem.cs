@@ -16,5 +16,16 @@ namespace Model
         public int Stock { get; set; }
         public string Type { get; set; }
         public bool IsAlchoholic { get; set; }
+        public MenuItem(int menuItemId, string name, string category, decimal price, decimal tax, int stock, string type, bool isAlchoholic)
+        {
+            MenuItemId = menuItemId;
+            Name = name;
+            Category = category;
+            Price = price;
+            Tax = tax;
+            Stock = stock;
+            Type = type;
+            IsAlchoholic = isAlchoholic;
+        }
     }
 }
