@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "K1Ix8F8aBFXrxZ65Ls+RemOun0x/5KTcJ6iSp0qKVP4nCu7RLszKSPpI37Nkss7jn3bcUx+pI0mQgN/nUgoqrw==",
+  "dgSpecHash": "3t36hrhAk3pecf3ijF2WufutaYQ7vvx+c8om4innJsWqvtXZIESxzfByHbZDBLIwSpyKvBOdGTiWFqZFqjTtDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
+  "projectFilePath": "F:\\Chapeau Project\\Service\\Service.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\Chapeau Project\\Service\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
