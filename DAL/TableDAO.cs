@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    internal class OrderitemDAL
+    public class TableDAO
     {
+
     }
 }
