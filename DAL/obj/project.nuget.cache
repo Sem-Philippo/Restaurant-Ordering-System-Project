@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "a88n1BA5GlizMlDVB746QHZSaeb/wCxxu3xN4QWaQnDYCPxQ2Os/K1yFFjIDbeDlb1xRKG4XvVB7y9e9j9CXHw==",
+  "dgSpecHash": "Q/HZhE9WitCy55+Xw7yao5V22OwG9VwBUgHxMYZH/yHP/Fl3acoQfaev48J0Khk1rj33Ah+Kf5byVaHv20OEVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
-=======
-  "dgSpecHash": "kYx9Heai+y7iR0ydZZlVOP/yrpQ/I9F43mqQ18GqcvagouL/nlZmxAqB2aVeO5kX8ZDags5UPumNERCw/2tWww==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
->>>>>>> 7fbd4eba7f09f9d07736d9f562e1624c61f394e4
+  "projectFilePath": "F:\\Chapeau Project\\DAL\\DAL.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\Chapeau Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

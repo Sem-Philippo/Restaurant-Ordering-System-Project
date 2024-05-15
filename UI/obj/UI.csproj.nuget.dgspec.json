@@ -1,45 +1,31 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {}
+    "F:\\Chapeau Project\\UI\\UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {
+    "F:\\Chapeau Project\\UI\\UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
+        "projectUniqueName": "F:\\Chapeau Project\\UI\\UI.csproj",
         "projectName": "UI",
-        "projectPath": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
-        "packagesPath": "C:\\Users\\terku\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
+        "projectPath": "F:\\Chapeau Project\\UI\\UI.csproj",
+        "packagesPath": "C:\\Users\\tabee\\.nuget\\packages\\",
+        "outputPath": "F:\\Chapeau Project\\UI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\terku\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-    "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
-        "projectName": "UI",
-        "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
-        "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 7fbd4eba7f09f9d07736d9f562e1624c61f394e4
+          "C:\\Users\\tabee\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -75,11 +61,7 @@
               "privateAssets": "none"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
->>>>>>> 7fbd4eba7f09f9d07736d9f562e1624c61f394e4
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

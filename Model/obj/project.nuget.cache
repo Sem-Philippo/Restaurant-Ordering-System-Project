@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "Um0/22E8beZDTcZDEsckKVkOBEeXpg3Jc7ECb8ApodvflPBYDOcKtTECdgvIM7MPS10hqeZCmw8vJw+6OpQwWw==",
+  "dgSpecHash": "RU04XALs6wZ9tky1VjZlVz88+DemUASAj+n2Lv9RkybL/eJ2W8FqrU5+nYuDEpZwexX61YdaPZg8S6aQodc6IA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-=======
-  "dgSpecHash": "3fiwhWfQvLX2YaqQDQSdpxLhGZutz+LWQv1YzcuYW2qIzcOIplGniwAfvbFMKH/mpaMrcWbtx42xVHL1xumQhw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
->>>>>>> 7fbd4eba7f09f9d07736d9f562e1624c61f394e4
+  "projectFilePath": "F:\\Chapeau Project\\Model\\Model.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\Chapeau Project\\Model\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
