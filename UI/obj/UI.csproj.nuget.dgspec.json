@@ -1,31 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Chapeau Project\\UI\\UI.csproj": {}
+    "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {}
   },
   "projects": {
-    "F:\\Chapeau Project\\UI\\UI.csproj": {
+    "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Chapeau Project\\UI\\UI.csproj",
+        "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
         "projectName": "UI",
-        "projectPath": "F:\\Chapeau Project\\UI\\UI.csproj",
-        "packagesPath": "C:\\Users\\tabee\\.nuget\\packages\\",
-        "outputPath": "F:\\Chapeau Project\\UI\\obj\\",
+        "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
+        "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tabee\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -42,6 +39,16 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
