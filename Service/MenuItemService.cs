@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    internal class MenuItemService
+    public class MenuItemService
     {
     }
 }

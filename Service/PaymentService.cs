@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    public class InvoiceService
+    public class PaymentService
     {
     }
 }

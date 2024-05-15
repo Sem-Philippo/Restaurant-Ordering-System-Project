@@ -1,6 +1,6 @@
 ﻿namespace Service
 {
-    public class EmplyeeService
+    public class EmployeeService
     {
 
     }
