@@ -16,5 +16,8 @@
     <Compile Update="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TableOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
