@@ -8,5 +8,10 @@ namespace Model
 {
     public class Employee
     {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public int LastName { get; set; }
+        public Role Role { get; set; }
+        public int Pin { get; set; }
     }
 }
