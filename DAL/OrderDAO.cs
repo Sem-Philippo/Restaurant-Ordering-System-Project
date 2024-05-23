@@ -38,11 +38,15 @@ namespace DAL
         private Order CreateOrderFromDataRow(DataRow dr)
         {
             EmployeeDAO employeeDao = new EmployeeDAO();
+            TableDAO tableDAO = new TableDAO();
             return new Order(
                 (DateTime)dr["Time"],
                 employeeDao.GetEmployeeByID((int)dr["EmployeeID"]),
-
+                tableDAO.GetTableByID((int)dr["TableID"]),
+                //Add a method to the tableDAO to get a table by its id and finish rest of the constructor
+                (decimal)dr["Total"]
                 );
+            List<Order> test = new List<Order>();
         }
     }
 }

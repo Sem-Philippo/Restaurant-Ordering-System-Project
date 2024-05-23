@@ -31,7 +31,7 @@ namespace Model
         {
             foreach (OrderItem item in OrderItems)
             {
-                if (order)
+                
             }
         }
     }
