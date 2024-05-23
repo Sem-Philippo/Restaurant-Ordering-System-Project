@@ -27,5 +27,12 @@ namespace Model
         {
             OrderItems.Add(item);
         }
+        public void MenuItemDuplicate()
+        {
+            foreach (OrderItem item in OrderItems)
+            {
+                if (order)
+            }
+        }
     }
 }
