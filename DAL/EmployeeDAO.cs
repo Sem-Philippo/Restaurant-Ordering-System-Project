@@ -7,7 +7,7 @@ namespace DAL
 {
     public class EmployeeDAO : BaseDao
     {
-        public List<Employee> GetAllDrinks()
+        public List<Employee> GetAllEmployees()
         {
             string query = "SELECT * FROM EMPLOYEE";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -30,6 +30,8 @@ namespace DAL
             return new Employee()
             {
                 FirstName = dr["FirstName"].ToString(),
+                LastName = dr["LastName"].ToString(),
+                Role = (Model.Enums.Role)dr["Role"],
             };
         }
     }

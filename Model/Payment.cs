@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,10 @@ namespace Model
     {
         public int PaymentId { get; set; }
         public string PaymentType { get; set; }
-        public decimal PaymentAmount { get; set; }
+        public PaymentTypes PaymentAmount { get; set; }
         public int InvoiceId { get; set; }
         public decimal Tip { get; set; }
-        public Payment(string paymentType, decimal paymentAmount, int invoiceId, decimal tip)
+        public Payment(string paymentType, PaymentTypes paymentAmount, int invoiceId, decimal tip)
         {
             PaymentType = paymentType;
             PaymentAmount = paymentAmount;

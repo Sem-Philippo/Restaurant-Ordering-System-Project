@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Enums
+using Model.Enums;
 
 namespace Model
 {
@@ -20,6 +20,10 @@ namespace Model
             FirstName = firstName;
             LastName = lastName;
             Role = role;
+        }
+
+        public Employee()
+        {
         }
     }
 }
