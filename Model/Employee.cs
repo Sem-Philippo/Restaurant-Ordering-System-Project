@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.Enums;
+using Model.Enums
 
 namespace Model
 {
@@ -13,15 +13,13 @@ namespace Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Role Role { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
 
-        public Employee (int id, string firstName, string lastName, Role role, string pin)
+        public Employee (string firstName, string lastName, Role role)
         {
-            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Role = role;
-            Pin = pin;
         }
     }
 }
