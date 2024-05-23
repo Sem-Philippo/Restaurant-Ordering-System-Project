@@ -34,6 +34,7 @@ namespace DAL
             return new Invoice()
             {
                 OrderDate = (DateTime)dr["Orderdate"],
-                Order = (int)dr["OrderID"]
+                Order = (int)dr["OrderID"],
+
             }
         }

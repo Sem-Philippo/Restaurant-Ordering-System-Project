@@ -11,8 +11,14 @@ namespace DAL
         {
             string query = "SELECT * FROM EMPLOYEE";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            //Don't forget to include sales amount once drink orders are implemented!
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public Employee GetEmployeeByID(int id)
+        {
+            string query = "SELECT * FROM EMPLOYEE WHERE ID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
         private List<Employee> ReadTables(DataTable dataTable)
         {
@@ -34,5 +40,6 @@ namespace DAL
                 Role = (Model.Enums.Role)dr["Role"],
             };
         }
+
     }
 }

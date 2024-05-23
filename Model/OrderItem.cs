@@ -17,9 +17,8 @@ namespace Model
         public TimeSpan StatusTime { get; set; }
 
 
-        public OrderItem( int orderItemId, MenuItem menuItem, int quantity, Status status, string comment, TimeSpan statusTime)
+        public OrderItem(MenuItem menuItem, int quantity, Status status, string comment, TimeSpan statusTime)
         {
-            OrderItemId = orderItemId;
             MenuItem = menuItem;
             Quantity = quantity;
             Status = status;

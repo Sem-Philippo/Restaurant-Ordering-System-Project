@@ -181,6 +181,34 @@
             "rid": "win"
           }
         }
+      },
+      "Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0",
+          "System.Data.SqlClient": "4.8.6"
+        },
+        "compile": {
+          "bin/placeholder/Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model.dll": {}
+        }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "8.0.0",
+          "System.Data.SqlClient": "4.8.6"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
+        }
       }
     }
   },
@@ -563,10 +591,22 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Model/1.0.0": {
+      "type": "project",
+      "path": "../Model/Model.csproj",
+      "msbuildProject": "../Model/Model.csproj"
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Model >= 1.0.0",
+      "Service >= 1.0.0",
       "System.Configuration.ConfigurationManager >= 8.0.0",
       "System.Data.SqlClient >= 4.8.6"
     ]
@@ -597,7 +637,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj"
+            },
+            "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
