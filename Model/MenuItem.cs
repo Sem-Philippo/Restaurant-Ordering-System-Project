@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,13 @@ namespace Model
     {
         public int MenuItemId { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
+        public Categories Category { get; set; }
         public decimal Price { get; set; }
         public decimal Tax { get; set; }
         public int Stock { get; set; }
-        public string Type { get; set; }
+        public Types Type { get; set; }
         public bool IsAlchoholic { get; set; }
-        public MenuItem(int menuItemId, string name, string category, decimal price, decimal tax, int stock, string type, bool isAlchoholic)
+        public MenuItem(int menuItemId, string name, Categories category, decimal price, decimal tax, int stock, Types type, bool isAlchoholic)
         {
             MenuItemId = menuItemId;
             Name = name;

@@ -10,15 +10,14 @@ namespace Model
     {
         public int InvoiceId { get; set; }
         public DateOnly OrderDate { get; set; }
-        public List <Order> Orders { get; set; }
+        public Order Order { get; set; }
         public decimal LowVat { get; set; }
         public decimal HighVat { get; set; }
 
-        public Invoice (int invoiceId, DateOnly orderDate, List<Order> orders, decimal lowVat, decimal highVat)
+        public Invoice ( DateOnly orderDate, Order orders, decimal lowVat, decimal highVat)
         {
-            InvoiceId = invoiceId;
             OrderDate = orderDate;
-            Orders = orders;
+            Order = orders;
             LowVat = lowVat;
             HighVat = highVat;
         }

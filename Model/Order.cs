@@ -9,20 +9,23 @@ namespace Model
     public class Order
     {
         public int Id { get; set; }
-        public List <OrderItem> orderItems { get; set; }
+        public List <OrderItem> OrderItems { get; set; }
         public DateTime Time { get; set; }
-        public int EmployeeId { get; set; }
-        public int TableId { get; set; }
+        public Employee EmployeeId { get; set; }
+        public Table Table { get; set; }
         public decimal Total { get; set; }
 
-        public Order (int id, List<OrderItem> orderItems, DateTime time, int employeeId, int tableId, decimal total)
+        public Order (DateTime time, Employee employeeId, Table tableId, decimal total)
         {
-            Id = id;
-            this.orderItems = orderItems;
+            List<OrderItem> OrderItems = new List<OrderItem>();
             Time = time;
             EmployeeId = employeeId;
-            TableId = tableId;
+            Table = tableId;
             Total = total;
+        }
+        public void AddOrderItem(OrderItem orderItem)
+        {
+            OrderItems.Add(orderItem);
         }
     }
 }
