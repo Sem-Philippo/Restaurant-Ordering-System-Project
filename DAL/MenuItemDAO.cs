@@ -40,7 +40,7 @@ namespace DAL
                 (decimal)dr["Price"],
                 (decimal)dr["Tax"],
                 (int)dr["Stock"],
-                (Types)(int)dr["Type"],
+                (MenuTypes)(int)dr["Type"],
                 (bool)dr["IsAlcoholic"]
                 );
         }
