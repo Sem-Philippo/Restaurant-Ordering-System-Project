@@ -11,12 +11,12 @@ namespace DAL
 {
    public class OrderDAO : BaseDao
     {
-        //public Order GetOrderByID()
-        //{
-        //    string query = "SELECT * FROM ORDER";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-        //    return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        //}
+        public Order GetOrderByID()
+        {
+            string query = "SELECT * FROM ORDER";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
 
         public List<Order> GetAllOrders()
         {

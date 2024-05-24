@@ -31,10 +31,11 @@ namespace DAL
         }
         private Invoice CreateInvoiceFromDataRow(DataRow dr)
         {
+            OrderDAO orderDAO = new OrderDAO();
             return new Invoice()
             {
                 OrderDate = (DateTime)dr["Orderdate"],
-                Order = (int)dr["OrderID"],
+                Order = orderDAO.GetAllOrders((int)dr["OrderID"]),  //change to get orders by ID
 
             }
         }
