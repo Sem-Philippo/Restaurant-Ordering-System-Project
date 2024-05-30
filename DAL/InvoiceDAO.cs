@@ -9,14 +9,20 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-  public class InvoiceDAO : BaseDao
+    public class InvoiceDAO : BaseDao
     {
-        public List<Employee> GetAllInvoices()
+        public List<Invoice> GetAllInvoices()
         {
-            string query = "SELECT * FROM Invoice";
+            string query = "SELECT * FROM INVOICE";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            //Don't forget to include sales amount once drink orders are implemented!
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public Invoice GetInvoiceByID(int id)
+        {
+            string query = "SELECT * FROM iNVOICE WHERE ID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
         private List<Invoice> ReadTables(DataTable dataTable)
         {
@@ -32,10 +38,14 @@ namespace DAL
         private Invoice CreateInvoiceFromDataRow(DataRow dr)
         {
             OrderDAO orderDAO = new OrderDAO();
-            return new Invoice()
-            {
-                OrderDate = (DateTime)dr["Orderdate"],
-                Order = orderDAO.GetAllOrders((int)dr["OrderID"]),  //change to get orders by ID
+            return new Invoice(
 
-            }
+                (DateTime)dr["Orderdate"],
+                orderDAO.GetOrderByID((int)dr["OrderID"]),
+                (decimal)dr["LowVat"],
+                (decimal)dr["HighVat"]
+
+            );
         }
+        
+    }
