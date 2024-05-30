@@ -27,5 +27,16 @@ namespace Model
         {
             OrderItems.Add(item);
         }
+        public void MenuItemDuplicate()
+        {
+            foreach (OrderItem item in OrderItems)
+            {
+<<<<<<< HEAD
+
+=======
+                
+>>>>>>> 64c4a2b0e79083f393b84f4e9e9c5cb8be771520
+            }
+        }
     }
 }

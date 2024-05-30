@@ -15,9 +15,9 @@ namespace Model
         public decimal Price { get; set; }
         public decimal Tax { get; set; }
         public int Stock { get; set; }
-        public Types Type { get; set; }
+        public MenuTypes Type { get; set; }
         public bool IsAlchoholic { get; set; }
-        public MenuItem(int menuItemId, string name, Categories category, decimal price, decimal tax, int stock, Types type, bool isAlchoholic)
+        public MenuItem(int menuItemId, string name, Categories category, decimal price, decimal tax, int stock, MenuTypes type, bool isAlchoholic)
         {
             MenuItemId = menuItemId;
             Name = name;

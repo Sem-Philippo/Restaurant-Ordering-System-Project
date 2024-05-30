@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Enums
 {
-    public enum Types
+    public enum MenuTypes
     {
         Lunch = 1,
         Dinner,
