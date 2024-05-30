@@ -28,5 +28,9 @@ namespace Model
             Type = type;
             IsAlchoholic = isAlchoholic;
         }
+        public MenuItem()
+        {
+            
+        }
     }
 }

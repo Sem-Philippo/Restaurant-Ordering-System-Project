@@ -1,14 +1,12 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
 {
+<<<<<<< HEAD
     public class InvoiceDAO : BaseDao
     {
         public List<Invoice> GetAllInvoices()
@@ -49,3 +47,10 @@ namespace DAL
         }
         
     }
+=======
+  public class InvoiceDAO
+    {
+
+    }
+}
+>>>>>>> bb12d16c44f5cdd7d58b72aa6344e3593947f73b

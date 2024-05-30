@@ -21,9 +21,9 @@ namespace Model
             LastName = lastName;
             Role = role;
         }
-
         public Employee()
         {
+            
         }
     }
 }
