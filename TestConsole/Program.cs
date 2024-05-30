@@ -6,11 +6,10 @@
     {
         static void Main(string[] args)
         {
-            EmployeeDAO dao = new EmployeeDAO();
-            List<Employee> test = dao.GetAllDrinks();
-            foreach (Employee emp in test)
+            string mode = Console.ReadLine();
+            if (mode.ToLower() == "order")
             {
-                Console.WriteLine(emp.FirstName);
+                Order order = new Order();
             }
 
         }

@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.Enums
 {
-    public enum Status
+    public enum PaymentTypes
     {
-        Ordered=1,
-        Pending,
-        Preparing,
-        Served,
-
+        CreditCard = 1,
+        DebitCard,
+        Cash
     }
 }
