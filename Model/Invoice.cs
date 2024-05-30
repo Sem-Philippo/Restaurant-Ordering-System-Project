@@ -15,19 +15,11 @@ namespace Model
         public decimal LowVat { get; set; }
         public decimal HighVat { get; set; }
 
-<<<<<<< HEAD
-        public Invoice (DateTime orderDate, Order orders, decimal lowVat, decimal highVat)
-        {
-            Payments = new List<Payment>();
-            OrderDate = orderDate;
-            Order = orders;
-=======
         public Invoice (DateTime orderDate, Order order, decimal lowVat, decimal highVat)
         {
             Payments = new List<Payment>();
             OrderDate = orderDate;
             Order = order;
->>>>>>> d4111b76bf2b6675dbfccc7fb1c88216964ceb26
             LowVat = lowVat;
             HighVat = highVat;
         }

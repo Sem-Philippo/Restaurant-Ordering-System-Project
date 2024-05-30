@@ -15,10 +15,16 @@ namespace DAL
     {
         public MenuItem GetMenuItemByID(int id)
         {
+            string query = "SELECT * FROM MENUITEM WHERE MenuitemID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+        public List<MenuItem> GetAllMenuItems()
+        {
             string query = "SELECT * FROM MENUITEM";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            //Don't forget to include sales amount once drink orders are implemented!
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
         private List<MenuItem> ReadTables(DataTable dataTable)
         {

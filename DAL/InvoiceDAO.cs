@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-  public class InvoiceDAO : BaseDao
+    public class InvoiceDAO : BaseDao
     {
-        public List<Employee> GetAllInvoices()
+        public List<Invoice> GetAllInvoices()
         {
             string query = "SELECT * FROM Invoice";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -32,10 +32,12 @@ namespace DAL
         private Invoice CreateInvoiceFromDataRow(DataRow dr)
         {
             OrderDAO orderDAO = new OrderDAO();
-            return new Invoice()
-            {
-                OrderDate = (DateTime)dr["Orderdate"],
-                Order = orderDAO.GetAllOrders((int)dr["OrderID"]),  //change to get orders by ID
-
-            }
+            return new Invoice(
+                (DateTime)dr["Orderdate"],
+                orderDAO.GetOrderByID((int)dr["OrderID"]),  //change to get orders by ID
+                (decimal)0.5,
+                (decimal)0.5
+            );
         }
+    }
+}

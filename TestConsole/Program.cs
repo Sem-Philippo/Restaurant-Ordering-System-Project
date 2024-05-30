@@ -6,11 +6,8 @@
     {
         static void Main(string[] args)
         {
-            string mode = Console.ReadLine();
-            if (mode.ToLower() == "order")
-            {
-                Order order = new Order();
-            }
+            MenuItemDAO dao = new MenuItemDAO();
+            dao.GetAllMenuItems();
 
         }
     }
