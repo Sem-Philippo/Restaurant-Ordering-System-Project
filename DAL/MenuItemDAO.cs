@@ -38,7 +38,7 @@ namespace DAL
                     Price = decimal.Parse(dr["Price"].ToString()),
                     Tax = decimal.Parse(dr["Tax"].ToString()),
                     Stock = int.Parse(dr["Stock"].ToString()),
-                    Type = (Types)Enum.Parse(typeof (Types), dr["Type"].ToString()),
+                    Type = (MenuTypes)Enum.Parse(typeof (MenuTypes), dr["Type"].ToString()),
                     IsAlchoholic = Convert.ToBoolean(int.Parse(dr["IsAlchoholic"].ToString()))
 
 
@@ -56,7 +56,7 @@ namespace DAL
             decimal price = menuItem.Price;
             decimal tax = menuItem.Tax;
             int stock = menuItem.Stock;
-            Types types = menuItem.Type;
+            MenuTypes types = menuItem.Type;
             bool alchohoic = menuItem.IsAlchoholic;
 
             string query = "insert into menuItem values(@ID, @Name, @Category, @Price, @Tax, @Stock, @Type, @Alchoholic)";

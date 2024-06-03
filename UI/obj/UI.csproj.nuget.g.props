@@ -13,6 +13,6 @@
     <SourceRoot Include="C:\Users\Gebruikerr\.nuget\packages\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\Mahmoud\.nuget\packages\microsoft.web.webview2\1.0.864.35</PkgMicrosoft_Web_WebView2>
+    <PkgMicrosoft_Web_WebView2 Condition=" '$(PkgMicrosoft_Web_WebView2)' == '' ">C:\Users\Gebruikerr\.nuget\packages\microsoft.web.webview2\1.0.864.35</PkgMicrosoft_Web_WebView2>
   </PropertyGroup>
 </Project>

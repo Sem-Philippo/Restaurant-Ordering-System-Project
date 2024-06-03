@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Stock";
+            stocksList = new ListView();
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // stocksList
+            // 
+            stocksList.Location = new Point(12, 100);
+            stocksList.Name = "stocksList";
+            stocksList.Size = new Size(730, 338);
+            stocksList.TabIndex = 0;
+            stocksList.UseCompatibleStateImageBehavior = false;
+            stocksList.SelectedIndexChanged += stocksList_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(122, 46);
+            label1.TabIndex = 1;
+            label1.Text = "Stocks";
+            label1.UseWaitCursor = true;
+            label1.Click += label1_Click;
+            // 
+            // Stock
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(754, 450);
+            Controls.Add(label1);
+            Controls.Add(stocksList);
+            Name = "Stock";
+            Text = "Stock";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private ListView stocksList;
+        private Label label1;
     }
 }
