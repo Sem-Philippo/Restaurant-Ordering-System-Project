@@ -100,7 +100,7 @@ namespace DAL
             decimal price = menuItem.Price;
             decimal tax = menuItem.Tax;
             int stock = menuItem.Stock;
-            Types types = menuItem.Type;
+            MenuTypes types = menuItem.Type;
             bool alchohoic = menuItem.IsAlchoholic;
 
             string query = "update menuItem set Name = @Name, Category = @Category, Price = @Price, Tax = @Tax = Stock = @Stock = Type = @Type, IsAlchoholic = @IsAlchoholic where MenuitemID = @MenuitemID";

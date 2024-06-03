@@ -11,11 +11,8 @@ namespace DAL
 {
    public class OrderDAO : BaseDao
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
->>>>>>> 15c331484fe86775ba74d6469c37b0b45b44848b
+
         public Order GetOrderByID(int id)
         {
             string query = "SELECT * FROM ORDER WHERE ID = @id";
@@ -23,11 +20,7 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@id", id);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> bb12d16c44f5cdd7d58b72aa6344e3593947f73b
->>>>>>> 15c331484fe86775ba74d6469c37b0b45b44848b
+
 
         public List<Order> GetAllOrders()
         {

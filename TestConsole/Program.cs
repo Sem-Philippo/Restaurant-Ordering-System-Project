@@ -1,4 +1,5 @@
-﻿namespace TestConsole
+﻿using System.Security.Cryptography;
+namespace TestConsole
 {
     using Model;
     using DAL;
@@ -6,11 +7,7 @@
     {
         static void Main(string[] args)
         {
-            string mode = Console.ReadLine();
-            if (mode.ToLower() == "order")
-            {
-                Order order = new Order();
-            }
+            
 
         }
     }
