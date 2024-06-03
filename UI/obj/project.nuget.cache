@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "ySSBbNkcsuqhS5nuJOX2QvqelSlVl3GCM2cQ2xnbBx6unXaQqit+2BM2hMcvMnVazln90QZfEodMNdc/qHw32g==",
+  "dgSpecHash": "npzi5e5FwO61fA+ZITlzXKhFWAfN3nYgxQ2I1dTR1Vvus8v6wx4jKHVuCzQYLtLYH5RTIOf1SspiKCw7lq+MjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\terku\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
-=======
-  "dgSpecHash": "74JFBS9IDq/O/RNO/j86oWSOC3b7Vb7/gT04rqBu3UjILygMW+P114Iv0l33IWJLsk4W36+I/qze+PgBsSMHhw==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
->>>>>>> 7fbd4eba7f09f9d07736d9f562e1624c61f394e4
+  "projectFilePath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
