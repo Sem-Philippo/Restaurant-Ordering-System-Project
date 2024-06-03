@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace Model.Enums
 {
-  public class InvoiceDAO
+    public enum MenuTypes
     {
-
+        Lunch = 1,
+        Dinner,
+        Drinks
     }
 }
