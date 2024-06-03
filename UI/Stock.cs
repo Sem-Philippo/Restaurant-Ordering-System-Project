@@ -17,10 +17,8 @@ namespace UI
             InitializeComponent();
         }
 
-        private List<Stock> GetStudent()
-        {
-            
-        }
+          
+       
 
         private void label1_Click(object sender, EventArgs e)
         {

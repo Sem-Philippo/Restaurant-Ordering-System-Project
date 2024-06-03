@@ -1,5 +1,5 @@
 ﻿using Model;
-using Model.Enums;
+
 using System.Data.SqlClient;
 using System.Data;
 using System;
@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DAL
 {
-    public class PaymentDAO
+    public class PaymentDAO : BaseDao
     {
         public List<Payment> GetAllPayments()
         {
