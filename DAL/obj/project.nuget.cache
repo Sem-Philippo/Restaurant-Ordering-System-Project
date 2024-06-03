@@ -1,5 +1,11 @@
 {
   "version": 2,
+<<<<<<< HEAD
+  "dgSpecHash": "d2/D4y56G5bX47txQxlmxTK4II9jsXSYsDCOX05reev/DbzsXS7t8MULGRCNGYYzx0l5LekXhcJWDWoEthyAlA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
+  "expectedPackageFiles": [],
+=======
   "dgSpecHash": "e4dqMsTwIvTqWl71WFkZje0zGg5IagdK0+/ho1i20wDsMWF/1K072RaclDCUVaSH/B5iW9R7Fdt1sw65K5T0Jg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
@@ -46,12 +52,17 @@
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
+>>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
+      "message": "Problem reading the cache file C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
       "message": "Problem reading the cache file C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
     }
   ]
 }
