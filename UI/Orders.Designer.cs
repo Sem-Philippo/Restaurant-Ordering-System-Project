@@ -39,6 +39,10 @@
             listviewItems = new ListView();
             name = new ColumnHeader();
             Amount = new ColumnHeader();
+            btnComment = new Button();
+            pnlComment = new Panel();
+            txtComment = new TextBox();
+            pnlComment.SuspendLayout();
             SuspendLayout();
             // 
             // flowPanelDrinks
@@ -120,11 +124,13 @@
             listviewItems.Columns.AddRange(new ColumnHeader[] { name, Amount });
             listviewItems.FullRowSelect = true;
             listviewItems.Location = new Point(100, 375);
+            listviewItems.MultiSelect = false;
             listviewItems.Name = "listviewItems";
             listviewItems.Size = new Size(300, 186);
             listviewItems.TabIndex = 9;
             listviewItems.UseCompatibleStateImageBehavior = false;
             listviewItems.View = View.Details;
+            listviewItems.SelectedIndexChanged += listviewItems_SelectedIndexChanged;
             // 
             // name
             // 
@@ -136,11 +142,39 @@
             Amount.Text = "Amount";
             Amount.Width = 100;
             // 
+            // btnComment
+            // 
+            btnComment.Location = new Point(12, 567);
+            btnComment.Name = "btnComment";
+            btnComment.Size = new Size(150, 50);
+            btnComment.TabIndex = 10;
+            btnComment.Text = "Comment";
+            btnComment.UseVisualStyleBackColor = true;
+            btnComment.Click += btnComment_Click;
+            // 
+            // pnlComment
+            // 
+            pnlComment.Controls.Add(txtComment);
+            pnlComment.Location = new Point(12, 12);
+            pnlComment.Name = "pnlComment";
+            pnlComment.Size = new Size(470, 549);
+            pnlComment.TabIndex = 11;
+            // 
+            // txtComment
+            // 
+            txtComment.Location = new Point(27, 71);
+            txtComment.Multiline = true;
+            txtComment.Name = "txtComment";
+            txtComment.Size = new Size(419, 270);
+            txtComment.TabIndex = 0;
+            // 
             // Orders
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(497, 629);
+            Controls.Add(pnlComment);
+            Controls.Add(btnComment);
             Controls.Add(listviewItems);
             Controls.Add(btnOrder);
             Controls.Add(btnBackToOrders);
@@ -153,6 +187,8 @@
             Name = "Orders";
             Text = "Orders";
             Load += Orders_Load;
+            pnlComment.ResumeLayout(false);
+            pnlComment.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -169,5 +205,8 @@
         private ListView listviewItems;
         private ColumnHeader name;
         private ColumnHeader Amount;
+        private Button btnComment;
+        private Panel pnlComment;
+        private TextBox txtComment;
     }
 }

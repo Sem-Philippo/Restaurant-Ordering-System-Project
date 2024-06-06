@@ -63,6 +63,7 @@ namespace UI
             btnShowDrinks.Hide();
             btnBackToOrders.Show();
             listviewItems.Hide();
+            btnComment.Hide();
         }
         private void ShowButtons()
         {
@@ -74,6 +75,8 @@ namespace UI
             btnShowDinner.Show();
             btnShowDrinks.Show();
             listviewItems.Show();
+            btnComment.Hide();
+            pnlComment.Hide();
         }
 
         private void btnBackToOrders_Click(object sender, EventArgs e)
@@ -86,16 +89,35 @@ namespace UI
             AddItemsToListViewFromPanel(flowPanelLunch);
             AddItemsToListViewFromPanel(flowPanelDinner);
             AddItemsToListViewFromPanel(flowPanelDrinks);
+
+            //If comment was just placed:
+            //Get orderItem from the tag
+            try
+            {
+                OrderItem orderItem = (OrderItem)listviewItems.SelectedItems[0].Tag;
+            }
+            catch 
+            { 
+            }
+
+            if (txtComment.Text != string.Empty)
+            {
+                //MenuItemUserControl
+            }
         }
         private void AddItemsToListViewFromPanel(FlowLayoutPanel flowPanel)
         {
-            List<ListViewItem> li = new List<ListViewItem>();
+            //lvItems for ListViewItems
+            List<ListViewItem> lvItems = new List<ListViewItem>();
             foreach (OrderItem item in GetOrderItemsFromPanel(flowPanel)) //Get all items
             {
                 //Make listviewitems with the item name and quantity and add them to the list
-                li.Add(new ListViewItem(new string[2] { item.MenuItem.Name.ToString(), item.Quantity.ToString() + "x" }));
+                ListViewItem li = new ListViewItem(new string[2] { item.MenuItem.Name.ToString(), item.Quantity.ToString() + "x" });
+                //Add tag to get item later
+                li.Tag = item;
+                lvItems.Add(li);
             }
-            foreach (ListViewItem item in li)
+            foreach (ListViewItem item in lvItems)
             {
                 //add the items to the listview
                 listviewItems.Items.Add(item);
@@ -124,9 +146,9 @@ namespace UI
             List<OrderItem> orderItems = new List<OrderItem>();
             foreach (MenuItemUserControl control in flowPanel.Controls)
             {
-                if (control.quantity > 0)
+                if (control.orderItem.Quantity > 0)
                 {
-                    OrderItem orderItem = new OrderItem(control.menuItem, control.quantity, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
+                    OrderItem orderItem = new OrderItem(control.menuItem, control.orderItem.Quantity, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
                     orderItems.Add(orderItem);
                 }
             }
@@ -138,6 +160,23 @@ namespace UI
             {
                 order.OrderItems.Add(item);
             }
+        }
+
+        private void listviewItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnComment.Show();
+        }
+
+        private void btnComment_Click(object sender, EventArgs e)
+        {
+            HideButtons();
+            pnlComment.Show();
+            //btnOrder.Hide();
+            //Get orderItem from the tag
+            OrderItem orderItem = (OrderItem)listviewItems.SelectedItems[0].Tag;
+            //adding a tag to the comment box to connect it with the item the comment will be for
+            txtComment.Tag = orderItem;
+            txtComment.Text = ((OrderItem)txtComment.Tag).Comment;
         }
     }
 }
