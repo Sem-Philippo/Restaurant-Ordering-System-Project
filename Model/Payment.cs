@@ -10,15 +10,15 @@ namespace Model
     public class Payment
     {
         public int PaymentId { get; set; }
-        public string PaymentType { get; set; }
-        public PaymentTypes PaymentAmount { get; set; }
-        public int InvoiceId { get; set; }
+        public PaymentTypes PaymentType { get; set; }
+        public decimal PaymentAmount { get; set; }
+        public Invoice BillInvoice { get; set; }
         public decimal Tip { get; set; }
-        public Payment(string paymentType, PaymentTypes paymentAmount, int invoiceId, decimal tip)
+        public Payment(PaymentTypes paymentType, decimal paymentAmount, Invoice billInvoice, decimal tip)
         {
             PaymentType = paymentType;
             PaymentAmount = paymentAmount;
-            InvoiceId = invoiceId;
+            BillInvoice = billInvoice;
             Tip = tip;
         }
     }

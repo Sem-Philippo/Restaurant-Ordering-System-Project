@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {}
   },
   "projects": {
@@ -15,6 +16,38 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+<<<<<<< HEAD
+    "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\terku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\terku\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +61,13 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
                 "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj"
+=======
+              "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj"
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
               }
             }
           }
@@ -38,6 +76,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -73,6 +116,7 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
@@ -88,6 +132,24 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "projectName": "Model",
+        "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,6 +169,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -142,7 +209,15 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+>>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
         }
       }
     }

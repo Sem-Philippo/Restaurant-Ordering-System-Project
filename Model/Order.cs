@@ -23,15 +23,24 @@ namespace Model
             Table = table;
             Total = total;
         }
-        public void AddOrderItem(OrderItem item)
+        public void AddOrderItem(OrderItem newItem)
         {
-            OrderItems.Add(item);
-        }
-        public void MenuItemDuplicate()
-        {
-            foreach (OrderItem item in OrderItems)
+            bool itemFound = false;
+            foreach (var item in OrderItems)
             {
+                if (item.MenuItem.MenuItemId == newItem.MenuItem.MenuItemId)
+                {
+                    item.Quantity += newItem.Quantity;
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (!itemFound)
+            {
+                OrderItems.Add(newItem);
             }
         }
+        
     }
 }

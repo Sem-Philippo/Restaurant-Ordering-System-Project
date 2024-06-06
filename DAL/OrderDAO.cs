@@ -13,6 +13,8 @@ namespace DAL
 {
    public class OrderDAO : BaseDao
     {
+
+
         public Order GetOrderByID(int id)
         {
             string query = "SELECT * FROM ORDER WHERE ID = @id";
@@ -20,6 +22,7 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@id", id);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
+
 
         public List<Order> GetAllOrders()
         {

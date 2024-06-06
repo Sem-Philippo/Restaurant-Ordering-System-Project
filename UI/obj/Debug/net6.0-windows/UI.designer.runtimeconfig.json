@@ -12,8 +12,13 @@
       }
     ],
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\semel\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\semel\\.nuget\\packages"
+=======
+      "C:\\Users\\Gebruikerr\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Gebruikerr\\.nuget\\packages"
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
