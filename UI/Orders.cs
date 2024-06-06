@@ -31,11 +31,11 @@ namespace UI
                 switch ((int)menuItemUserControl.menuItem.Type)
                 {
                     case 1:
-                        this.flowPanelLunch.Controls.Add(menuItemUserControl); break;
+                        flowPanelLunch.Controls.Add(menuItemUserControl); break;
                     case 2:
-                        this.flowPanelDinner.Controls.Add(menuItemUserControl); break;
+                        flowPanelDinner.Controls.Add(menuItemUserControl); break;
                     case 3:
-                        this.flowPanelDrinks.Controls.Add(menuItemUserControl); break;
+                        flowPanelDrinks.Controls.Add(menuItemUserControl); break;
                 }
             }
         }
@@ -62,6 +62,7 @@ namespace UI
             btnShowDinner.Hide();
             btnShowDrinks.Hide();
             btnBackToOrders.Show();
+            listviewItems.Hide();
         }
         private void ShowButtons()
         {
@@ -72,19 +73,41 @@ namespace UI
             btnShowLunch.Show();
             btnShowDinner.Show();
             btnShowDrinks.Show();
+            listviewItems.Show();
         }
 
         private void btnBackToOrders_Click(object sender, EventArgs e)
         {
             ShowButtons();
+            //Add currently ordered items to listview:
+            //Clear listview items
+            listviewItems.Items.Clear();
+            //Get currently ordered items and add them
+            AddItemsToListViewFromPanel(flowPanelLunch);
+            AddItemsToListViewFromPanel(flowPanelDinner);
+            AddItemsToListViewFromPanel(flowPanelDrinks);
+        }
+        private void AddItemsToListViewFromPanel(FlowLayoutPanel flowPanel)
+        {
+            List<ListViewItem> li = new List<ListViewItem>();
+            foreach (OrderItem item in GetOrderItemsFromPanel(flowPanel)) //Get all items
+            {
+                //Make listviewitems with the item name and quantity and add them to the list
+                li.Add(new ListViewItem(new string[2] { item.MenuItem.Name.ToString(), item.Quantity.ToString() + "x" }));
+            }
+            foreach (ListViewItem item in li)
+            {
+                //add the items to the listview
+                listviewItems.Items.Add(item);
+            }
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            Order order = new Order(DateTime.Now, new Employee() { Id = 1}, new Table(1, 1, true), (decimal)0);
-            AddOrderItemsFromPanel(flowPanelLunch, order);
-            AddOrderItemsFromPanel(flowPanelDinner, order);
-            AddOrderItemsFromPanel(flowPanelDrinks, order);
+            Order order = new Order(DateTime.Now, new Employee() { Id = 1 }, new Table(1, 1, true), (decimal)0);
+            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelLunch), order);
+            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDinner), order);
+            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDrinks), order);
 
             order.Total = 0;
             foreach (OrderItem item in order.OrderItems)
@@ -96,14 +119,24 @@ namespace UI
             orderService.SaveOrder(order);
             MessageBox.Show("You ordered stuff!");
         }
-        private void AddOrderItemsFromPanel(FlowLayoutPanel flowPanel, Order order)
+        private List<OrderItem> GetOrderItemsFromPanel(FlowLayoutPanel flowPanel)
         {
+            List<OrderItem> orderItems = new List<OrderItem>();
             foreach (MenuItemUserControl control in flowPanel.Controls)
             {
-                if (control.orderItem.Quantity > 0)
+                if (control.quantity > 0)
                 {
-                    order.AddOrderItem(control.orderItem);
+                    OrderItem orderItem = new OrderItem(control.menuItem, control.quantity, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
+                    orderItems.Add(orderItem);
                 }
+            }
+            return orderItems;
+        }
+        private void AddOrderItemsFromList(List<OrderItem> orderItems, Order order)
+        {
+            foreach (OrderItem item in orderItems)
+            {
+                order.OrderItems.Add(item);
             }
         }
     }

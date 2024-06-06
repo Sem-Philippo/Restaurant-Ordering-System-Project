@@ -13,13 +13,13 @@ namespace UI.UserControls
 {
     public partial class MenuItemUserControl : UserControl
     {
-        public OrderItem orderItem;
+        public int quantity;
         public MenuItem menuItem;
         public MenuItemUserControl(MenuItem menuItem)
         {
             InitializeComponent();
             this.menuItem = menuItem;
-            orderItem = new OrderItem(menuItem, 0, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
+            quantity = 0;
         }
 
         private void MenuItemUserControl_Load(object sender, EventArgs e)
@@ -34,16 +34,16 @@ namespace UI.UserControls
 
         private void btnAmountIncrease_Click(object sender, EventArgs e)
         {
-            orderItem.Quantity += 1;
-            lblAmount.Text = orderItem.Quantity.ToString();
+            quantity += 1;
+            lblAmount.Text = quantity.ToString();
         }
 
         private void btnAmountDecrease_Click(object sender, EventArgs e)
         {
-            if (orderItem.Quantity > 0)
+            if (quantity > 0)
             {
-                orderItem.Quantity -= 1;
-                lblAmount.Text = orderItem.Quantity.ToString();
+                quantity -= 1;
+                lblAmount.Text = quantity.ToString();
             }
         }
     }
