@@ -30,6 +30,7 @@
         {
             listView1 = new ListView();
             ItemName = new ColumnHeader();
+            VatValue = new ColumnHeader();
             ItemDescription = new ColumnHeader();
             ItemPrice = new ColumnHeader();
             ItemQuantity = new ColumnHeader();
@@ -41,6 +42,11 @@
             TipBtn = new Button();
             label1 = new Label();
             BillOptions = new GroupBox();
+            PaymentTypeCombo = new ComboBox();
+            PaymentTypeLbl = new Label();
+            payBtn = new Button();
+            EvenSplitLbl = new Label();
+            label2 = new Label();
             TablesCombo = new ComboBox();
             OverviewBtn = new Button();
             MenuBtn = new Button();
@@ -48,21 +54,15 @@
             ManagementBtn = new Button();
             HistoryBtn = new Button();
             TabelsLbl = new Label();
-            label2 = new Label();
-            EvenSplitLbl = new Label();
-            payBtn = new Button();
-            PaymentTypeLbl = new Label();
-            PaymentTypeCombo = new ComboBox();
-            VatValue = new ColumnHeader();
             PaymentDetails = new GroupBox();
+            TipAmountLbl = new Label();
+            AmountDueLbl = new Label();
+            TotalAmountLbl = new Label();
+            AmountDueTxt = new Label();
+            label3 = new Label();
+            TotalTxt = new Label();
             FeedbackGroup = new GroupBox();
             FeedbackBox = new TextBox();
-            TotalTxt = new Label();
-            label3 = new Label();
-            AmountDueTxt = new Label();
-            TotalAmountLbl = new Label();
-            AmountDueLbl = new Label();
-            TipAmountLbl = new Label();
             ((System.ComponentModel.ISupportInitialize)EvenSplitNumeric).BeginInit();
             BillOptions.SuspendLayout();
             PaymentDetails.SuspendLayout();
@@ -83,6 +83,10 @@
             // 
             ItemName.Text = "Item name";
             ItemName.Width = 100;
+            // 
+            // VatValue
+            // 
+            VatValue.Text = "VAT";
             // 
             // ItemDescription
             // 
@@ -174,6 +178,50 @@
             BillOptions.TabStop = false;
             BillOptions.Text = "Bill options";
             // 
+            // PaymentTypeCombo
+            // 
+            PaymentTypeCombo.FormattingEnabled = true;
+            PaymentTypeCombo.Location = new Point(555, 42);
+            PaymentTypeCombo.Name = "PaymentTypeCombo";
+            PaymentTypeCombo.Size = new Size(121, 23);
+            PaymentTypeCombo.TabIndex = 16;
+            // 
+            // PaymentTypeLbl
+            // 
+            PaymentTypeLbl.AutoSize = true;
+            PaymentTypeLbl.Location = new Point(466, 45);
+            PaymentTypeLbl.Name = "PaymentTypeLbl";
+            PaymentTypeLbl.Size = new Size(83, 15);
+            PaymentTypeLbl.TabIndex = 15;
+            PaymentTypeLbl.Text = "Payment type:";
+            // 
+            // payBtn
+            // 
+            payBtn.Location = new Point(695, 28);
+            payBtn.Name = "payBtn";
+            payBtn.Size = new Size(75, 48);
+            payBtn.TabIndex = 13;
+            payBtn.Text = "Pay";
+            payBtn.UseVisualStyleBackColor = true;
+            // 
+            // EvenSplitLbl
+            // 
+            EvenSplitLbl.AutoSize = true;
+            EvenSplitLbl.Location = new Point(235, 31);
+            EvenSplitLbl.Name = "EvenSplitLbl";
+            EvenSplitLbl.Size = new Size(63, 15);
+            EvenSplitLbl.TabIndex = 14;
+            EvenSplitLbl.Text = "Even split: ";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 31);
+            label2.Name = "label2";
+            label2.Size = new Size(82, 15);
+            label2.TabIndex = 10;
+            label2.Text = "Enter amount:";
+            // 
             // TablesCombo
             // 
             TablesCombo.FormattingEnabled = true;
@@ -236,54 +284,6 @@
             TabelsLbl.TabIndex = 9;
             TabelsLbl.Text = "Table";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(82, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Enter amount:";
-            // 
-            // EvenSplitLbl
-            // 
-            EvenSplitLbl.AutoSize = true;
-            EvenSplitLbl.Location = new Point(235, 31);
-            EvenSplitLbl.Name = "EvenSplitLbl";
-            EvenSplitLbl.Size = new Size(63, 15);
-            EvenSplitLbl.TabIndex = 14;
-            EvenSplitLbl.Text = "Even split: ";
-            // 
-            // payBtn
-            // 
-            payBtn.Location = new Point(695, 28);
-            payBtn.Name = "payBtn";
-            payBtn.Size = new Size(75, 48);
-            payBtn.TabIndex = 13;
-            payBtn.Text = "Pay";
-            payBtn.UseVisualStyleBackColor = true;
-            // 
-            // PaymentTypeLbl
-            // 
-            PaymentTypeLbl.AutoSize = true;
-            PaymentTypeLbl.Location = new Point(466, 45);
-            PaymentTypeLbl.Name = "PaymentTypeLbl";
-            PaymentTypeLbl.Size = new Size(83, 15);
-            PaymentTypeLbl.TabIndex = 15;
-            PaymentTypeLbl.Text = "Payment type:";
-            // 
-            // PaymentTypeCombo
-            // 
-            PaymentTypeCombo.FormattingEnabled = true;
-            PaymentTypeCombo.Location = new Point(555, 42);
-            PaymentTypeCombo.Name = "PaymentTypeCombo";
-            PaymentTypeCombo.Size = new Size(121, 23);
-            PaymentTypeCombo.TabIndex = 16;
-            // 
-            // VatValue
-            // 
-            VatValue.Text = "VAT";
-            // 
             // PaymentDetails
             // 
             PaymentDetails.Controls.Add(TipAmountLbl);
@@ -298,6 +298,60 @@
             PaymentDetails.TabIndex = 14;
             PaymentDetails.TabStop = false;
             PaymentDetails.Text = "Payment details";
+            // 
+            // TipAmountLbl
+            // 
+            TipAmountLbl.AutoSize = true;
+            TipAmountLbl.Location = new Point(228, 72);
+            TipAmountLbl.Name = "TipAmountLbl";
+            TipAmountLbl.Size = new Size(46, 15);
+            TipAmountLbl.TabIndex = 21;
+            TipAmountLbl.Text = ".............";
+            // 
+            // AmountDueLbl
+            // 
+            AmountDueLbl.AutoSize = true;
+            AmountDueLbl.Location = new Point(228, 48);
+            AmountDueLbl.Name = "AmountDueLbl";
+            AmountDueLbl.Size = new Size(46, 15);
+            AmountDueLbl.TabIndex = 20;
+            AmountDueLbl.Text = ".............";
+            // 
+            // TotalAmountLbl
+            // 
+            TotalAmountLbl.AutoSize = true;
+            TotalAmountLbl.Location = new Point(228, 24);
+            TotalAmountLbl.Name = "TotalAmountLbl";
+            TotalAmountLbl.Size = new Size(46, 15);
+            TotalAmountLbl.TabIndex = 19;
+            TotalAmountLbl.Text = ".............";
+            // 
+            // AmountDueTxt
+            // 
+            AmountDueTxt.AutoSize = true;
+            AmountDueTxt.Location = new Point(124, 48);
+            AmountDueTxt.Name = "AmountDueTxt";
+            AmountDueTxt.Size = new Size(77, 15);
+            AmountDueTxt.TabIndex = 18;
+            AmountDueTxt.Text = "Amount due:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(124, 72);
+            label3.Name = "label3";
+            label3.Size = new Size(71, 15);
+            label3.TabIndex = 17;
+            label3.Text = "Tip amount:";
+            // 
+            // TotalTxt
+            // 
+            TotalTxt.AutoSize = true;
+            TotalTxt.Location = new Point(124, 24);
+            TotalTxt.Name = "TotalTxt";
+            TotalTxt.Size = new Size(80, 15);
+            TotalTxt.TabIndex = 16;
+            TotalTxt.Text = "Total amount:";
             // 
             // FeedbackGroup
             // 
@@ -317,60 +371,6 @@
             FeedbackBox.Size = new Size(285, 124);
             FeedbackBox.TabIndex = 15;
             FeedbackBox.Text = "Type here...";
-            // 
-            // TotalTxt
-            // 
-            TotalTxt.AutoSize = true;
-            TotalTxt.Location = new Point(124, 24);
-            TotalTxt.Name = "TotalTxt";
-            TotalTxt.Size = new Size(80, 15);
-            TotalTxt.TabIndex = 16;
-            TotalTxt.Text = "Total amount:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(124, 72);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 15);
-            label3.TabIndex = 17;
-            label3.Text = "Tip amount:";
-            // 
-            // AmountDueTxt
-            // 
-            AmountDueTxt.AutoSize = true;
-            AmountDueTxt.Location = new Point(124, 48);
-            AmountDueTxt.Name = "AmountDueTxt";
-            AmountDueTxt.Size = new Size(77, 15);
-            AmountDueTxt.TabIndex = 18;
-            AmountDueTxt.Text = "Amount due:";
-            // 
-            // TotalAmountLbl
-            // 
-            TotalAmountLbl.AutoSize = true;
-            TotalAmountLbl.Location = new Point(228, 24);
-            TotalAmountLbl.Name = "TotalAmountLbl";
-            TotalAmountLbl.Size = new Size(46, 15);
-            TotalAmountLbl.TabIndex = 19;
-            TotalAmountLbl.Text = ".............";
-            // 
-            // AmountDueLbl
-            // 
-            AmountDueLbl.AutoSize = true;
-            AmountDueLbl.Location = new Point(228, 48);
-            AmountDueLbl.Name = "AmountDueLbl";
-            AmountDueLbl.Size = new Size(46, 15);
-            AmountDueLbl.TabIndex = 20;
-            AmountDueLbl.Text = ".............";
-            // 
-            // TipAmountLbl
-            // 
-            TipAmountLbl.AutoSize = true;
-            TipAmountLbl.Location = new Point(228, 72);
-            TipAmountLbl.Name = "TipAmountLbl";
-            TipAmountLbl.Size = new Size(46, 15);
-            TipAmountLbl.TabIndex = 21;
-            TipAmountLbl.Text = ".............";
             // 
             // Payment
             // 

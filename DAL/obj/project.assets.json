@@ -2126,46 +2126,19 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Mahmoud\\.nuget\\packages\\": {}
-=======
-<<<<<<< HEAD
-    "C:\\Users\\terku\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Gebruikerr\\.nuget\\packages\\": {}
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
-=======
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
-      "projectName": "DAL",
-      "projectPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
-      "packagesPath": "C:\\Users\\terku\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\terku\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
       "projectName": "DAL",
       "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj",
       "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-<<<<<<< HEAD
         "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2229,15 +2202,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
-=======
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
       }
     }
   },
@@ -2246,11 +2211,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-<<<<<<< HEAD
-      "message": "Problem reading the cache file C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-=======
-      "message": "Problem reading the cache file C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
+      "message": "Problem reading the cache file C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }

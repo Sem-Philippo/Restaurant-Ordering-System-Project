@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace UI
 {
     public partial class LoginPage : Form
@@ -5,6 +7,9 @@ namespace UI
         public LoginPage()
         {
             InitializeComponent();
+            Payment payment = new Payment();
+            payment.Show();
         }
+        
     }
 }

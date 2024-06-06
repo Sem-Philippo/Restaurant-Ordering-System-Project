@@ -15,6 +15,13 @@ namespace DAL
             
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+        public Employee GetEmployeeByID(int id)
+        {
+            string query = "SELECT * FROM EMPLOYEE WHERE ID = @ID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
         private List<Employee> ReadTables(DataTable dataTable)
         {
             List<Employee> employees = new List<Employee>();
@@ -54,10 +61,6 @@ namespace DAL
             };
 
             ExecuteEditQuery(query, sqlParameters);
-
-
-
-
         }
 
         public void DeleteEmployee(Employee employee)
@@ -91,6 +94,5 @@ namespace DAL
             };
             ExecuteEditQuery (query, sqlParameters);
         }
-
     }
 }
