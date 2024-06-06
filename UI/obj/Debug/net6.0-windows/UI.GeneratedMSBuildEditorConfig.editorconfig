@@ -14,4 +14,10 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UI
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\semel\source\repos\Restaurant-Ordering-System-Project\UI\
+=======
+build_property.ProjectDir = C:\Users\Mahmoud\Source\Repos\Restaurant-Ordering-System-Project\UI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+>>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6

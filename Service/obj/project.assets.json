@@ -2149,7 +2149,11 @@
   },
   "packageFolders": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "C:\\Users\\semel\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Mahmoud\\.nuget\\packages\\": {}
+>>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
 =======
 <<<<<<< HEAD
     "C:\\Users\\terku\\.nuget\\packages\\": {}
@@ -2162,6 +2166,7 @@
     "version": "1.0.0",
     "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
       "projectName": "Service",
       "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
@@ -2170,6 +2175,9 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
+>>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
 =======
 <<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
@@ -2182,12 +2190,16 @@
         "C:\\Users\\terku\\AppData\\Roaming\\NuGet\\NuGet.Config",
 =======
       "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
+>>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
       "projectName": "Service",
-      "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
-      "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\obj\\",
+      "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj",
+      "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
+        "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
         "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
 >>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
 >>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
@@ -2205,6 +2217,7 @@
           "targetAlias": "net6.0",
           "projectReferences": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj"
             },
@@ -2214,6 +2227,10 @@
             "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {
               "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj"
 >>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
+=======
+            "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\DAL\\DAL.csproj"
+>>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
             }
           }
         }
@@ -2263,7 +2280,11 @@
           }
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+>>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
 =======
 <<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
