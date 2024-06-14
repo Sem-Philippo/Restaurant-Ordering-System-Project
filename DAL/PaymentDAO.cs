@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enums;
 
 using System.Data.SqlClient;
 using System.Data;
@@ -32,7 +33,7 @@ namespace DAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Payment.Add(CreatePaymentFromDataRow(dr));
+                payments.Add(CreatePaymentFromDataRow(dr));
 
             }
             return payments;

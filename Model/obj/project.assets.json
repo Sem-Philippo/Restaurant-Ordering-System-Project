@@ -2105,64 +2105,19 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\Mahmoud\\.nuget\\packages\\": {}
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "C:\\Users\\semel\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Mahmoud\\.nuget\\packages\\": {}
->>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
-=======
-<<<<<<< HEAD
     "C:\\Users\\terku\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\Gebruikerr\\.nuget\\packages\\": {}
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
->>>>>>> d7b978d6982ac9475cd91f372dab634d673086d7
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\terku\\OneDrive\\term4 project\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
->>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
-=======
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-      "projectName": "Model",
-      "projectPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+      "projectPath": "C:\\Users\\terku\\OneDrive\\term4 project\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\terku\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
+      "outputPath": "C:\\Users\\terku\\OneDrive\\term4 project\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\terku\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
->>>>>>> d7b978d6982ac9475cd91f372dab634d673086d7
-      "projectName": "Model",
-      "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2182,11 +2137,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2222,23 +2172,7 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
->>>>>>> 08c5e8d14a269e00f15fe281785af81249e40ec6
-=======
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
->>>>>>> 76bf2741d7916edb4abec8ec16cb813dc8edea16
->>>>>>> d7b978d6982ac9475cd91f372dab634d673086d7
       }
     }
   },
@@ -2247,7 +2181,7 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file C:\\Users\\terku\\OneDrive\\term4 project\\Model\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
 }
