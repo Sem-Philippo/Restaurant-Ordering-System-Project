@@ -20,13 +20,19 @@ namespace DAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        public Invoice GetPaymentByID(int id)
+        public Payment GetPaymentByID(int id)
         {
             string query = "SELECT * FROM PAYMENT WHERE ID = @ID";
+
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ID", id);
+
+
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+
         }
+
+        
         private List<Payment> ReadTables(DataTable dataTable)
         {
             List<Payment> payments = new List<Payment>();

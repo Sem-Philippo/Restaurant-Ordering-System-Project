@@ -39,5 +39,10 @@ namespace DAL
                 (decimal)0.5
             );
         }
+
+        internal Invoice GetInvoiceByID(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
