@@ -133,5 +133,9 @@ namespace DAL
             ExecuteEditQuery(query, parameters);
         }
 
+        internal MenuItem GetMenuItemByID(int Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

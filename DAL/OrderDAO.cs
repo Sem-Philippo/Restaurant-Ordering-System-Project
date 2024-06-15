@@ -72,10 +72,13 @@ namespace DAL
         }
 
         //orderitem related DAL methods
-        public List<OrderItem> GetOrderItemsByOrderID()
+        public List<OrderItem> GetOrderItemsByOrderID(int orderId)
         {
-            string query = "SELECT * FROM ORDERITEM";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = "SELECT * FROM ORDERITEM WHERE orderId = @orderId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            SqlParameter[0] = new SqlParameter("@orderId", orderId);
+
+
             //Don't forget to include sales amount once drink orders are implemented!
             return ReadOrderItemTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -87,7 +90,7 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@MenuItemID", item.MenuItem.MenuItemId);
             sqlParameters[1] = new SqlParameter("@Quantity", item.Quantity);
             sqlParameters[2] = new SqlParameter("@Status", item.Status);
-            sqlParameters[3] = new SqlParameter("@Comment", item.Comment);
+            sqlParameters[3] = new SqlParameter("@Comment", item.Comment ?? (object)DBNull.Value);
             sqlParameters[4] = new SqlParameter("@StatusTime", item.StatusTime);
             sqlParameters[5] = new SqlParameter("@OrderID", orderId);
             ExecuteEditQuery(query, sqlParameters);
@@ -106,7 +109,8 @@ namespace DAL
         private OrderItem CreateOrderItemFromDataRow(DataRow dr)
         {
             MenuItemDAO menuItemDao = new MenuItemDAO();
-            return new OrderItem(
+            return new OrderItem
+                (
                 menuItemDao.GetMenuItemByID((int)dr["MenuItemID"]),
                 (int)dr["Quanitity"],
                 (Status)(int)dr["Status"],
