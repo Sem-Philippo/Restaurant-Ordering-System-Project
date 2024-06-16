@@ -76,7 +76,7 @@ namespace DAL
         {
             string query = "SELECT * FROM ORDERITEM WHERE orderId = @orderId";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            SqlParameter[0] = new SqlParameter("@orderId", orderId);
+            sqlParameters[0] = new SqlParameter("@orderId", orderId);
 
 
             //Don't forget to include sales amount once drink orders are implemented!
