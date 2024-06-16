@@ -22,22 +22,65 @@ namespace UI
 
         private void Orders_Load(object sender, EventArgs e)
         {
+            ReloadOrders();
+        }
+        private void ClearPanels()
+        {
+            flowPanelLunch.Controls.Clear();
+            flowPanelDinner.Controls.Clear();
+            flowPanelDrinks.Controls.Clear();
             ShowButtons();
+        }
+        private void ReloadOrders()
+        {
+            ClearPanels();
             MenuItemService menuItemService = new MenuItemService();
             List<MenuItem> menuItems = menuItemService.GetAllMenuItems();
+
+            //code for sorting taken from internet
+            menuItems.Sort((x, y) => x.Category.CompareTo(y.Category));
+
             foreach (MenuItem item in menuItems)
             {
+                //Got each menu item now, sorted
                 MenuItemUserControl menuItemUserControl = new MenuItemUserControl(item);
-                switch ((int)menuItemUserControl.menuItem.Type)
-                {
-                    case 1:
-                        flowPanelLunch.Controls.Add(menuItemUserControl); break;
-                    case 2:
-                        flowPanelDinner.Controls.Add(menuItemUserControl); break;
-                    case 3:
-                        flowPanelDrinks.Controls.Add(menuItemUserControl); break;
-                }
+                AddToFlowPanel(menuItemUserControl);
+
             }
+            listviewItems.Items.Clear();
+        }
+        private void AddLabel(MenuItemUserControl control, FlowLayoutPanel flowPanel)
+        {
+            Label label = new Label();
+            label.Text = control.menuItem.Category.ToString().Replace("_", " ");
+            label.Font = new Font(label.Font.FontFamily, 18f);
+            label.AutoSize = true;
+            flowPanel.Controls.Add(label);
+        }
+        private void AddToFlowPanel(MenuItemUserControl menuItemUserControl)
+        {
+            FlowLayoutPanel flowPanel = new FlowLayoutPanel();
+            switch ((int)menuItemUserControl.menuItem.Type)
+            {
+                case 1:
+                    flowPanel = flowPanelLunch; break;
+                case 2:
+                    flowPanel = flowPanelDinner; break;
+                case 3:
+                    flowPanel = flowPanelDrinks; break;
+            }
+
+            if (flowPanel.Controls.Count == 0)
+            {
+                //1st item, so new catagory
+                AddLabel(menuItemUserControl, flowPanel);
+            }
+            else if (((MenuItemUserControl)flowPanel.Controls[flowPanel.Controls.Count - 1]).menuItem.Category != menuItemUserControl.menuItem.Category)
+            {
+                //if it is a new category
+                AddLabel(menuItemUserControl, flowPanel);
+            }
+            flowPanel.Controls.Add(menuItemUserControl);
         }
         private void btnShowLunch_Click(object sender, EventArgs e)
         {
@@ -81,6 +124,16 @@ namespace UI
 
         private void btnBackToOrders_Click(object sender, EventArgs e)
         {
+            //If comment was just placed:
+            //Get orderItem from the tag
+            if (txtComment.Tag != null)
+            {
+                MenuItemUserControl control = (MenuItemUserControl)txtComment.Tag;
+                if (txtComment.Text != string.Empty || txtComment.Text != null)
+                {
+                    control.orderItem.Comment = txtComment.Text;
+                }
+            }
             ShowButtons();
             //Add currently ordered items to listview:
             //Clear listview items
@@ -89,32 +142,17 @@ namespace UI
             AddItemsToListViewFromPanel(flowPanelLunch);
             AddItemsToListViewFromPanel(flowPanelDinner);
             AddItemsToListViewFromPanel(flowPanelDrinks);
-
-            //If comment was just placed:
-            //Get orderItem from the tag
-            try
-            {
-                OrderItem orderItem = (OrderItem)listviewItems.SelectedItems[0].Tag;
-            }
-            catch 
-            { 
-            }
-
-            if (txtComment.Text != string.Empty)
-            {
-                //MenuItemUserControl
-            }
         }
         private void AddItemsToListViewFromPanel(FlowLayoutPanel flowPanel)
         {
             //lvItems for ListViewItems
             List<ListViewItem> lvItems = new List<ListViewItem>();
-            foreach (OrderItem item in GetOrderItemsFromPanel(flowPanel)) //Get all items
+            foreach (MenuItemUserControl control in GetOrderItemsFromPanel(flowPanel)) //Get all items
             {
                 //Make listviewitems with the item name and quantity and add them to the list
-                ListViewItem li = new ListViewItem(new string[2] { item.MenuItem.Name.ToString(), item.Quantity.ToString() + "x" });
+                ListViewItem li = new ListViewItem(new string[2] { control.orderItem.MenuItem.Name.ToString(), control.orderItem.Quantity.ToString() + "x" });
                 //Add tag to get item later
-                li.Tag = item;
+                li.Tag = control;
                 lvItems.Add(li);
             }
             foreach (ListViewItem item in lvItems)
@@ -124,41 +162,56 @@ namespace UI
             }
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void btnNewOrder_Click(object sender, EventArgs e)
         {
-            Order order = new Order(DateTime.Now, new Employee() { Id = 1 }, new Table(1, 1, true), (decimal)0);
+            try
+            {
+                Order order = GetOrder();
+                OrderService orderService = new OrderService();
+                orderService.SaveOrder(order);
+                ReloadOrders();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong, please try again");
+            }
+            
+        }
+        private Order GetOrder()
+        {
+            //forcing the back to orders button to be clicked in case of a comment being made
+            btnBackToOrders_Click(null, null);
+            Order order = new Order(DateTime.Now, new Employee() { Id = 1 }, new Table(5, 1, true));
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelLunch), order);
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDinner), order);
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDrinks), order);
-
-            order.Total = 0;
-            foreach (OrderItem item in order.OrderItems)
-            {
-                order.Total += item.MenuItem.Price * item.Quantity;
-            }
-
-            OrderService orderService = new OrderService();
-            orderService.SaveOrder(order);
-            MessageBox.Show("You ordered stuff!");
+            return order;
         }
-        private List<OrderItem> GetOrderItemsFromPanel(FlowLayoutPanel flowPanel)
+        private List<MenuItemUserControl> GetOrderItemsFromPanel(FlowLayoutPanel flowPanel)
         {
-            List<OrderItem> orderItems = new List<OrderItem>();
-            foreach (MenuItemUserControl control in flowPanel.Controls)
+            List<MenuItemUserControl> controls = new List<MenuItemUserControl>();
+            foreach (object control in flowPanel.Controls)
             {
-                if (control.orderItem.Quantity > 0)
+                try
                 {
-                    OrderItem orderItem = new OrderItem(control.menuItem, control.orderItem.Quantity, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
-                    orderItems.Add(orderItem);
+                    MenuItemUserControl menuItemUserControl = (MenuItemUserControl)control;
+                    if (menuItemUserControl.orderItem.Quantity > 0)
+                    {
+                        controls.Add(menuItemUserControl);
+                    }
+                }
+                catch
+                {
+                    //item was just a label
                 }
             }
-            return orderItems;
+            return controls;
         }
-        private void AddOrderItemsFromList(List<OrderItem> orderItems, Order order)
+        private void AddOrderItemsFromList(List<MenuItemUserControl> controls, Order order)
         {
-            foreach (OrderItem item in orderItems)
+            foreach (MenuItemUserControl control in controls)
             {
-                order.OrderItems.Add(item);
+                order.OrderItems.Add(control.orderItem);
             }
         }
 
@@ -173,10 +226,27 @@ namespace UI
             pnlComment.Show();
             //btnOrder.Hide();
             //Get orderItem from the tag
-            OrderItem orderItem = (OrderItem)listviewItems.SelectedItems[0].Tag;
+            MenuItemUserControl control = (MenuItemUserControl)listviewItems.SelectedItems[0].Tag;
             //adding a tag to the comment box to connect it with the item the comment will be for
-            txtComment.Tag = orderItem;
-            txtComment.Text = ((OrderItem)txtComment.Tag).Comment;
+            txtComment.Tag = control;
+            txtComment.Text = control.orderItem.Comment;
+        }
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            Order order = GetOrder();
+            OrderService orderService = new OrderService();
+            bool result = orderService.AddToExistingOrder(order);
+            if (result)
+            {
+                //order has been added to
+                ReloadOrders();
+            }
+            else
+            {
+                //no order has been added to
+                MessageBox.Show("Sorry, no previous orders for table " + order.Table.TableNumber + " to add to have been found.");
+            }
         }
     }
 }

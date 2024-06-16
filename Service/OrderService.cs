@@ -10,10 +10,14 @@ namespace Service
 {
     public class OrderService
     {
+        OrderDAO orderDAO = new OrderDAO();
         public void SaveOrder(Order order)
         {
-            OrderDAO orderDAO = new OrderDAO();
             orderDAO.SaveOrder(order);
+        }
+        public bool AddToExistingOrder(Order order)
+        {
+            return orderDAO.AddToExistingOrder(order);
         }
     }
 }
