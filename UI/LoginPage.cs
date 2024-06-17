@@ -5,6 +5,12 @@ namespace UI
         public LoginPage()
         {
             InitializeComponent();
+            
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using Model;
+using Model.Enums;
 
 namespace Service
 {
     public class MenuItemService
     {
-        MenuItemDAO MenuItemDAO { get; set; }
+        public MenuItemDAO MenuItemDAO { get; set; }
         public MenuItemService()
         {
             MenuItemDAO = new MenuItemDAO();
         }
 
-        public void GetAllMenuItems()
+        public List<MenuItem> GetAllMenuItems()
         {
-            MenuItemDAO.GetAllMenuItems();
+            return MenuItemDAO.GetAllMenuItems();
         }
         public void AddMenuItem(MenuItem menuItem)
         {
@@ -27,17 +28,39 @@ namespace Service
 
         public void DeleteMenuItem(MenuItem menuItem)
         {
-            MenuItemDAO.DeleteMenuITem(menuItem);
+            MenuItemDAO.DeleteMenuItem(menuItem);
         }
-        public void UpdateMenuItem(MenuItem menuItem)
+        public void UpdateMenuItem(MenuItem menuItem, int id)
         {
-            MenuItemDAO.UpdateMenuItem(menuItem);
+            MenuItemDAO.UpdateMenuItem(menuItem, id);
         }
         public void UpdateStock(MenuItem menuItem, int stock)
         {
             MenuItemDAO.UpdateStock(menuItem, stock);
         }
+        public List<MenuItem> RefreshItemsByCategory(MenuTypes type)
+        {
+            List<MenuItem> items = MenuItemDAO.GetAllMenuItems();
+            List<MenuItem> filteredItems = new List<MenuItem>();
 
+            foreach (MenuItem item in items)
+            {
+                if (item.Type == type)
+                {
+                    filteredItems.Add(item);
+                }
+            }
+            return filteredItems;
+        }
+        public List<MenuItem> GetAllLowStockItems()
+        {
+            return MenuItemDAO.GetAllLowStockItems();
+        }
+
+        public string DisplayVatAsPercantage(decimal vat)
+        {
+            return (vat * 100).ToString("0.##") + "%";
+        }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Model;
+using Model.Enums;
 
 using System.Data.SqlClient;
 using System.Data;
@@ -19,20 +20,15 @@ namespace DAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        public Invoice GetPaymentByID(int id)
-        {
-            string query = "SELECT * FROM PAYMENT WHERE ID = @ID";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ID", id);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
-        }
+        
+        
         private List<Payment> ReadTables(DataTable dataTable)
         {
             List<Payment> payments = new List<Payment>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Payment.Add(CreatePaymentFromDataRow(dr));
+                payments.Add(CreatePaymentFromDataRow(dr));
 
             }
             return payments;
@@ -46,6 +42,13 @@ namespace DAL
                 invoiceDAO.GetInvoiceByID((int)dr["InvoiceID"]),
                 (decimal)dr["Tip"]
             );
+        }
+        public decimal GetAllTipAmount()
+        {
+            string query = "select Sum(Tip)\r\nfrom Payment";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            return Convert.ToDecimal(dataTable.Rows[0][0]);
         }
     }
 }

@@ -13,17 +13,25 @@ namespace Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Role Role { get; set; }
-        public int Pin { get; set; }
+        public string Hash { get; set; }
+        public string Salt { get; set; }
 
-        public Employee (string firstName, string lastName, Role role)
+        public Employee(int id, string firstName, string lastName, Role role, string hash, string slat)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Role = role;
+            Hash = hash;
+            Salt = slat;
         }
         public Employee()
         {
-            
+
+        }
+        public string DisplayName
+        {
+            get { return $"{Id} - {FirstName} {LastName}"; }
         }
     }
 }

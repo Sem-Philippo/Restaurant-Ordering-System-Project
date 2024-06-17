@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,16 @@ namespace UI
 {
     public partial class Payment : Form
     {
+        private PaymentService service;
         public Payment()
         {
             InitializeComponent();
+            service = new PaymentService();
+        }
+
+        private void Payment_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

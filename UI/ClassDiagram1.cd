@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UI.AddMenuItem">
+    <Position X="4.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAQCACIAABgAAACAIAgCAAAAAQAAYAgAACAABAA=</HashCode>
+      <FileName>Stocks UI\AddMenuItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="MenuItemService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UI.AdjustStock">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEMAAACAAAJAAAACAAACCAAAAIAAABEQAAAAAAAA=</HashCode>
+      <FileName>Stocks UI\AdjustStock.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="service" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UI.DeleteMenuItem">
+    <Position X="8.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAACAAAIAAAACIAAACAAAIAAAABEAAAAAAAAA=</HashCode>
+      <FileName>Stocks UI\DeleteMenuItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="service" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UI.Stocks">
+    <Position X="12.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AzUAAACxATAEwHAUIDGEAgrCQ0NEQggpACAYBACRgAE=</HashCode>
+      <FileName>Stocks UI\Stock.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="MenuItemservice" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UI.UpdateMenuItem">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACIAABgAAICAMAAGQgAAAQAABEgAACAABEA=</HashCode>
+      <FileName>Stocks UI\UpdateMenuItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="service" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.MenuItemDAO">
+    <Position X="0.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DAL.EmployeeDAO">
+    <Position X="3" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Employee" Collapsed="true">
+    <Position X="14.75" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.MenuItem" Collapsed="true">
+    <Position X="14.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Service.EmployeeService" Collapsed="true">
+    <Position X="16.5" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Service.MenuItemService">
+    <Position X="7.25" Y="8.5" Width="3.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DAL.BaseDao" Collapsed="true">
+    <Position X="2" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

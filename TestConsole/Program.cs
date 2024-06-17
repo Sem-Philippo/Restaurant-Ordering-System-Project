@@ -7,7 +7,13 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            
+            MenuItemDAO menuItemDAO = new MenuItemDAO();
+            List<MenuItem> list = menuItemDAO.GetAllMenuItems();
+
+            foreach (MenuItem item in list)
+            {
+                Console.WriteLine(item.Name);
+            }
 
         }
     }

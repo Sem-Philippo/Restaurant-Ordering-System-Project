@@ -4,6 +4,21 @@
     <Compile Update="BarKitchen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Management UI\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\AdjustStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\AddMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\DeleteEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\DeleteMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -13,10 +28,16 @@
     <Compile Update="Payment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Stock.cs">
+    <Compile Update="Management UI\Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\UpdateEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="TableOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Management UI\UpdateMenuItem.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

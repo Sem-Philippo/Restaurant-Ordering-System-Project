@@ -1,12 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "npzi5e5FwO61fA+ZITlzXKhFWAfN3nYgxQ2I1dTR1Vvus8v6wx4jKHVuCzQYLtLYH5RTIOf1SspiKCw7lq+MjQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
-  "expectedPackageFiles": [],
-=======
-  "dgSpecHash": "eAf8aMQ9nTjNeVyeI6NHfr7msr9B4SAxTPJy3CLPuksBnAhGnuEf1m/+YhpIrqWTVL3f14qXXDzxHZipu/wlig==",
+  "dgSpecHash": "0dnGx4UZIOF+3fKGy8YBtbkbkBIWH25NyKL5EQabHwRNw+xQzvs1tWhH2ZiXvTVPp/a86ww45Wu6qipzk6Xqaw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
   "expectedPackageFiles": [
@@ -54,6 +48,5 @@
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
   "logs": []
 }

@@ -1,11 +1,5 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "CGG6pm7RmFM82Fbt5AmgDIItCYPjlH6QOGwTFLudFv0IZ/ofv4js7aAwHoC76FK2L+yqPdL8WjLepLPtDJDdNQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\terku\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-  "expectedPackageFiles": [],
-=======
   "dgSpecHash": "PPxLDLPGoYAWiyoUwhlX7R7KYvUCAErjWfnOB1BO9GZIHrpYeCeNdZq5mehJLg6hYjLmcShyFjKT0oUtQxi31w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
@@ -52,6 +46,5 @@
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
     "C:\\Users\\Gebruikerr\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
->>>>>>> 29d6032e1e8172a314c68a43209c21e389c37cb4
   "logs": []
 }

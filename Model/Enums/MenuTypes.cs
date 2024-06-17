@@ -9,7 +9,7 @@ namespace Model.Enums
     public enum MenuTypes
     {
         Lunch = 1,
-        Dinner,
-        Drinks
+        Dinner = 2,
+        Drinks = 3
     }
 }
