@@ -20,7 +20,21 @@ namespace DAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
         
+
+        public Payment GetPaymentByID(int id)
+        {
+            string query = "SELECT * FROM PAYMENT WHERE ID = @ID";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ID", id);
+
+
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+
+        }
+
         
         private List<Payment> ReadTables(DataTable dataTable)
         {
@@ -46,9 +60,12 @@ namespace DAL
         public decimal GetAllTipAmount()
         {
             string query = "select Sum(Tip)\r\nfrom Payment";
+            
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
-            return Convert.ToDecimal(dataTable.Rows[0][0]);
+
+
+            object result = ExecuteSelectQuery(query, sqlParameters).Rows[0][0];
+            return result == DBNull.Value ? 0 : Convert.ToDecimal(result);
         }
     }
 }

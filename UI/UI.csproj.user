@@ -40,5 +40,8 @@
     <Compile Update="Management UI\UpdateMenuItem.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UserControls\MenuItemUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

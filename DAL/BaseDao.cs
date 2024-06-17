@@ -52,6 +52,26 @@ namespace DAL
                 CloseConnection();
             }
         }
+        protected object ExecuteScalar(string query, SqlParameter[] sqlParameters)
+        {
+            SqlCommand command = new SqlCommand(query, conn);
+
+            try
+            {
+                command.Connection = OpenConnection();
+                command.Parameters.AddRange(sqlParameters);
+                adapter.InsertCommand = command;
+                return command.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
         protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();

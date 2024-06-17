@@ -24,6 +24,7 @@ namespace DAL
             }
         }
 
+
         public Employee GetEmployeeByID(int id)
         {
             try
@@ -63,6 +64,7 @@ namespace DAL
             }
         }
 
+
         private List<Employee> ReadTables(DataTable dataTable)
         {
             var employees = new List<Employee>();
@@ -92,6 +94,7 @@ namespace DAL
         {
             try
             {
+
                 string query = "INSERT INTO EMPLOYEE (ID, FirstName, LastName, Role, Pin, Salt) VALUES (@ID, @FirstName, @LastName, @Role, @Pin, @Salt)";
                 SqlParameter[] sqlParameters = new SqlParameter[]
                 {
@@ -110,6 +113,7 @@ namespace DAL
                 Console.WriteLine("An error occurred while adding an employee: " + ex.Message);
                 throw;
             }
+
         }
 
         public void DeleteEmployee(Employee employee)
@@ -159,6 +163,7 @@ namespace DAL
             }
         }
 
+
         public bool EmployeeExists(string name)
         {
             try
@@ -178,6 +183,7 @@ namespace DAL
                 Console.WriteLine("An error occurred while checking if the employee exists: " + ex.Message);
                 throw;
             }
+
         }
     }
 }

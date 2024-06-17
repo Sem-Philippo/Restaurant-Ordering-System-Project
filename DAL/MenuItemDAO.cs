@@ -157,6 +157,7 @@ namespace DAL
             }
         }
 
+
         public List<MenuItem> GetAllLowStockItems()
         {
             string query = "SELECT * FROM menuItem WHERE Stock <= 10";
@@ -189,5 +190,6 @@ namespace DAL
         }
 
         
+
     }
 }

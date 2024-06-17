@@ -807,6 +807,7 @@
         "dependencies": {
           "DAL": "1.0.0",
           "Microsoft.Data.SqlClient": "5.2.0",
+          "Model": "1.0.0",
           "System.Configuration.ConfigurationManager": "8.0.0",
           "System.Data.SqlClient": "4.8.6"
         },
@@ -2311,7 +2312,7 @@
       "projectName": "UI",
       "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
       "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gebruikerr\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
+      "outputPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2387,5 +2388,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\UI\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
