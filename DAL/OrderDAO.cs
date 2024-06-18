@@ -15,14 +15,14 @@ namespace DAL
     {
         public Order GetOrderByID(int id)
         {
-            string query = "SELECT * FROM [ORDER] WHERE ID = @id";
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER] WHERE ID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", id);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
         public Order GetLastOrderForTableID(int id)
         {
-            string query = "SELECT * FROM [ORDER] WHERE TableID = @id ORDER by ID DESC";
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER] WHERE TableID = @id ORDER by ID DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", id);
             List<Order> results = ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -38,7 +38,7 @@ namespace DAL
 
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT * FROM [ORDER]";
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -108,7 +108,7 @@ namespace DAL
         //orderitem related DAL methods
         public List<OrderItem> GetOrderItemsByOrderID(int orderId)
         {
-            string query = "SELECT * FROM ORDERITEM WHERE orderId = @orderId";
+            string query = "SELECT [MenuItemID], [Quantity], [Status], [Comment], [StatusTime] FROM ORDERITEM WHERE orderId = @orderId";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderId", orderId);
             //Don't forget to include sales amount once drink orders are implemented!
@@ -143,7 +143,7 @@ namespace DAL
             MenuItemDAO menuItemDao = new MenuItemDAO();
             return new OrderItem(
                 menuItemDao.GetMenuItemByID((int)dr["MenuItemID"]),
-                (int)dr["Quanitity"],
+                (int)dr["Quantity"],
                 (Status)(int)dr["Status"],
                 dr["Comment"].ToString(),
                 (TimeSpan)dr["StatusTime"]

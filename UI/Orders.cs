@@ -15,7 +15,9 @@ namespace UI
 {
     public partial class Orders : Form
     {
-        public Orders()
+        private Employee employee;
+        private Table table;
+        public Orders(Employee employee, Table table)
         {
             InitializeComponent();
         }
@@ -181,7 +183,7 @@ namespace UI
         {
             //forcing the back to orders button to be clicked in case of a comment being made
             btnBackToOrders_Click(null, null);
-            Order order = new Order(DateTime.Now, new Employee() { Id = 1 }, new Table(5, 1, true));
+            Order order = new Order(DateTime.Now, employee, table);
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelLunch), order);
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDinner), order);
             AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDrinks), order);
