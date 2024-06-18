@@ -11,7 +11,7 @@ using Model.Enums;
 
 namespace DAL
 {
-   public class OrderDAO : BaseDao
+    public class OrderDAO : BaseDao
     {
 
 
@@ -22,8 +22,6 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@id", id);
             return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
         }
-
-
         public List<Order> GetAllOrders()
         {
             string query = "SELECT * FROM ORDER";
@@ -32,7 +30,7 @@ namespace DAL
         }
         public void SaveOrder(Order order)
         {
-            //First, store the Order in the database
+
             string query = "INSERT INTO [Order] ([Time], EmployeeID, TableID, Total) VALUES(@Time, @EmployeeID, @TableID, @Total); SELECT SCOPE_IDENTITY();";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@Time", DateTime.Now);
@@ -40,7 +38,7 @@ namespace DAL
             sqlParameters[2] = new SqlParameter("@TableID", order.Table.TableId);
             sqlParameters[3] = new SqlParameter("@Total", order.Total);
             order.Id = Convert.ToInt32(ExecuteScalar(query, sqlParameters));
-            //Cycle through all order items in the order
+
             foreach (OrderItem item in order.OrderItems)
             {
                 SaveOrderItem(item, order.Id);
@@ -65,18 +63,17 @@ namespace DAL
                 (DateTime)dr["Time"],
                 employeeDao.GetEmployeeByID((int)dr["EmployeeID"]),
                 new Table(3, 4, true),
-                //tableDAO.GetTableByID((int)dr["TableID"]),
-                //Add a method to the tableDAO to get a table by its id and finish rest of the constructor
+
                 (decimal)dr["Total"]
                 );
         }
 
-        //orderitem related DAL methods
+
         public List<OrderItem> GetOrderItemsByOrderID()
         {
             string query = "SELECT * FROM ORDERITEM";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            //Don't forget to include sales amount once drink orders are implemented!
+
             return ReadOrderItemTables(ExecuteSelectQuery(query, sqlParameters));
         }
         public void SaveOrderItem(OrderItem item, int orderId)
@@ -114,5 +111,94 @@ namespace DAL
                 (TimeSpan)dr["StatusTime"]
                 );
         }
+        public List<PaymentOverview> GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int orderId)
+        {
+            string query = @"SELECT o.ID AS OrderID, mi.Name AS ItemName, mi.Tax AS VAT, mi.Price AS ItemPrice, 
+                             oi.Comment AS Description, oi.Quantity, (oi.Quantity * mi.Price) AS TotalPrice,
+                             (e.Firstname + e.Lastname) AS EmployeeName
+                      FROM [Order] o
+                      JOIN OrderItem oi ON o.ID = oi.OrderID
+                      JOIN MenuItem mi ON oi.MenuItemID = mi.MenuItemID
+                      JOIN Tables t ON o.TableID = t.TableID
+                      JOIN Employee e ON o.EmployeeID = e.ID
+                      WHERE t.Number = @TableNumber AND oi.Status = 4;";
+
+            SqlParameter[] parameters = {
+        new SqlParameter("@TableNumber", SqlDbType.Int) { Value = tableNumber }
+    };
+
+            DataTable dataTable = ExecuteSelectQuery(query, parameters);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                employeeName = dataTable.Rows[0]["EmployeeName"].ToString();
+                orderId = Convert.ToInt32(dataTable.Rows[0]["OrderID"]);
+            }
+            else
+            {
+                employeeName = string.Empty;
+                orderId = 0; 
+            }
+
+            return ReadPaymentOverviewTable(dataTable);
+        }
+        private List<PaymentOverview> ReadPaymentOverviewTable(DataTable dataTable)
+        {
+            List<PaymentOverview> items = new List<PaymentOverview>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                items.Add(CreatePaymentOverviewFromDataRow(dr));
+            }
+            return items;
+        }
+
+        private PaymentOverview CreatePaymentOverviewFromDataRow(DataRow dr)
+        {
+            return new PaymentOverview(
+                dr["ItemName"].ToString(),
+                Convert.ToDecimal(dr["VAT"]),
+                Convert.ToDecimal(dr["ItemPrice"]),
+                dr["Description"].ToString(),
+                Convert.ToInt32(dr["Quantity"]),
+                Convert.ToDecimal(dr["TotalPrice"])
+            );
+        }
+        public Order GetOrderByTableNumber(int TableID)
+        {
+            EmployeeDAO employeeDAO = new EmployeeDAO();
+            TableDAO tableDAO = new TableDAO();
+            try
+            {
+                string query = "SELECT * FROM [Order] WHERE TableID = @TableID";
+                SqlParameter parameter = new SqlParameter("@TableID", TableID);
+                DataTable result = ExecuteSelectQuery(query, parameter);
+
+                if (result.Rows.Count > 0)
+                {
+                    DataRow row = result.Rows[0];
+                    Order order = new Order();
+                    {
+                        order.Id = Convert.ToInt32(row["ID"]);
+                        order.Time = DateTime.Now;
+                        order.Employee = employeeDAO.GetEmployeeByID(Convert.ToInt32(row["EmployeeID"]));
+                        order.Total = Convert.ToDecimal(row["Total"]);
+                        order.Table = tableDAO.GetOrderByID(Convert.ToInt32(row["TableID"]));
+
+                    };
+                    return order;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while fetching the employee by ID: " + ex.Message);
+                throw;
+            }
+        }
+
     }
 }

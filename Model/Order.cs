@@ -23,6 +23,9 @@ namespace Model
             Table = table;
             Total = total;
         }
+        public Order()
+        {
+        }
         public void AddOrderItem(OrderItem newItem)
         {
             bool itemFound = false;

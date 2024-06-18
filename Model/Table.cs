@@ -17,5 +17,6 @@ namespace Model
             TableNumber = tableNumber;
             IsOccupied = isOccupied;
         }
+        public Table() { }
     }
 }

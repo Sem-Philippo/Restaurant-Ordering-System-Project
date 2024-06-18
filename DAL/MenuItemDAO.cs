@@ -4,10 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-
-
-
-
 using Model.Enums;
 using System.Data.SqlClient;
 using System.Data;
@@ -23,7 +19,13 @@ namespace DAL
             return ReadTables(ExecuteSelectQuery(query, param));
 
         }
-
+        public MenuItem GetMenuItemByID(int id)
+        {
+            string query = "SELECT * FROM MenuItem WHERE ID = @MenuitemID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@MenuitemID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
         private List<MenuItem> ReadTables(DataTable dataTable)
         {
             List<MenuItem> list = new List<MenuItem>();
@@ -32,17 +34,16 @@ namespace DAL
             {
                 MenuItem menuItem = new MenuItem()
                 {
-                    MenuItemId = int.Parse(dr["MenuitemID"].ToString()),
+                    MenuItemId = Convert.ToInt32(dr["MenuitemID"]),
                     Name = dr["Name"].ToString(),
                     Category = (Categories)Enum.Parse(typeof(Categories), dr["Category"].ToString()),
-                    Price = decimal.Parse(dr["Price"].ToString()),
-                    Tax = decimal.Parse(dr["Tax"].ToString()),
-                    Stock = int.Parse(dr["Stock"].ToString()),
-                    Type = (MenuTypes)Enum.Parse(typeof (MenuTypes), dr["Type"].ToString()),
-                    IsAlchoholic = Convert.ToBoolean(int.Parse(dr["IsAlchoholic"].ToString()))
-
-
+                    Price = Convert.ToDecimal(dr["Price"]),
+                    Tax = Convert.ToDecimal(dr["Tax"]),
+                    Stock = Convert.ToInt32(dr["Stock"]),
+                    Type = (MenuTypes)Enum.Parse(typeof(MenuTypes), dr["Type"].ToString()),
+                    IsAlchoholic = Convert.ToBoolean(dr["IsAlcoholic"])
                 };
+
                 list.Add(menuItem);
             }
             return list;
@@ -59,18 +60,18 @@ namespace DAL
             MenuTypes types = menuItem.Type;
             bool alchohoic = menuItem.IsAlchoholic;
 
-            string query = "insert into menuItem values(@ID, @Name, @Category, @Price, @Tax, @Stock, @Type, @Alchoholic)";
+            string query = "insert into menuItem values(@MenuitemID, @Name, @Category, @Price, @Tax, @Stock, @Type, @IsAlchoholic)";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@ID", SqlDbType.Int) {Value = id},
+                new SqlParameter("@MenuitemID", SqlDbType.Int) {Value = id},
                 new SqlParameter("@Name", SqlDbType.VarChar) {Value = name},
                 new SqlParameter("@Category", SqlDbType.Int) {Value = ((int)categories)},
                 new SqlParameter("@Price", SqlDbType.Decimal) {Value = price},
                 new SqlParameter("@Tax", SqlDbType.Decimal) {Value = tax},
                 new SqlParameter("@Stock", SqlDbType.Int) {Value = stock},
                 new SqlParameter("@Type", SqlDbType.Int) {Value = (int)types},
-                new SqlParameter("@Alchoholic", SqlDbType.Bit) { Value = alchohoic ? 1 : 0 }
+                new SqlParameter("@IsAlchoholic", SqlDbType.Bit) { Value = alchohoic ? 1 : 0 }
 
             };
             ExecuteDeleteQuery(query, parameters);
@@ -82,11 +83,11 @@ namespace DAL
         {
             if (menuItem == null) throw new ArgumentNullException("Drink object cannot be null");
 
-            string query = "Delete from menuItem where id = @ID";
+            string query = "Delete from menuItem where id = @MenuitemID";
 
             SqlParameter[] sqlParameters = new SqlParameter[]
             {
-                new SqlParameter("@ID", SqlDbType.Int) {Value = menuItem.MenuItemId}
+                new SqlParameter("@MenuitemID", SqlDbType.Int) {Value = menuItem.MenuItemId}
             };
             ExecuteDeleteQuery(query, sqlParameters);
         }
@@ -103,7 +104,7 @@ namespace DAL
             MenuTypes types = menuItem.Type;
             bool alchohoic = menuItem.IsAlchoholic;
 
-            string query = "update menuItem set Name = @Name, Category = @Category, Price = @Price, Tax = @Tax = Stock = @Stock = Type = @Type, IsAlchoholic = @IsAlchoholic where MenuitemID = @MenuitemID";
+            string query = "update menuItem set Name = @Name, Category = @Category, Price = @Price, Tax = @Tax,  Stock = @Stock, Type = @Type, IsAlchoholic = @IsAlchoholic where MenuitemID = @MenuitemID";
 
             SqlParameter[] parameters = new SqlParameter[]
             {

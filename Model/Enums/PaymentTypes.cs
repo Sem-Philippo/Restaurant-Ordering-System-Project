@@ -8,7 +8,8 @@ namespace Model.Enums
 {
     public enum PaymentTypes
     {
-        CreditCard = 1,
+        None = 0,
+        CreditCard,
         DebitCard,
         Cash
     }
