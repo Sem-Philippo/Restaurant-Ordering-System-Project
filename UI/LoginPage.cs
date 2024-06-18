@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using Model;
 
 namespace UI
 {
@@ -7,8 +8,17 @@ namespace UI
         public LoginPage()
         {
             InitializeComponent();
-            Payment payment = new Payment();
-            payment.Show();
+
+            
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+
+
+            Orders orders = new Orders(new Employee() { Id=3}, new Table(3, 2, true));   
+            orders.Show();
+
         }
         
     }

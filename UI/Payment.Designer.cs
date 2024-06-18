@@ -28,7 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             OrderItemsList = new ListView();
+=======
+
+            SuspendLayout();
+            // 
+            // Payment
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "Payment";
+            Text = "Payment";
+            Load += Payment_Load;
+            ResumeLayout(false);
+
+            listView1 = new ListView();
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
             ItemName = new ColumnHeader();
             VatValue = new ColumnHeader();
             ItemDescription = new ColumnHeader();
@@ -518,6 +535,7 @@
             PaymentGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
+
         }
 
         #endregion

@@ -37,19 +37,19 @@
             // lblDishName
             // 
             lblDishName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDishName.Location = new Point(10, 11);
+            lblDishName.Location = new Point(3, 5);
             lblDishName.Name = "lblDishName";
-            lblDishName.Size = new Size(584, 57);
+            lblDishName.Size = new Size(311, 57);
             lblDishName.TabIndex = 0;
             lblDishName.Text = "DishName";
             lblDishName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnAmountIncrease
             // 
-            btnAmountIncrease.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAmountIncrease.Location = new Point(187, 68);
+            btnAmountIncrease.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAmountIncrease.Location = new Point(320, 27);
             btnAmountIncrease.Name = "btnAmountIncrease";
-            btnAmountIncrease.Size = new Size(50, 50);
+            btnAmountIncrease.Size = new Size(25, 25);
             btnAmountIncrease.TabIndex = 1;
             btnAmountIncrease.Text = "+";
             btnAmountIncrease.UseVisualStyleBackColor = true;
@@ -57,10 +57,10 @@
             // 
             // btnAmountDecrease
             // 
-            btnAmountDecrease.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAmountDecrease.Location = new Point(366, 68);
+            btnAmountDecrease.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAmountDecrease.Location = new Point(399, 27);
             btnAmountDecrease.Name = "btnAmountDecrease";
-            btnAmountDecrease.Size = new Size(50, 50);
+            btnAmountDecrease.Size = new Size(25, 25);
             btnAmountDecrease.TabIndex = 2;
             btnAmountDecrease.Text = "-";
             btnAmountDecrease.UseVisualStyleBackColor = true;
@@ -68,10 +68,10 @@
             // 
             // lblAmount
             // 
-            lblAmount.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            lblAmount.Location = new Point(243, 68);
+            lblAmount.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAmount.Location = new Point(351, 13);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(106, 47);
+            lblAmount.Size = new Size(40, 47);
             lblAmount.TabIndex = 3;
             lblAmount.Text = "0";
             lblAmount.TextAlign = ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             Controls.Add(btnAmountIncrease);
             Controls.Add(lblDishName);
             Name = "MenuItemUserControl";
-            Size = new Size(599, 150);
+            Size = new Size(457, 69);
             Load += MenuItemUserControl_Load;
             ResumeLayout(false);
         }

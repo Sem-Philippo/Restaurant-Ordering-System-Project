@@ -2064,11 +2064,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Mahmoud\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\semel\\.nuget\\packages\\": {}
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
       "projectName": "Model",
       "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
@@ -2077,6 +2082,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+      "projectName": "Model",
+      "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2096,11 +2111,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2136,7 +2146,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
       }
     }
   }

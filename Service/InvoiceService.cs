@@ -1,5 +1,8 @@
 ﻿using DAL;
+<<<<<<< HEAD
 using Model;
+=======
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,7 @@ namespace Service
 {
     public class InvoiceService
     {
+<<<<<<< HEAD
         private InvoiceDAO invoiceDAO {  get; set; }
         public InvoiceService()
         {
@@ -57,5 +61,16 @@ namespace Service
             }
         }
 
+=======
+        private InvoiceDAO dao;
+        public InvoiceService()
+        {
+            dao = new InvoiceDAO();
+        }
+        public decimal GetTotalIncome()
+        {
+            return dao.GetTotalIncome();
+        }
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
     }
 }

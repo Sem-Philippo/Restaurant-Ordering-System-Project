@@ -17,14 +17,36 @@ namespace DAL
 
         public Order GetOrderByID(int id)
         {
-            string query = "SELECT * FROM ORDER WHERE ID = @id";
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER] WHERE ID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", id);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+            try
+            {
+                return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public Order GetLastOrderForTableID(int id)
+        {
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER] WHERE TableID = @id ORDER by ID DESC";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", id);
+            List<Order> results = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            if (results.Count > 0)
+            {
+                return results[0];
+            }
+            else
+            {
+                return null;
+            }
         }
         public List<Order> GetAllOrders()
         {
-            string query = "SELECT * FROM ORDER";
+            string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -37,11 +59,33 @@ namespace DAL
             sqlParameters[1] = new SqlParameter("@EmployeeID", order.Employee.Id);
             sqlParameters[2] = new SqlParameter("@TableID", order.Table.TableId);
             sqlParameters[3] = new SqlParameter("@Total", order.Total);
+            //Get Order ID for order items
             order.Id = Convert.ToInt32(ExecuteScalar(query, sqlParameters));
 
             foreach (OrderItem item in order.OrderItems)
             {
                 SaveOrderItem(item, order.Id);
+            }
+        }
+        public bool AddToExistingOrder(Order order)
+        {
+            //Check if an order for the current table already exists
+            Order storedOrder = GetLastOrderForTableID(order.Table.TableId);
+            if (storedOrder != null && storedOrder.Id != 0) 
+            {
+                //An order already exists, so add to it instead
+                //Get Order Id for order items
+                order.Id = storedOrder.Id;
+                foreach (OrderItem item in order.OrderItems)
+                {
+                    SaveOrderItem(item, order.Id);
+                }
+                return true;
+            }
+            else
+            {
+                //No earlier order for table, so return false for messagebox
+                return false;
             }
         }
         private List<Order> ReadTables(DataTable dataTable)
@@ -62,6 +106,7 @@ namespace DAL
             return new Order(
                 (DateTime)dr["Time"],
                 employeeDao.GetEmployeeByID((int)dr["EmployeeID"]),
+<<<<<<< HEAD
                 new Table(3, 4, true),
 
                 (decimal)dr["Total"]
@@ -74,6 +119,21 @@ namespace DAL
             string query = "SELECT * FROM ORDERITEM";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
+=======
+                tableDAO.GetTableByID((int)dr["TableID"])
+                //Add a method to the tableDAO to get a table by its id and finish rest of the constructor
+                )
+            { Id = (int)dr["ID"] };
+        }
+
+        //orderitem related DAL methods
+        public List<OrderItem> GetOrderItemsByOrderID(int orderId)
+        {
+            string query = "SELECT [MenuItemID], [Quantity], [Status], [Comment], [StatusTime] FROM ORDERITEM WHERE orderId = @orderId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@orderId", orderId);
+            //Don't forget to include sales amount once drink orders are implemented!
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
             return ReadOrderItemTables(ExecuteSelectQuery(query, sqlParameters));
         }
         public void SaveOrderItem(OrderItem item, int orderId)
@@ -84,7 +144,7 @@ namespace DAL
             sqlParameters[0] = new SqlParameter("@MenuItemID", item.MenuItem.MenuItemId);
             sqlParameters[1] = new SqlParameter("@Quantity", item.Quantity);
             sqlParameters[2] = new SqlParameter("@Status", item.Status);
-            sqlParameters[3] = new SqlParameter("@Comment", item.Comment);
+            sqlParameters[3] = new SqlParameter("@Comment", item.Comment ?? (object)DBNull.Value);
             sqlParameters[4] = new SqlParameter("@StatusTime", item.StatusTime);
             sqlParameters[5] = new SqlParameter("@OrderID", orderId);
             ExecuteEditQuery(query, sqlParameters);
@@ -103,14 +163,16 @@ namespace DAL
         private OrderItem CreateOrderItemFromDataRow(DataRow dr)
         {
             MenuItemDAO menuItemDao = new MenuItemDAO();
-            return new OrderItem(
+            return new OrderItem
+                (
                 menuItemDao.GetMenuItemByID((int)dr["MenuItemID"]),
-                (int)dr["Quanitity"],
+                (int)dr["Quantity"],
                 (Status)(int)dr["Status"],
                 dr["Comment"].ToString(),
                 (TimeSpan)dr["StatusTime"]
                 );
         }
+<<<<<<< HEAD
         public List<PaymentOverview> GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int orderId)
         {
             string query = @"SELECT o.ID AS OrderID, mi.Name AS ItemName, mi.Tax AS VAT, mi.Price AS ItemPrice, 
@@ -200,5 +262,8 @@ namespace DAL
             }
         }
 
+=======
+        
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
     }
 }

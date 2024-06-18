@@ -141,5 +141,15 @@ namespace DAL
                 throw;
             }
         }
+
+        internal Invoice GetInvoiceByID(int v)
+        {
+            throw new NotImplementedException();
+        }
+        public decimal GetTotalIncome()
+        {
+            //nothing, just to get rid of warning
+            return new decimal(0);
+        }
     }
 }

@@ -13,15 +13,19 @@ namespace Model
         public DateTime Time { get; set; }
         public Employee Employee { get; set; }
         public Table Table { get; set; }
-        public decimal Total { get; set; }
+        public decimal Total { get { decimal total = 0; foreach (OrderItem item in OrderItems)
+                {
+                    total += item.MenuItem.Price * item.Quantity;
+                }
+                return total;
+            }}
 
-        public Order(DateTime time, Employee employee, Table table, decimal total)
+        public Order(DateTime time, Employee employee, Table table)
         {
             OrderItems = new List<OrderItem>();
             Time = time;
             Employee = employee;
             Table = table;
-            Total = total;
         }
         public Order()
         {

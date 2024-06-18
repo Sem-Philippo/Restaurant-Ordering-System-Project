@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Service
 {
     public class PaymentService
     {
+<<<<<<< HEAD
         OrderService orderService;
         InvoiceService invoiceService;
 
@@ -132,6 +134,17 @@ namespace Service
             }
 
             return (false, $"Payment of {orderService.FormatToStringWithEuro(singlePayment)} is successful. Total paid: {orderService.FormatToStringWithEuro(totalPayments)}", totalAmount - totalPayments);
+=======
+        private PaymentDAO paymentDAO;
+        public PaymentService()
+        {
+            paymentDAO = new PaymentDAO();
+        }
+
+        public decimal GetTipsAmount()
+        {
+            return paymentDAO.GetAllTipAmount();
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
     }
 }

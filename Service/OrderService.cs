@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,28 @@ namespace Service
 {
     public class OrderService
     {
+<<<<<<< HEAD
         private OrderDAO orderDAO {  get; set; }
         public OrderService()
         {
             orderDAO = new OrderDAO();
         }
+=======
+
+        private OrderDAO orderDAO;
+        public OrderService()
+        {
+            orderDAO = new OrderDAO();
+            
+        }
+       
+
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         public void SaveOrder(Order order)
         {
             orderDAO.SaveOrder(order);
         }
+<<<<<<< HEAD
         public List<PaymentOverview> GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int OrderID)
         {
             return orderDAO.GetServedItemsByTableNumber(tableNumber, out employeeName, out OrderID);
@@ -59,6 +73,11 @@ namespace Service
         public Order GetOrderByTableNumber(int tablenumber)
         {
             return orderDAO.GetOrderByTableNumber(tablenumber);
+=======
+        public bool AddToExistingOrder(Order order)
+        {
+            return orderDAO.AddToExistingOrder(order);
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
     }
 

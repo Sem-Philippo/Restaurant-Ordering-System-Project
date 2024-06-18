@@ -65,7 +65,11 @@ namespace Service
                 DataRow employeeRow = employeeDAO.GetUserName(name);
                 if (employeeRow == null) return null;
 
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
                 Employee employee = new Employee
                 {
                     Id = (int)employeeRow["ID"],
@@ -76,7 +80,11 @@ namespace Service
                     Role = (Role)(int)employeeRow["Role"]
                 };
 
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
                 if (Enum.TryParse(employeeRow["Role"].ToString(), out Role employeeRole))
                 {
                     employee.Role = employeeRole;

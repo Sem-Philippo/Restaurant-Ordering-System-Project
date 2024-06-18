@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 ﻿using DAL;
 using Model;
 using Model.Enums;
 using Service;
+=======
+﻿using Service;
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +21,7 @@ namespace UI
 {
     public partial class Payment : Form
     {
+<<<<<<< HEAD
         private TableService tableService;
         private OrderService orderService;
         private InvoiceService invoiceService;
@@ -243,6 +248,18 @@ namespace UI
             {
                 MessageBox.Show($"Error creating and saving invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+=======
+        private PaymentService service;
+        public Payment()
+        {
+            InitializeComponent();
+            service = new PaymentService();
+        }
+
+        private void Payment_Load(object sender, EventArgs e)
+        {
+
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
     }
 }
