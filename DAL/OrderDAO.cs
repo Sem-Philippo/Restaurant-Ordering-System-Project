@@ -20,7 +20,14 @@ namespace DAL
             string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER] WHERE ID = @id";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@id", id);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+            try
+            {
+                return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+            }
+            catch
+            {
+                return null;
+            }
         }
         public Order GetLastOrderForTableID(int id)
         {
@@ -101,8 +108,7 @@ namespace DAL
             return new Order(
                 (DateTime)dr["Time"],
                 employeeDao.GetEmployeeByID((int)dr["EmployeeID"]),
-                new Table(3, 4, true)
-                //tableDAO.GetTableByID((int)dr["TableID"]),
+                tableDAO.GetTableByID((int)dr["TableID"])
                 //Add a method to the tableDAO to get a table by its id and finish rest of the constructor
                 )
             { Id = (int)dr["ID"] };
