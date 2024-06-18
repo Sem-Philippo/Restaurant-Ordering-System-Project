@@ -22,9 +22,11 @@ namespace Service
 
         public void SaveOrder(Order order)
         {
-            OrderDAO orderDAO = new OrderDAO();
             orderDAO.SaveOrder(order);
         }
-
+        public bool AddToExistingOrder(Order order)
+        {
+            return orderDAO.AddToExistingOrder(order);
+        }
     }
 }

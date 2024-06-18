@@ -60,7 +60,7 @@ namespace Service
             return MenuItemDAO.GetAllLowStockItems();
         }
 
-        public string DisplayVatAsPercantage(decimal vat)
+        public string DisplayVatAsPercentage(decimal vat)
         {
             return (vat * 100).ToString("0.##") + "%";
         }

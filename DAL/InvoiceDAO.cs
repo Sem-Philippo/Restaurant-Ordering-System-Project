@@ -44,5 +44,10 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+        public decimal GetTotalIncome()
+        {
+            //nothing, just to get rid of warning
+            return new decimal(0);
+        }
     }
 }

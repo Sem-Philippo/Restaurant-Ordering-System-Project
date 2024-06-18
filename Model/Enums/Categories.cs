@@ -8,15 +8,15 @@ namespace Model.Enums
 {
     public enum Categories
     {
-        Entreees = 1,
-        LePlatPrinciple,
-        LesDesserts,
+        Entrees = 1,
+        Le_Plat_Principle,
+        Les_Desserts,
         Entrements,
         Beers,
-        WineGlass,
-        WineBottle,
+        Wine_Glass,
+        Wine_Bottle,
         Spirits,
-        CoffeeTea,
+        Coffee_Tea,
         Soft,
     }
 }
