@@ -44,5 +44,14 @@ namespace DAL
         {
             throw new NotImplementedException();
         }
+        public decimal GetTotalIncome()
+        {
+            string query = "SELECT SUM(Totalamount) FROM Invoice";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+            
+            object result = ExecuteSelectQuery(query, sqlParameters).Rows[0][0];
+            return result == DBNull.Value ? 0 : Convert.ToDecimal(result);
+        }
     }
 }

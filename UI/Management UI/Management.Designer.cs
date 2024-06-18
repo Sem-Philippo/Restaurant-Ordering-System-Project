@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Stocks
+    partial class Management
     {
         /// <summary>
         /// Required designer variable.

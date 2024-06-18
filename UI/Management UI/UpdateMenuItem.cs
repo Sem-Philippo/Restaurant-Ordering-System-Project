@@ -68,6 +68,7 @@ namespace UI
                 MenuItem updatedItem = new MenuItem(id, name, selectedCategory, price, tax, stock, menuTypes, alcoholic);
                 service.UpdateMenuItem(updatedItem, oldID);
                 MessageBox.Show("Menu item has been updated");
+                this.Close();
             }
             catch (Exception ex)
             {

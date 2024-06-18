@@ -10,7 +10,7 @@ using UI.Stocks_UI;
 
 namespace UI
 {
-    public partial class Stocks : Form
+    public partial class Management : Form
     {
         private MenuItemService menuItemService;
         private MenuTypes selectedType;
@@ -19,7 +19,7 @@ namespace UI
         private PaymentService paymentService;
         private EmployeeService employeeService;
 
-        public Stocks()
+        public Management()
         {
             InitializeComponent();
             menuItemService = new MenuItemService();
@@ -73,7 +73,7 @@ namespace UI
             try
             {
                 revenuelabel.Text = $"{invoiceService.GetTotalIncome()} €";
-                tipsLabel.Text = $"{paymentService.GetTipsAmount()}"; 
+                tipsLabel.Text = $"{paymentService.GetTipsAmount()} €"; 
             }
             catch (Exception ex)
             {
@@ -212,6 +212,7 @@ namespace UI
         private void updateMenuItem_Click(object sender, EventArgs e)
         {
             AddMenuItem updateMenuItem = new AddMenuItem();
+            updateMenuItem.FormClosed += OnMenuItemFormClosed;
             updateMenuItem.Show();
         }
 
@@ -224,6 +225,7 @@ namespace UI
             }
             this.Enabled = false;
             DeleteMenuItem deleteMenuItem = new DeleteMenuItem(selectedType);
+            deleteMenuItem.FormClosed += OnMenuItemFormClosed;
             deleteMenuItem.FormClosed += EnableStockUI;
             deleteMenuItem.Show();
         }
@@ -237,6 +239,7 @@ namespace UI
             }
             this.Enabled = false;
             UpdateMenuItem updateMenuItem = new UpdateMenuItem(selectedType);
+            updateMenuItem.FormClosed += OnMenuItemFormClosed;
             updateMenuItem.FormClosed += EnableStockUI;
             updateMenuItem.Show();
         }
@@ -250,6 +253,7 @@ namespace UI
             }
             this.Enabled = false;
             AdjustStock adjustStock = new AdjustStock(selectedType);
+            adjustStock.FormClosed += OnMenuItemFormClosed;
             adjustStock.FormClosed += EnableStockUI;
             adjustStock.Show();
         }
@@ -287,19 +291,35 @@ namespace UI
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
             AddEmployee employee = new AddEmployee();
+            employee.FormClosed += OnEmployeeFormClosed;
             employee.Show();
         }
 
         private void removeEmployeeBtn_Click(object sender, EventArgs e)
         {
             DeleteEmployee deleteEmployee = new DeleteEmployee();
+            deleteEmployee.FormClosed += OnEmployeeFormClosed;
             deleteEmployee.Show();
         }
 
         private void updateEmployeeBtn_Click(object sender, EventArgs e)
         {
             UpdateEmployee updateEmployee = new UpdateEmployee();
+            updateEmployee.FormClosed += OnEmployeeFormClosed;
             updateEmployee.Show();
         }
+        private void OnMenuItemFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Enabled = true;
+            RefreshMenuList();
+            RefreshLowStockList();
+        }
+
+        private void OnEmployeeFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Enabled = true;
+            RefreshEmployeeList();
+        }
+
     }
 }
