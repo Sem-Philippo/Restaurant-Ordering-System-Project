@@ -13,13 +13,13 @@ namespace UI.UserControls
 {
     public partial class MenuItemUserControl : UserControl
     {
-        public OrderItem orderItem;
         public MenuItem menuItem;
+        public OrderItem orderItem;
         public MenuItemUserControl(MenuItem menuItem)
         {
             InitializeComponent();
             this.menuItem = menuItem;
-            orderItem = new OrderItem(menuItem, 0, Model.Enums.Status.Ordered, "", new TimeSpan(0, 0, 0));
+            orderItem = new OrderItem(menuItem, 0, Model.Enums.Status.Ordered, string.Empty, new TimeSpan(0, 0, 0));
         }
 
         private void MenuItemUserControl_Load(object sender, EventArgs e)

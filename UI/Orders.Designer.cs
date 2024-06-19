@@ -35,7 +35,15 @@
             btnShowDinner = new Button();
             btnShowDrinks = new Button();
             btnBackToOrders = new Button();
-            btnOrder = new Button();
+            btnNewOrder = new Button();
+            listviewItems = new ListView();
+            name = new ColumnHeader();
+            Amount = new ColumnHeader();
+            btnComment = new Button();
+            pnlComment = new Panel();
+            txtComment = new TextBox();
+            btnAddOrder = new Button();
+            pnlComment.SuspendLayout();
             SuspendLayout();
             // 
             // flowPanelDrinks
@@ -43,7 +51,7 @@
             flowPanelDrinks.AutoScroll = true;
             flowPanelDrinks.Location = new Point(12, 12);
             flowPanelDrinks.Name = "flowPanelDrinks";
-            flowPanelDrinks.Size = new Size(650, 500);
+            flowPanelDrinks.Size = new Size(470, 549);
             flowPanelDrinks.TabIndex = 0;
             // 
             // flowPanelLunch
@@ -51,7 +59,7 @@
             flowPanelLunch.AutoScroll = true;
             flowPanelLunch.Location = new Point(12, 12);
             flowPanelLunch.Name = "flowPanelLunch";
-            flowPanelLunch.Size = new Size(650, 500);
+            flowPanelLunch.Size = new Size(470, 549);
             flowPanelLunch.TabIndex = 2;
             // 
             // flowPanelDinner
@@ -59,12 +67,12 @@
             flowPanelDinner.AutoScroll = true;
             flowPanelDinner.Location = new Point(12, 12);
             flowPanelDinner.Name = "flowPanelDinner";
-            flowPanelDinner.Size = new Size(650, 500);
+            flowPanelDinner.Size = new Size(470, 549);
             flowPanelDinner.TabIndex = 3;
             // 
             // btnShowLunch
             // 
-            btnShowLunch.Location = new Point(144, 60);
+            btnShowLunch.Location = new Point(123, 14);
             btnShowLunch.Name = "btnShowLunch";
             btnShowLunch.Size = new Size(250, 100);
             btnShowLunch.TabIndex = 4;
@@ -74,7 +82,7 @@
             // 
             // btnShowDinner
             // 
-            btnShowDinner.Location = new Point(144, 190);
+            btnShowDinner.Location = new Point(123, 144);
             btnShowDinner.Name = "btnShowDinner";
             btnShowDinner.Size = new Size(250, 100);
             btnShowDinner.TabIndex = 5;
@@ -84,7 +92,7 @@
             // 
             // btnShowDrinks
             // 
-            btnShowDrinks.Location = new Point(144, 315);
+            btnShowDrinks.Location = new Point(123, 269);
             btnShowDrinks.Name = "btnShowDrinks";
             btnShowDrinks.Size = new Size(250, 100);
             btnShowDrinks.TabIndex = 6;
@@ -94,7 +102,7 @@
             // 
             // btnBackToOrders
             // 
-            btnBackToOrders.Location = new Point(12, 524);
+            btnBackToOrders.Location = new Point(12, 567);
             btnBackToOrders.Name = "btnBackToOrders";
             btnBackToOrders.Size = new Size(150, 50);
             btnBackToOrders.TabIndex = 7;
@@ -102,22 +110,85 @@
             btnBackToOrders.UseVisualStyleBackColor = true;
             btnBackToOrders.Click += btnBackToOrders_Click;
             // 
-            // btnOrder
+            // btnNewOrder
             // 
-            btnOrder.Location = new Point(512, 524);
-            btnOrder.Name = "btnOrder";
-            btnOrder.Size = new Size(150, 50);
-            btnOrder.TabIndex = 8;
-            btnOrder.Text = "Order";
-            btnOrder.UseVisualStyleBackColor = true;
-            btnOrder.Click += btnOrder_Click;
+            btnNewOrder.Location = new Point(333, 567);
+            btnNewOrder.Name = "btnNewOrder";
+            btnNewOrder.Size = new Size(150, 50);
+            btnNewOrder.TabIndex = 8;
+            btnNewOrder.Text = "New Order";
+            btnNewOrder.UseVisualStyleBackColor = true;
+            btnNewOrder.Click += btnNewOrder_Click;
+            // 
+            // listviewItems
+            // 
+            listviewItems.Columns.AddRange(new ColumnHeader[] { name, Amount });
+            listviewItems.FullRowSelect = true;
+            listviewItems.Location = new Point(100, 375);
+            listviewItems.MultiSelect = false;
+            listviewItems.Name = "listviewItems";
+            listviewItems.Size = new Size(300, 186);
+            listviewItems.TabIndex = 9;
+            listviewItems.UseCompatibleStateImageBehavior = false;
+            listviewItems.View = View.Details;
+            listviewItems.SelectedIndexChanged += listviewItems_SelectedIndexChanged;
+            // 
+            // name
+            // 
+            name.Text = "Name";
+            name.Width = 200;
+            // 
+            // Amount
+            // 
+            Amount.Text = "Amount";
+            Amount.Width = 100;
+            // 
+            // btnComment
+            // 
+            btnComment.Location = new Point(12, 567);
+            btnComment.Name = "btnComment";
+            btnComment.Size = new Size(150, 50);
+            btnComment.TabIndex = 10;
+            btnComment.Text = "Comment";
+            btnComment.UseVisualStyleBackColor = true;
+            btnComment.Click += btnComment_Click;
+            // 
+            // pnlComment
+            // 
+            pnlComment.Controls.Add(txtComment);
+            pnlComment.Location = new Point(12, 12);
+            pnlComment.Name = "pnlComment";
+            pnlComment.Size = new Size(470, 549);
+            pnlComment.TabIndex = 11;
+            // 
+            // txtComment
+            // 
+            txtComment.Location = new Point(27, 71);
+            txtComment.Multiline = true;
+            txtComment.Name = "txtComment";
+            txtComment.Size = new Size(419, 270);
+            txtComment.TabIndex = 0;
+            // 
+            // btnAddOrder
+            // 
+            btnAddOrder.Location = new Point(172, 567);
+            btnAddOrder.Name = "btnAddOrder";
+            btnAddOrder.Size = new Size(150, 50);
+            btnAddOrder.TabIndex = 12;
+            btnAddOrder.Text = "Add to previous Order";
+            btnAddOrder.UseVisualStyleBackColor = true;
+            btnAddOrder.Click += btnAddOrder_Click;
             // 
             // Orders
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(686, 604);
-            Controls.Add(btnOrder);
+            ClientSize = new Size(497, 629);
+            Controls.Add(btnAddOrder);
+            Controls.Add(pnlComment);
+            Controls.Add(btnComment);
+            Controls.Add(listviewItems);
+            Controls.Add(btnNewOrder);
             Controls.Add(btnBackToOrders);
             Controls.Add(btnShowDrinks);
             Controls.Add(btnShowDinner);
@@ -128,6 +199,8 @@
             Name = "Orders";
             Text = "Orders";
             Load += Orders_Load;
+            pnlComment.ResumeLayout(false);
+            pnlComment.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -140,6 +213,13 @@
         private Button btnShowDinner;
         private Button btnShowDrinks;
         private Button btnBackToOrders;
-        private Button btnOrder;
+        private Button btnNewOrder;
+        private ListView listviewItems;
+        private ColumnHeader name;
+        private ColumnHeader Amount;
+        private Button btnComment;
+        private Panel pnlComment;
+        private TextBox txtComment;
+        private Button btnAddOrder;
     }
 }

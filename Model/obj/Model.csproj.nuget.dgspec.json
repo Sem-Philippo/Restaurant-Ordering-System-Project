@@ -1,20 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {}
+<<<<<<< HEAD
+    "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+    "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
-        "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruikerr\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
+        "projectPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mahmoud\\Source\\Repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "projectName": "Model",
+        "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +51,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -47,7 +59,7 @@
           "dependencies": {
             "Microsoft.Data.SqlClient": {
               "target": "Package",
-              "version": "[5.2.0, )"
+              "version": "[5.2.1, )"
             },
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
@@ -74,7 +86,11 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+>>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
       }
     }

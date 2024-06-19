@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using Model;
 
 namespace UI
 {
@@ -15,8 +16,8 @@ namespace UI
         {
 
 
-            Payment payment = new Payment();
-            payment.Show();
+            Orders orders = new Orders(new Employee() { Id=3}, new Table(3, 2, true));   
+            orders.Show();
 
         }
         

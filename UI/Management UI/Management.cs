@@ -146,7 +146,7 @@ namespace UI
                         item.Category.ToString(),
                         item.Stock.ToString(),
                         item.Price.ToString(),
-                        menuItemService.DisplayVatAsPercantage(item.Tax),
+                        menuItemService.DisplayVatAsPercentage(item.Tax),
                         item.Type.ToString(),
                         item.IsAlchoholic ? "Yes" : "No"
                     }
