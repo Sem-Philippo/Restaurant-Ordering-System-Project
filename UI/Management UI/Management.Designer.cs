@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Stocks
+    partial class Management
     {
         /// <summary>
         /// Required designer variable.
@@ -132,7 +132,6 @@
             stocksPanel.Name = "stocksPanel";
             stocksPanel.Size = new Size(644, 424);
             stocksPanel.TabIndex = 7;
-            
             // 
             // updateButton
             // 
@@ -175,7 +174,6 @@
             stocksList.TabIndex = 10;
             stocksList.UseCompatibleStateImageBehavior = false;
             stocksList.View = View.Details;
-          
             // 
             // ID
             // 
@@ -280,7 +278,6 @@
             overviewPanel.Name = "overviewPanel";
             overviewPanel.Size = new Size(645, 424);
             overviewPanel.TabIndex = 15;
-            
             // 
             // lowStockList
             // 
@@ -369,6 +366,7 @@
             revenuelabel.Size = new Size(38, 15);
             revenuelabel.TabIndex = 3;
             revenuelabel.Text = "label7";
+            
             // 
             // label5
             // 
@@ -410,7 +408,6 @@
             employeesPanel.Name = "employeesPanel";
             employeesPanel.Size = new Size(645, 424);
             employeesPanel.TabIndex = 22;
-            
             // 
             // addEmployeeBtn
             // 
@@ -485,7 +482,7 @@
             label6.TabIndex = 22;
             label6.Text = "Employees";
             // 
-            // Stocks
+            // Management
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -496,7 +493,7 @@
             Controls.Add(employeesPanel);
             MainMenuStrip = menuStrip1;
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Stocks";
+            Name = "Management";
             Text = "Stock";
             Load += Stock_Load;
             menuStrip1.ResumeLayout(false);

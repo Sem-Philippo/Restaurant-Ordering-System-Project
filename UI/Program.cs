@@ -12,7 +12,7 @@ namespace UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new LoginPage());
+            Application.Run(new Management());
 
            
 

@@ -10,7 +10,7 @@ using UI.Stocks_UI;
 
 namespace UI
 {
-    public partial class Stocks : Form
+    public partial class Management : Form
     {
         private MenuItemService menuItemService;
         private MenuTypes selectedType;
@@ -19,7 +19,7 @@ namespace UI
         private PaymentService paymentService;
         private EmployeeService employeeService;
 
-        public Stocks()
+        public Management()
         {
             InitializeComponent();
             menuItemService = new MenuItemService();
@@ -33,11 +33,11 @@ namespace UI
 
         private void InitializeUI()
         {
-            
+
             stocksPanel.Hide();
             employeesPanel.Hide();
-            overviewPanel.Show(); 
-            
+            overviewPanel.Show();
+
             RefreshLowStockList();
             RefreshEmployeeList();
             RefreshOverviewData();
@@ -73,7 +73,7 @@ namespace UI
             try
             {
                 revenuelabel.Text = $"{invoiceService.GetTotalIncome()} €";
-                tipsLabel.Text = $"{paymentService.GetTipsAmount()}"; 
+                tipsLabel.Text = $"{paymentService.GetTipsAmount()}";
             }
             catch (Exception ex)
             {
@@ -94,18 +94,7 @@ namespace UI
             }
         }
 
-        private void RefreshMenuList()
-        {
-            try
-            {
-                List<MenuItem> menuItems = menuItemService.GetAllMenuItems();
-                DisplayMenuItems(stocksList, menuItems);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Something went wrong while loading the stocks: " + ex.Message);
-            }
-        }
+
 
         private void RefreshLowStockList()
         {
@@ -301,5 +290,7 @@ namespace UI
             UpdateEmployee updateEmployee = new UpdateEmployee();
             updateEmployee.Show();
         }
+
+        
     }
 }
