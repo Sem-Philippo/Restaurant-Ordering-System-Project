@@ -46,8 +46,27 @@ namespace DAL
         }
         public decimal GetTotalIncome()
         {
-            //nothing, just to get rid of warning
-            return new decimal(0);
+            string query = "SELECT SUM(totalamount) FROM Invoice";
+            decimal totalIncome = 0;
+
+            try
+            {
+                
+                SqlParameter[] sqlParameters = new SqlParameter[0];
+                DataTable resultTable = ExecuteSelectQuery(query, sqlParameters);
+
+                if (resultTable.Rows.Count > 0 && resultTable.Rows[0][0] != DBNull.Value)
+                {
+                    totalIncome = Convert.ToDecimal(resultTable.Rows[0][0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it)
+                Console.WriteLine(ex.Message);
+            }
+
+            return totalIncome;
         }
     }
 }
