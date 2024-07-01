@@ -1,17 +1,61 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 using Model.Enums;
+using Microsoft.VisualBasic;
+using System.Collections;
 
 namespace DAL
 {
     public class TableDAO : BaseDao
     {
+        public List<int> GetAllTableNumbers()
+        {
+            List<int> tableNumbers = new List<int>();
+
+            string query = "SELECT Number FROM Tables";
+            DataTable dataTable = ExecuteSelectQuery(query);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                tableNumbers.Add(Convert.ToInt32(row["Number"]));
+            }
+
+            return tableNumbers;
+        }
+        public Table GetOrderByID(int id)
+        {
+            string query = "SELECT * FROM Tables WHERE TableID = @TableID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@TableID", id);
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
+        }
+        private List<Table> ReadTables(DataTable dataTable)
+        {
+            var tables = new List<Table>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                tables.Add(CreateEmployeeFromDataRow(dr));
+            }
+
+            return tables;
+        }
+
+        private Table CreateEmployeeFromDataRow(DataRow dr)
+        {
+            return new Table()
+            {
+                TableId = Convert.ToInt32(dr["TableID"]),
+                TableNumber = Convert.ToInt32(dr["Number"]),
+                IsOccupied = Convert.ToBoolean(dr["IsOccupied"]),
+            };
+        }
         public Table GetTableByID(int id)
         {
             string query = "SELECT TableId, Number, IsOccupied FROM [Tables] WHERE TableId = @id";
@@ -25,22 +69,26 @@ namespace DAL
             {
                 return null;
             }
-            
-        }
-        private List<Table> ReadTables(DataTable dataTable)
-        {
-            List<Table> tables = new List<Table>();
 
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                tables.Add(CreateTableFromDataRow(dr));
-
-            }
-            return tables;
         }
         private Table CreateTableFromDataRow(DataRow dr)
         {
             return new Table((int)dr["TableId"], (int)dr["Number"], (bool)dr["IsOccupied"]);
+        }
+        public void UpdateTable(Table table)
+        {
+            string query = "UPDATE [Tables] SET IsOccupied = 0 WHERE Number = @TableNumber";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@IsOccupied", table.IsOccupied);
+            sqlParameters[1] = new SqlParameter("@TableNumber", table.TableNumber);
+            try
+            {
+                ExecuteEditQuery(query, sqlParameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error updating Table: " + ex.Message);
+            }
         }
     }
 }

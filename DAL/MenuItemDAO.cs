@@ -1,5 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Model;
+using Model.Enums;
+using System.Data.SqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using Model;
@@ -22,7 +28,6 @@ namespace DAL
                 throw; // Re-throw the exception to propagate it up the call stack
             }
         }
-
         private List<MenuItem> ReadMenuItems(DataTable dataTable)
         {
             List<MenuItem> list = new List<MenuItem>();
@@ -49,6 +54,7 @@ namespace DAL
 
         public void AddMenuItem(MenuItem menuItem)
         {
+
             string query = "INSERT INTO menuItem VALUES (@ID, @Name, @Category, @Price, @Tax, @Stock, @Type, @Alcoholic)";
             try
             {
@@ -100,7 +106,6 @@ namespace DAL
         {
             if (menuItem == null)
                 throw new ArgumentNullException(nameof(menuItem), "Menu item cannot be null.");
-
             try
             {
                 string name = menuItem.Name;

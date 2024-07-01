@@ -27,6 +27,9 @@ namespace Model
             Employee = employee;
             Table = table;
         }
+        public Order()
+        {
+        }
         public void AddOrderItem(OrderItem newItem)
         {
             bool itemFound = false;

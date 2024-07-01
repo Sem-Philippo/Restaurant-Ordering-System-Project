@@ -16,7 +16,6 @@ namespace UI
         private MenuTypes selectedType;
         private bool buttonState;
         private InvoiceService invoiceService;
-        private PaymentService paymentService;
         private EmployeeService employeeService;
 
         public Management()
@@ -24,7 +23,6 @@ namespace UI
             InitializeComponent();
             menuItemService = new MenuItemService();
             invoiceService = new InvoiceService();
-            paymentService = new PaymentService();
             buttonState = false;
             employeeService = new EmployeeService();
 
@@ -73,7 +71,7 @@ namespace UI
             try
             {
                 revenuelabel.Text = $"{invoiceService.GetTotalIncome()} €";
-                tipsLabel.Text = $"{paymentService.GetTipsAmount()}";
+                tipsLabel.Text = $"{invoiceService.GetTipsAmount()}"; 
             }
             catch (Exception ex)
             {

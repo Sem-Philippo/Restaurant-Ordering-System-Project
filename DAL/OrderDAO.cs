@@ -11,7 +11,7 @@ using Model.Enums;
 
 namespace DAL
 {
-   public class OrderDAO : BaseDao
+    public class OrderDAO : BaseDao
     {
 
 
@@ -44,8 +44,6 @@ namespace DAL
                 return null;
             }
         }
-
-
         public List<Order> GetAllOrders()
         {
             string query = "SELECT [Time], [EmployeeId], [TableId], [Id] FROM [ORDER]";
@@ -54,7 +52,7 @@ namespace DAL
         }
         public void SaveOrder(Order order)
         {
-            //First, store the Order in the database
+
             string query = "INSERT INTO [Order] ([Time], EmployeeID, TableID, Total) VALUES(@Time, @EmployeeID, @TableID, @Total); SELECT SCOPE_IDENTITY();";
             SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@Time", DateTime.Now);
@@ -63,7 +61,7 @@ namespace DAL
             sqlParameters[3] = new SqlParameter("@Total", order.Total);
             //Get Order ID for order items
             order.Id = Convert.ToInt32(ExecuteScalar(query, sqlParameters));
-            //Cycle through all order items in the order
+
             foreach (OrderItem item in order.OrderItems)
             {
                 SaveOrderItem(item, order.Id);
@@ -159,6 +157,146 @@ namespace DAL
                 (TimeSpan)dr["StatusTime"]
                 );
         }
-        
+        public Order GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int orderId)
+        {
+            string query = @"SELECT o.ID AS OrderID, o.Time, e.ID AS EmployeeID, e.FirstName + ' ' + e.LastName AS EmployeeName,
+                            t.TableID, t.Number AS TableNumber, oi.MenuItemID, oi.Quantity, oi.Status, oi.Comment, oi.StatusTime,
+                            mi.Name AS ItemName, mi.Tax AS VAT, mi.Price AS ItemPrice
+                            FROM [Order] o
+                            JOIN OrderItem oi ON o.ID = oi.OrderID
+                            JOIN MenuItem mi ON oi.MenuItemID = mi.MenuItemID
+                            JOIN Tables t ON o.TableID = t.TableID
+                            JOIN Employee e ON o.EmployeeID = e.ID
+                            WHERE t.Number = @TableNumber AND oi.Status = 4;";
+
+            SqlParameter[] parameters = {
+            new SqlParameter("@TableNumber", SqlDbType.Int) { Value = tableNumber }
+        };
+
+            DataTable dataTable = ExecuteSelectQuery(query, parameters);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                employeeName = dataTable.Rows[0]["EmployeeName"].ToString();
+                orderId = Convert.ToInt32(dataTable.Rows[0]["OrderID"]);
+            }
+            else
+            {
+                employeeName = string.Empty;
+                orderId = 0;
+                return null;
+            }
+
+            return CreateOrderDetailsFromDataTable(dataTable);
+        }
+
+        private Order CreateOrderDetailsFromDataTable(DataTable dataTable)
+        {
+            EmployeeDAO employeeDao = new EmployeeDAO();
+            TableDAO tableDAO = new TableDAO();
+
+            DataRow firstRow = dataTable.Rows[0];
+            int orderId = Convert.ToInt32(firstRow["OrderID"]);
+            DateTime orderTime = Convert.ToDateTime(firstRow["Time"]);
+            Employee employee = employeeDao.GetEmployeeByID(Convert.ToInt32(firstRow["EmployeeID"]));
+            Table table = tableDAO.GetTableByID(Convert.ToInt32(firstRow["TableID"]));
+
+            Order order = new Order(orderTime, employee, table)
+            {
+                Id = orderId
+            };
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                MenuItem menuItem = new MenuItem
+                {
+                    MenuItemId = Convert.ToInt32(row["MenuItemID"]),
+                    Name = row["ItemName"].ToString(),
+                    Price = Convert.ToDecimal(row["ItemPrice"]),
+                    Tax = Convert.ToDecimal(row["VAT"])
+                };
+                OrderItem orderItem = new OrderItem(
+                    menuItem,
+                    Convert.ToInt32(row["Quantity"]),
+                    (Status)Convert.ToInt32(row["Status"]),
+                    row["Comment"].ToString(),
+                    (TimeSpan)row["StatusTime"]
+                );
+                order.AddOrderItem(orderItem);
+            }
+
+            return order;
+        }
+        private Order CreateOrderFromDataTable(DataTable dataTable)
+        {
+            EmployeeDAO employeeDao = new EmployeeDAO();
+            TableDAO tableDAO = new TableDAO();
+
+            DataRow firstRow = dataTable.Rows[0];
+            int orderId = Convert.ToInt32(firstRow["OrderID"]);
+            DateTime orderTime = Convert.ToDateTime(firstRow["Time"]);
+            Employee employee = employeeDao.GetEmployeeByID(Convert.ToInt32(firstRow["EmployeeID"]));
+            Table table = tableDAO.GetTableByID(Convert.ToInt32(firstRow["TableID"]));
+
+            Order order = new Order(orderTime, employee, table)
+            {
+                Id = orderId
+            };
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                MenuItem menuItem = new MenuItem
+                {
+                    MenuItemId = Convert.ToInt32(row["MenuItemID"]),
+                    Name = row["ItemName"].ToString(),
+                    Price = Convert.ToDecimal(row["ItemPrice"]),
+                    Tax = Convert.ToDecimal(row["VAT"])
+                };
+                OrderItem orderItem = new OrderItem(
+                    menuItem,
+                    Convert.ToInt32(row["Quantity"]),
+                    (Status)Convert.ToInt32(row["Status"]),
+                    row["Comment"].ToString(),
+                    (TimeSpan)row["StatusTime"]
+                );
+                order.AddOrderItem(orderItem);
+            }
+
+            return order;
+        }
+        public Order GetOrderByTableNumber(int TableID)
+        {
+            EmployeeDAO employeeDAO = new EmployeeDAO();
+            TableDAO tableDAO = new TableDAO();
+            try
+            {
+                string query = "SELECT * FROM [Order] WHERE TableID = @TableID";
+                SqlParameter parameter = new SqlParameter("@TableID", TableID);
+                DataTable result = ExecuteSelectQuery(query, parameter);
+
+                if (result.Rows.Count > 0)
+                {
+                    DataRow row = result.Rows[0];
+                    Order order = new Order();
+                    {
+                        order.Id = Convert.ToInt32(row["ID"]);
+                        order.Time = DateTime.Now;
+                        order.Employee = employeeDAO.GetEmployeeByID(Convert.ToInt32(row["EmployeeID"]));
+                        order.Table = tableDAO.GetOrderByID(Convert.ToInt32(row["TableID"]));
+
+                    };
+                    return order;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while fetching the employee by ID: " + ex.Message);
+                throw;
+            }
+        }
     }
 }

@@ -28,46 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-
-            SuspendLayout();
-            // 
-            // Payment
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Payment";
-            Text = "Payment";
-            Load += Payment_Load;
-            ResumeLayout(false);
-
-            listView1 = new ListView();
+            OrderItemsList = new ListView();
             ItemName = new ColumnHeader();
             VatValue = new ColumnHeader();
             ItemDescription = new ColumnHeader();
             ItemPrice = new ColumnHeader();
             ItemQuantity = new ColumnHeader();
             ItemTotal = new ColumnHeader();
-            SplitBtn = new Button();
             PaymentNrLbl = new Label();
             EvenSplitNumeric = new NumericUpDown();
-            ManualSplitBox = new TextBox();
             TipBtn = new Button();
-            label1 = new Label();
+            NumberOfPaymentsTxt = new Label();
             BillOptions = new GroupBox();
+            label1 = new Label();
+            EvenSplitCheckBox = new CheckBox();
+            PaymentAmountTextBox = new TextBox();
+            TipsTextBox = new TextBox();
             PaymentTypeCombo = new ComboBox();
             PaymentTypeLbl = new Label();
-            payBtn = new Button();
-            EvenSplitLbl = new Label();
-            label2 = new Label();
+            PayBtn = new Button();
             TablesCombo = new ComboBox();
             OverviewBtn = new Button();
-            MenuBtn = new Button();
             OrdersBtn = new Button();
             ManagementBtn = new Button();
-            HistoryBtn = new Button();
             TabelsLbl = new Label();
             PaymentDetails = new GroupBox();
+            LowVatLbl = new Label();
+            LowVatText = new Label();
+            HighVatLbl = new Label();
+            HighVatText = new Label();
             TipAmountLbl = new Label();
             AmountDueLbl = new Label();
             TotalAmountLbl = new Label();
@@ -76,21 +65,28 @@
             TotalTxt = new Label();
             FeedbackGroup = new GroupBox();
             FeedbackBox = new TextBox();
+            DateTimeLbl = new Label();
+            DateTxt = new Label();
+            PaymentGroup = new GroupBox();
+            EmployeeText = new Label();
+            EmployeeNameLbl = new Label();
+            BeginsPaymentBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)EvenSplitNumeric).BeginInit();
             BillOptions.SuspendLayout();
             PaymentDetails.SuspendLayout();
             FeedbackGroup.SuspendLayout();
+            PaymentGroup.SuspendLayout();
             SuspendLayout();
             // 
-            // listView1
+            // OrderItemsList
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { ItemName, VatValue, ItemDescription, ItemPrice, ItemQuantity, ItemTotal });
-            listView1.Location = new Point(18, 87);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(467, 253);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            OrderItemsList.Columns.AddRange(new ColumnHeader[] { ItemName, VatValue, ItemDescription, ItemPrice, ItemQuantity, ItemTotal });
+            OrderItemsList.Location = new Point(18, 87);
+            OrderItemsList.Name = "OrderItemsList";
+            OrderItemsList.Size = new Size(467, 253);
+            OrderItemsList.TabIndex = 0;
+            OrderItemsList.UseCompatibleStateImageBehavior = false;
+            OrderItemsList.View = View.Details;
             // 
             // ItemName
             // 
@@ -121,19 +117,10 @@
             ItemTotal.Text = "Total price";
             ItemTotal.Width = 70;
             // 
-            // SplitBtn
-            // 
-            SplitBtn.Location = new Point(129, 57);
-            SplitBtn.Name = "SplitBtn";
-            SplitBtn.Size = new Size(75, 23);
-            SplitBtn.TabIndex = 1;
-            SplitBtn.Text = "Split";
-            SplitBtn.UseVisualStyleBackColor = true;
-            // 
             // PaymentNrLbl
             // 
             PaymentNrLbl.AutoSize = true;
-            PaymentNrLbl.Location = new Point(367, 61);
+            PaymentNrLbl.Location = new Point(415, 61);
             PaymentNrLbl.Name = "PaymentNrLbl";
             PaymentNrLbl.Size = new Size(25, 15);
             PaymentNrLbl.TabIndex = 2;
@@ -141,99 +128,109 @@
             // 
             // EvenSplitNumeric
             // 
-            EvenSplitNumeric.Location = new Point(304, 28);
+            EvenSplitNumeric.Location = new Point(377, 28);
             EvenSplitNumeric.Name = "EvenSplitNumeric";
             EvenSplitNumeric.Size = new Size(65, 23);
             EvenSplitNumeric.TabIndex = 3;
-            // 
-            // ManualSplitBox
-            // 
-            ManualSplitBox.Location = new Point(98, 28);
-            ManualSplitBox.Name = "ManualSplitBox";
-            ManualSplitBox.Size = new Size(106, 23);
-            ManualSplitBox.TabIndex = 4;
+            EvenSplitNumeric.ValueChanged += EvenSplitNumeric_ValueChanged;
             // 
             // TipBtn
             // 
-            TipBtn.Location = new Point(10, 57);
+            TipBtn.Location = new Point(6, 27);
             TipBtn.Name = "TipBtn";
             TipBtn.Size = new Size(75, 23);
             TipBtn.TabIndex = 5;
             TipBtn.Text = "Tips";
             TipBtn.UseVisualStyleBackColor = true;
+            TipBtn.Click += TipBtn_Click;
             // 
-            // label1
+            // NumberOfPaymentsTxt
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(235, 61);
-            label1.Name = "label1";
-            label1.Size = new Size(126, 15);
-            label1.TabIndex = 6;
-            label1.Text = "Number of payments: ";
+            NumberOfPaymentsTxt.AutoSize = true;
+            NumberOfPaymentsTxt.Location = new Point(283, 61);
+            NumberOfPaymentsTxt.Name = "NumberOfPaymentsTxt";
+            NumberOfPaymentsTxt.Size = new Size(126, 15);
+            NumberOfPaymentsTxt.TabIndex = 6;
+            NumberOfPaymentsTxt.Text = "Number of payments: ";
             // 
             // BillOptions
             // 
-            BillOptions.Controls.Add(PaymentTypeCombo);
-            BillOptions.Controls.Add(PaymentTypeLbl);
-            BillOptions.Controls.Add(payBtn);
-            BillOptions.Controls.Add(EvenSplitLbl);
             BillOptions.Controls.Add(label1);
-            BillOptions.Controls.Add(label2);
+            BillOptions.Controls.Add(EvenSplitCheckBox);
+            BillOptions.Controls.Add(PaymentAmountTextBox);
+            BillOptions.Controls.Add(TipsTextBox);
+            BillOptions.Controls.Add(NumberOfPaymentsTxt);
             BillOptions.Controls.Add(EvenSplitNumeric);
             BillOptions.Controls.Add(PaymentNrLbl);
             BillOptions.Controls.Add(TipBtn);
-            BillOptions.Controls.Add(ManualSplitBox);
-            BillOptions.Controls.Add(SplitBtn);
             BillOptions.Location = new Point(12, 352);
             BillOptions.Name = "BillOptions";
-            BillOptions.Size = new Size(776, 86);
+            BillOptions.Size = new Size(473, 86);
             BillOptions.TabIndex = 7;
             BillOptions.TabStop = false;
             BillOptions.Text = "Bill options";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(8, 61);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 15);
+            label1.TabIndex = 20;
+            label1.Text = "Enter amount:";
+            // 
+            // EvenSplitCheckBox
+            // 
+            EvenSplitCheckBox.AutoSize = true;
+            EvenSplitCheckBox.Location = new Point(283, 29);
+            EvenSplitCheckBox.Name = "EvenSplitCheckBox";
+            EvenSplitCheckBox.Size = new Size(80, 19);
+            EvenSplitCheckBox.TabIndex = 19;
+            EvenSplitCheckBox.Text = "Even Split:";
+            EvenSplitCheckBox.UseVisualStyleBackColor = true;
+            EvenSplitCheckBox.CheckedChanged += EvenSplitCheckBox_CheckedChanged;
+            // 
+            // PaymentAmountTextBox
+            // 
+            PaymentAmountTextBox.Location = new Point(96, 57);
+            PaymentAmountTextBox.Name = "PaymentAmountTextBox";
+            PaymentAmountTextBox.Size = new Size(100, 23);
+            PaymentAmountTextBox.TabIndex = 18;
+            // 
+            // TipsTextBox
+            // 
+            TipsTextBox.Location = new Point(96, 27);
+            TipsTextBox.Name = "TipsTextBox";
+            TipsTextBox.Size = new Size(100, 23);
+            TipsTextBox.TabIndex = 17;
+            // 
             // PaymentTypeCombo
             // 
             PaymentTypeCombo.FormattingEnabled = true;
-            PaymentTypeCombo.Location = new Point(555, 42);
+            PaymentTypeCombo.Location = new Point(122, 24);
             PaymentTypeCombo.Name = "PaymentTypeCombo";
             PaymentTypeCombo.Size = new Size(121, 23);
             PaymentTypeCombo.TabIndex = 16;
+            PaymentTypeCombo.SelectedIndexChanged += PaymentTypeCombo_SelectedIndexChanged_1;
             // 
             // PaymentTypeLbl
             // 
             PaymentTypeLbl.AutoSize = true;
-            PaymentTypeLbl.Location = new Point(466, 45);
+            PaymentTypeLbl.Location = new Point(33, 27);
             PaymentTypeLbl.Name = "PaymentTypeLbl";
             PaymentTypeLbl.Size = new Size(83, 15);
             PaymentTypeLbl.TabIndex = 15;
             PaymentTypeLbl.Text = "Payment type:";
             // 
-            // payBtn
+            // PayBtn
             // 
-            payBtn.Location = new Point(695, 28);
-            payBtn.Name = "payBtn";
-            payBtn.Size = new Size(75, 48);
-            payBtn.TabIndex = 13;
-            payBtn.Text = "Pay";
-            payBtn.UseVisualStyleBackColor = true;
-            // 
-            // EvenSplitLbl
-            // 
-            EvenSplitLbl.AutoSize = true;
-            EvenSplitLbl.Location = new Point(235, 31);
-            EvenSplitLbl.Name = "EvenSplitLbl";
-            EvenSplitLbl.Size = new Size(63, 15);
-            EvenSplitLbl.TabIndex = 14;
-            EvenSplitLbl.Text = "Even split: ";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(10, 31);
-            label2.Name = "label2";
-            label2.Size = new Size(82, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Enter amount:";
+            PayBtn.Location = new Point(36, 54);
+            PayBtn.Name = "PayBtn";
+            PayBtn.Size = new Size(210, 23);
+            PayBtn.TabIndex = 13;
+            PayBtn.Text = "Pay";
+            PayBtn.UseVisualStyleBackColor = true;
+            PayBtn.Click += PayBtn_Click;
             // 
             // TablesCombo
             // 
@@ -242,51 +239,37 @@
             TablesCombo.Name = "TablesCombo";
             TablesCombo.Size = new Size(71, 23);
             TablesCombo.TabIndex = 8;
+            TablesCombo.SelectedIndexChanged += TablesCombo_SelectedIndexChanged;
             // 
             // OverviewBtn
             // 
-            OverviewBtn.Location = new Point(18, 12);
+            OverviewBtn.Location = new Point(52, 12);
             OverviewBtn.Name = "OverviewBtn";
             OverviewBtn.Size = new Size(75, 23);
             OverviewBtn.TabIndex = 9;
             OverviewBtn.Text = "Overview";
             OverviewBtn.UseVisualStyleBackColor = true;
-            // 
-            // MenuBtn
-            // 
-            MenuBtn.Location = new Point(99, 12);
-            MenuBtn.Name = "MenuBtn";
-            MenuBtn.Size = new Size(75, 23);
-            MenuBtn.TabIndex = 10;
-            MenuBtn.Text = "Menu";
-            MenuBtn.UseVisualStyleBackColor = true;
+            OverviewBtn.Click += OverviewBtn_Click;
             // 
             // OrdersBtn
             // 
-            OrdersBtn.Location = new Point(180, 12);
+            OrdersBtn.Location = new Point(146, 12);
             OrdersBtn.Name = "OrdersBtn";
             OrdersBtn.Size = new Size(75, 23);
             OrdersBtn.TabIndex = 11;
             OrdersBtn.Text = "Orders";
             OrdersBtn.UseVisualStyleBackColor = true;
+            OrdersBtn.Click += OrdersBtn_Click;
             // 
             // ManagementBtn
             // 
-            ManagementBtn.Location = new Point(261, 12);
+            ManagementBtn.Location = new Point(233, 12);
             ManagementBtn.Name = "ManagementBtn";
             ManagementBtn.Size = new Size(90, 23);
             ManagementBtn.TabIndex = 12;
             ManagementBtn.Text = "Management";
             ManagementBtn.UseVisualStyleBackColor = true;
-            // 
-            // HistoryBtn
-            // 
-            HistoryBtn.Location = new Point(685, 12);
-            HistoryBtn.Name = "HistoryBtn";
-            HistoryBtn.Size = new Size(103, 23);
-            HistoryBtn.TabIndex = 13;
-            HistoryBtn.Text = "Payment history";
-            HistoryBtn.UseVisualStyleBackColor = true;
+            ManagementBtn.Click += ManagementBtn_Click;
             // 
             // TabelsLbl
             // 
@@ -299,6 +282,10 @@
             // 
             // PaymentDetails
             // 
+            PaymentDetails.Controls.Add(LowVatLbl);
+            PaymentDetails.Controls.Add(LowVatText);
+            PaymentDetails.Controls.Add(HighVatLbl);
+            PaymentDetails.Controls.Add(HighVatText);
             PaymentDetails.Controls.Add(TipAmountLbl);
             PaymentDetails.Controls.Add(AmountDueLbl);
             PaymentDetails.Controls.Add(TotalAmountLbl);
@@ -312,10 +299,46 @@
             PaymentDetails.TabStop = false;
             PaymentDetails.Text = "Payment details";
             // 
+            // LowVatLbl
+            // 
+            LowVatLbl.AutoSize = true;
+            LowVatLbl.Location = new Point(235, 44);
+            LowVatLbl.Name = "LowVatLbl";
+            LowVatLbl.Size = new Size(46, 15);
+            LowVatLbl.TabIndex = 23;
+            LowVatLbl.Text = ".............";
+            // 
+            // LowVatText
+            // 
+            LowVatText.AutoSize = true;
+            LowVatText.Location = new Point(171, 44);
+            LowVatText.Name = "LowVatText";
+            LowVatText.Size = new Size(54, 15);
+            LowVatText.TabIndex = 22;
+            LowVatText.Text = "Low VAT:";
+            // 
+            // HighVatLbl
+            // 
+            HighVatLbl.AutoSize = true;
+            HighVatLbl.Location = new Point(235, 19);
+            HighVatLbl.Name = "HighVatLbl";
+            HighVatLbl.Size = new Size(46, 15);
+            HighVatLbl.TabIndex = 15;
+            HighVatLbl.Text = ".............";
+            // 
+            // HighVatText
+            // 
+            HighVatText.AutoSize = true;
+            HighVatText.Location = new Point(171, 19);
+            HighVatText.Name = "HighVatText";
+            HighVatText.Size = new Size(58, 15);
+            HighVatText.TabIndex = 15;
+            HighVatText.Text = "High VAT:";
+            // 
             // TipAmountLbl
             // 
             TipAmountLbl.AutoSize = true;
-            TipAmountLbl.Location = new Point(228, 72);
+            TipAmountLbl.Location = new Point(110, 44);
             TipAmountLbl.Name = "TipAmountLbl";
             TipAmountLbl.Size = new Size(46, 15);
             TipAmountLbl.TabIndex = 21;
@@ -324,7 +347,7 @@
             // AmountDueLbl
             // 
             AmountDueLbl.AutoSize = true;
-            AmountDueLbl.Location = new Point(228, 48);
+            AmountDueLbl.Location = new Point(110, 19);
             AmountDueLbl.Name = "AmountDueLbl";
             AmountDueLbl.Size = new Size(46, 15);
             AmountDueLbl.TabIndex = 20;
@@ -333,7 +356,7 @@
             // TotalAmountLbl
             // 
             TotalAmountLbl.AutoSize = true;
-            TotalAmountLbl.Location = new Point(228, 24);
+            TotalAmountLbl.Location = new Point(180, 77);
             TotalAmountLbl.Name = "TotalAmountLbl";
             TotalAmountLbl.Size = new Size(46, 15);
             TotalAmountLbl.TabIndex = 19;
@@ -342,7 +365,7 @@
             // AmountDueTxt
             // 
             AmountDueTxt.AutoSize = true;
-            AmountDueTxt.Location = new Point(124, 48);
+            AmountDueTxt.Location = new Point(6, 19);
             AmountDueTxt.Name = "AmountDueTxt";
             AmountDueTxt.Size = new Size(77, 15);
             AmountDueTxt.TabIndex = 18;
@@ -351,7 +374,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(124, 72);
+            label3.Location = new Point(6, 44);
             label3.Name = "label3";
             label3.Size = new Size(71, 15);
             label3.TabIndex = 17;
@@ -360,7 +383,7 @@
             // TotalTxt
             // 
             TotalTxt.AutoSize = true;
-            TotalTxt.Location = new Point(124, 24);
+            TotalTxt.Location = new Point(76, 77);
             TotalTxt.Name = "TotalTxt";
             TotalTxt.Size = new Size(80, 15);
             TotalTxt.TabIndex = 16;
@@ -385,22 +408,84 @@
             FeedbackBox.TabIndex = 15;
             FeedbackBox.Text = "Type here...";
             // 
+            // DateTimeLbl
+            // 
+            DateTimeLbl.AutoSize = true;
+            DateTimeLbl.Location = new Point(557, 16);
+            DateTimeLbl.Name = "DateTimeLbl";
+            DateTimeLbl.Size = new Size(61, 15);
+            DateTimeLbl.TabIndex = 20;
+            DateTimeLbl.Text = "..................";
+            // 
+            // DateTxt
+            // 
+            DateTxt.AutoSize = true;
+            DateTxt.Location = new Point(472, 15);
+            DateTxt.Name = "DateTxt";
+            DateTxt.Size = new Size(86, 15);
+            DateTxt.TabIndex = 21;
+            DateTxt.Text = "Date and Time:";
+            // 
+            // PaymentGroup
+            // 
+            PaymentGroup.Controls.Add(PayBtn);
+            PaymentGroup.Controls.Add(PaymentTypeLbl);
+            PaymentGroup.Controls.Add(PaymentTypeCombo);
+            PaymentGroup.Location = new Point(491, 352);
+            PaymentGroup.Name = "PaymentGroup";
+            PaymentGroup.Size = new Size(297, 86);
+            PaymentGroup.TabIndex = 20;
+            PaymentGroup.TabStop = false;
+            PaymentGroup.Text = "Payment options";
+            // 
+            // EmployeeText
+            // 
+            EmployeeText.AutoSize = true;
+            EmployeeText.Location = new Point(160, 61);
+            EmployeeText.Name = "EmployeeText";
+            EmployeeText.Size = new Size(95, 15);
+            EmployeeText.TabIndex = 17;
+            EmployeeText.Text = "Employee name:";
+            // 
+            // EmployeeNameLbl
+            // 
+            EmployeeNameLbl.AutoSize = true;
+            EmployeeNameLbl.Location = new Point(261, 61);
+            EmployeeNameLbl.Name = "EmployeeNameLbl";
+            EmployeeNameLbl.Size = new Size(46, 15);
+            EmployeeNameLbl.TabIndex = 22;
+            EmployeeNameLbl.Text = ".............";
+            // 
+            // BeginsPaymentBtn
+            // 
+            BeginsPaymentBtn.Location = new Point(341, 57);
+            BeginsPaymentBtn.Name = "BeginsPaymentBtn";
+            BeginsPaymentBtn.Size = new Size(144, 23);
+            BeginsPaymentBtn.TabIndex = 21;
+            BeginsPaymentBtn.Text = "Start payment process";
+            BeginsPaymentBtn.UseVisualStyleBackColor = true;
+            BeginsPaymentBtn.Click += BeginsPaymentBtn_Click;
+            // 
             // Payment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(BeginsPaymentBtn);
+            Controls.Add(EmployeeNameLbl);
+            Controls.Add(EmployeeText);
+            Controls.Add(PaymentGroup);
+            Controls.Add(DateTxt);
+            Controls.Add(DateTimeLbl);
             Controls.Add(FeedbackGroup);
             Controls.Add(PaymentDetails);
             Controls.Add(TabelsLbl);
-            Controls.Add(HistoryBtn);
             Controls.Add(TablesCombo);
             Controls.Add(ManagementBtn);
             Controls.Add(OrdersBtn);
-            Controls.Add(MenuBtn);
             Controls.Add(OverviewBtn);
             Controls.Add(BillOptions);
-            Controls.Add(listView1);
+            Controls.Add(OrderItemsList);
             Name = "Payment";
             Text = "Payment";
             ((System.ComponentModel.ISupportInitialize)EvenSplitNumeric).EndInit();
@@ -410,14 +495,15 @@
             PaymentDetails.PerformLayout();
             FeedbackGroup.ResumeLayout(false);
             FeedbackGroup.PerformLayout();
+            PaymentGroup.ResumeLayout(false);
+            PaymentGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
 
-        private ListView listView1;
+        private ListView OrderItemsList;
         private ColumnHeader ItemName;
         private ColumnHeader ItemDescription;
         private ColumnHeader ItemPrice;
@@ -426,21 +512,17 @@
         private Button SplitBtn;
         private Label PaymentNrLbl;
         private NumericUpDown EvenSplitNumeric;
-        private TextBox ManualSplitBox;
         private Button TipBtn;
-        private Label label1;
+        private Label NumberOfPaymentsTxt;
         private GroupBox BillOptions;
         private ComboBox TablesCombo;
         private Button OverviewBtn;
-        private Button MenuBtn;
         private Button OrdersBtn;
         private Button ManagementBtn;
-        private Label label2;
         private Label TabelsLbl;
-        private Button HistoryBtn;
         private Label EvenSplitLbl;
         private Label PaymentTypeLbl;
-        private Button payBtn;
+        private Button PayBtn;
         private ComboBox PaymentTypeCombo;
         private ColumnHeader VatValue;
         private GroupBox PaymentDetails;
@@ -452,5 +534,19 @@
         private Label AmountDueLbl;
         private Label TotalAmountLbl;
         private Label AmountDueTxt;
+        private Label HighVatText;
+        private Label HighVatLbl;
+        private Label LowVatLbl;
+        private Label LowVatText;
+        private TextBox TipsTextBox;
+        private TextBox PaymentAmountTextBox;
+        private CheckBox EvenSplitCheckBox;
+        private Label DateTimeLbl;
+        private Label DateTxt;
+        private GroupBox PaymentGroup;
+        private Label EmployeeText;
+        private Label EmployeeNameLbl;
+        private Label label1;
+        private Button BeginsPaymentBtn;
     }
 }
