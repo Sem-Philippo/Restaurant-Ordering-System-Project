@@ -260,15 +260,15 @@ namespace UI
         private void ManagementBtn_Click(object sender, EventArgs e)
         {
             this.Close();
-            Stocks stocks = new Stocks();
+            Management stocks = new Management();
             stocks.Show();
         }
 
         private void OrdersBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
             BarKitchen barKitchen = new BarKitchen();
             barKitchen.Show();
+            this.Close();
         }
 
         private void OverviewBtn_Click(object sender, EventArgs e)
