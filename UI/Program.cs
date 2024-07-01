@@ -1,3 +1,5 @@
+using Model;
+
 namespace UI
 {
     internal static class Program
@@ -12,7 +14,7 @@ namespace UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new Management());
+            Application.Run(new Orders(new Employee() { Id = 3 }, new Table(3, 2, true)));
 
            
 

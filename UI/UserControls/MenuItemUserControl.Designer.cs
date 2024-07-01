@@ -47,7 +47,7 @@
             // btnAmountIncrease
             // 
             btnAmountIncrease.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAmountIncrease.Location = new Point(320, 27);
+            btnAmountIncrease.Location = new Point(397, 24);
             btnAmountIncrease.Name = "btnAmountIncrease";
             btnAmountIncrease.Size = new Size(25, 25);
             btnAmountIncrease.TabIndex = 1;
@@ -58,7 +58,7 @@
             // btnAmountDecrease
             // 
             btnAmountDecrease.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAmountDecrease.Location = new Point(399, 27);
+            btnAmountDecrease.Location = new Point(320, 24);
             btnAmountDecrease.Name = "btnAmountDecrease";
             btnAmountDecrease.Size = new Size(25, 25);
             btnAmountDecrease.TabIndex = 2;

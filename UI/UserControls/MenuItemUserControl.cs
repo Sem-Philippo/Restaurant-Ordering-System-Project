@@ -13,13 +13,14 @@ namespace UI.UserControls
 {
     public partial class MenuItemUserControl : UserControl
     {
-        public MenuItem menuItem;
-        public OrderItem orderItem;
-        public MenuItemUserControl(MenuItem menuItem)
+        Orders ordersForm;
+        public MenuItemUserControl(MenuItem menuItem, Orders ordersForm)
         {
             InitializeComponent();
-            this.menuItem = menuItem;
-            orderItem = new OrderItem(menuItem, 0, Model.Enums.Status.Ordered, string.Empty, new TimeSpan(0, 0, 0));
+            //store menuItem in the tag instead of an actual variable
+            this.Tag = menuItem;
+            //save the orders form so I can have access to it later
+            this.ordersForm = ordersForm;
         }
 
         private void MenuItemUserControl_Load(object sender, EventArgs e)
@@ -28,23 +29,41 @@ namespace UI.UserControls
         }
         private void UpdateLabels()
         {
-            lblDishName.Text = menuItem.Name;
+            lblDishName.Text = ((MenuItem)Tag).Name;
             lblAmount.Text = 0.ToString();
         }
 
         private void btnAmountIncrease_Click(object sender, EventArgs e)
         {
-            orderItem.Quantity += 1;
-            lblAmount.Text = orderItem.Quantity.ToString();
+            lblAmount.Text = (int.Parse(lblAmount.Text)+1).ToString();
+            if (int.Parse(lblAmount.Text) == 1)
+            {
+                //item has just been ordered, so add to panel
+                ordersForm.AddItemToOrder(new OrderItem((MenuItem)Tag, int.Parse(lblAmount.Text), Model.Enums.Status.Ordered, string.Empty, new TimeSpan(0,0,0)));
+            }
+            else
+            {
+                ordersForm.ChangeOrderControlQuantity((MenuItem)this.Tag, int.Parse(lblAmount.Text));
+            }
         }
 
         private void btnAmountDecrease_Click(object sender, EventArgs e)
         {
-            if (orderItem.Quantity > 0)
+            if (int.Parse(lblAmount.Text) > 0)
             {
-                orderItem.Quantity -= 1;
-                lblAmount.Text = orderItem.Quantity.ToString();
+                lblAmount.Text = (int.Parse(lblAmount.Text)-1).ToString();
+                ordersForm.ChangeOrderControlQuantity((MenuItem)this.Tag, int.Parse(lblAmount.Text));
             }
+            if (int.Parse(lblAmount.Text) == 0)
+            {
+                //if it has now been ordered 0 times in the current order
+                ordersForm.RemoveItemFromOrder((MenuItem)Tag);
+            }
+
+        }
+        public void ChangeQuantity(int quantity)
+        {
+            lblAmount.Text = quantity.ToString();
         }
     }
 }

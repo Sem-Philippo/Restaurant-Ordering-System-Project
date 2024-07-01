@@ -2303,19 +2303,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gebruikerr\\.nuget\\packages\\": {}
+    "C:\\Users\\semel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\UI\\UI.csproj",
+      "projectUniqueName": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
       "projectName": "UI",
-      "projectPath": "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\UI\\UI.csproj",
-      "packagesPath": "C:\\Users\\Gebruikerr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\UI\\obj\\",
+      "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\UI.csproj",
+      "packagesPath": "C:\\Users\\semel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Gebruikerr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\semel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2329,11 +2329,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\Model\\Model.csproj"
+            "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Model\\Model.csproj"
             },
-            "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\Service\\Service.csproj": {
-              "projectPath": "C:\\Users\\Gebruikerr\\Desktop\\Inholland\\Term 4\\Applicaiton project\\Final project\\Service\\Service.csproj"
+            "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj": {
+              "projectPath": "C:\\Users\\semel\\source\\repos\\Restaurant-Ordering-System-Project\\Service\\Service.csproj"
             }
           }
         }
@@ -2342,11 +2342,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2385,7 +2380,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

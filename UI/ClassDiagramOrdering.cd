@@ -1,18 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="UI.Orders">
-    <Position X="4.5" Y="4.25" Width="1.5" />
+    <Position X="4" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACQCREAACJgAABAIACIBIKDiAAcAAJAQBAEQAACoAA=</HashCode>
+      <HashCode>AACQCREAACJgAgBAIACIBIKDiAIcAAJAQBAEQAACoAA=</HashCode>
       <FileName>Orders.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="employee" />
+      <Field Name="table" />
+      <Field Name="menuItemService" />
+      <Field Name="orderService" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Service.OrderService">
-    <Position X="6.75" Y="4.75" Width="1.5" />
+  <Class Name="DAL.OrderDAO" Collapsed="true">
+    <Position X="11.25" Y="7" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="DAL.OrderDAO">
-    <Position X="9" Y="4.5" Width="1.5" />
+  <Class Name="Service.OrderService" Collapsed="true">
+    <Position X="6.75" Y="5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.OrderItem" Collapsed="true">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="MenuItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Model.MenuItem" Collapsed="true">
+    <Position X="13.25" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Order" Collapsed="true">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+      <Property Name="Table" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.BaseDao" Collapsed="true">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Table" Collapsed="true">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Employee" Collapsed="true">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Service.MenuItemService" Collapsed="true">
+    <Position X="6.75" Y="6" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="MenuItemDAO" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DAL.MenuItemDAO" Collapsed="true">
+    <Position X="8.75" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Enums.MenuTypes" Collapsed="true">
+    <Position X="16.75" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Model.Enums.Categories" Collapsed="true">
+    <Position X="16.75" Y="4" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using UI.UserControls;
+using Microsoft.VisualBasic;
 
 namespace UI
 {
@@ -17,13 +18,15 @@ namespace UI
     {
         private Employee employee;
         private Table table;
+        MenuItemService menuItemService = new MenuItemService();
+        OrderService orderService = new OrderService();
+
         public Orders(Employee employee, Table table)
         {
             InitializeComponent();
             this.employee = employee;
             this.table = table;
         }
-
         private void Orders_Load(object sender, EventArgs e)
         {
             ReloadOrders();
@@ -38,7 +41,6 @@ namespace UI
         private void ReloadOrders()
         {
             ClearPanels();
-            MenuItemService menuItemService = new MenuItemService();
             List<MenuItem> menuItems = menuItemService.GetAllMenuItems();
 
             //code for sorting taken from internet
@@ -47,24 +49,24 @@ namespace UI
             foreach (MenuItem item in menuItems)
             {
                 //Got each menu item now, sorted
-                MenuItemUserControl menuItemUserControl = new MenuItemUserControl(item);
+                MenuItemUserControl menuItemUserControl = new MenuItemUserControl(item, this);
                 AddToFlowPanel(menuItemUserControl);
 
             }
-            listviewItems.Items.Clear();
         }
         private void AddLabel(MenuItemUserControl control, FlowLayoutPanel flowPanel)
         {
             Label label = new Label();
-            label.Text = control.menuItem.Category.ToString().Replace("_", " ");
+            label.Text = ((MenuItem)control.Tag).Category.ToString().Replace("_", " ");
             label.Font = new Font(label.Font.FontFamily, 18f);
             label.AutoSize = true;
             flowPanel.Controls.Add(label);
         }
         private void AddToFlowPanel(MenuItemUserControl menuItemUserControl)
         {
+            MenuItem menuItem = (MenuItem)menuItemUserControl.Tag;
             FlowLayoutPanel flowPanel = new FlowLayoutPanel();
-            switch ((int)menuItemUserControl.menuItem.Type)
+            switch ((int)menuItem.Type)
             {
                 case 1:
                     flowPanel = flowPanelLunch; break;
@@ -76,13 +78,17 @@ namespace UI
 
             if (flowPanel.Controls.Count == 0)
             {
-                //1st item, so new catagory
+                //1st item, so new category
                 AddLabel(menuItemUserControl, flowPanel);
             }
-            else if (((MenuItemUserControl)flowPanel.Controls[flowPanel.Controls.Count - 1]).menuItem.Category != menuItemUserControl.menuItem.Category)
+            else
             {
-                //if it is a new category
-                AddLabel(menuItemUserControl, flowPanel);
+                MenuItem menuItem2 = (MenuItem)((MenuItemUserControl)flowPanel.Controls[flowPanel.Controls.Count - 1]).Tag;
+                if (menuItem2.Category != menuItem.Category)
+                {
+                    //if it is a new category
+                    AddLabel(menuItemUserControl, flowPanel);
+                }
             }
             flowPanel.Controls.Add(menuItemUserControl);
         }
@@ -91,13 +97,11 @@ namespace UI
             HideButtons();
             flowPanelLunch.Show();
         }
-
         private void btnShowDinner_Click(object sender, EventArgs e)
         {
             HideButtons();
             flowPanelDinner.Show();
         }
-
         private void btnShowDrinks_Click(object sender, EventArgs e)
         {
             HideButtons();
@@ -108,64 +112,35 @@ namespace UI
             btnShowLunch.Hide();
             btnShowDinner.Hide();
             btnShowDrinks.Hide();
-            btnBackToOrders.Show();
-            listviewItems.Hide();
-            btnComment.Hide();
+            btnBackToOverview.Show();
+            flOrder.Hide();
         }
         private void ShowButtons()
         {
             flowPanelDinner.Hide();
             flowPanelDrinks.Hide();
             flowPanelLunch.Hide();
-            btnBackToOrders.Hide();
+            btnBackToOverview.Hide();
             btnShowLunch.Show();
             btnShowDinner.Show();
             btnShowDrinks.Show();
-            listviewItems.Show();
-            btnComment.Hide();
             pnlComment.Hide();
+            flOrder.Show();
         }
-
-        private void btnBackToOrders_Click(object sender, EventArgs e)
+        private void btnBackToOverview_Click(object sender, EventArgs e)
         {
             //If comment was just placed:
+            if (pnlComment.Visible)
+            {
+                pnlComment.Hide();
+                //clear the text
+                OrderItemUserControl control = (OrderItemUserControl)pnlComment.Tag;
+                ((OrderItem)control.Tag).Comment = txtComment.Text;
+                txtComment.Text = string.Empty;
+            }
             //Get orderItem from the tag
-            if (txtComment.Tag != null)
-            {
-                MenuItemUserControl control = (MenuItemUserControl)txtComment.Tag;
-                if (txtComment.Text != string.Empty || txtComment.Text != null)
-                {
-                    control.orderItem.Comment = txtComment.Text;
-                }
-            }
             ShowButtons();
-            //Add currently ordered items to listview:
-            //Clear listview items
-            listviewItems.Items.Clear();
-            //Get currently ordered items and add them
-            AddItemsToListViewFromPanel(flowPanelLunch);
-            AddItemsToListViewFromPanel(flowPanelDinner);
-            AddItemsToListViewFromPanel(flowPanelDrinks);
         }
-        private void AddItemsToListViewFromPanel(FlowLayoutPanel flowPanel)
-        {
-            //lvItems for ListViewItems
-            List<ListViewItem> lvItems = new List<ListViewItem>();
-            foreach (MenuItemUserControl control in GetOrderItemsFromPanel(flowPanel)) //Get all items
-            {
-                //Make listviewitems with the item name and quantity and add them to the list
-                ListViewItem li = new ListViewItem(new string[2] { control.orderItem.MenuItem.Name.ToString(), control.orderItem.Quantity.ToString() + "x" });
-                //Add tag to get item later
-                li.Tag = control;
-                lvItems.Add(li);
-            }
-            foreach (ListViewItem item in lvItems)
-            {
-                //add the items to the listview
-                listviewItems.Items.Add(item);
-            }
-        }
-
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             try
@@ -179,67 +154,45 @@ namespace UI
             {
                 MessageBox.Show("Something went wrong, please try again");
             }
-            
+
         }
         private Order GetOrder()
         {
-            //forcing the back to orders button to be clicked in case of a comment being made
-            btnBackToOrders_Click(null, null);
+            //if someone is making a comment while clicking the button, the comment saves
+            if (pnlComment.Visible)
+            {
+                pnlComment.Hide();
+                //clear the text
+                OrderItemUserControl control = (OrderItemUserControl)pnlComment.Tag;
+                ((OrderItem)control.Tag).Comment = txtComment.Text;
+                txtComment.Text = string.Empty;
+            }
             Order order = new Order(DateTime.Now, employee, table);
-            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelLunch), order);
-            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDinner), order);
-            AddOrderItemsFromList(GetOrderItemsFromPanel(flowPanelDrinks), order);
+            AddOrderItemsToOrder(order);
+            //clear the panel since this method only gets called right before 
+            //storing the orders in the database, so it doesn't need it filled anymore
+            flOrder.Controls.Clear();
             return order;
         }
-        private List<MenuItemUserControl> GetOrderItemsFromPanel(FlowLayoutPanel flowPanel)
+        private void AddOrderItemsToOrder(Order order)
         {
-            List<MenuItemUserControl> controls = new List<MenuItemUserControl>();
-            foreach (object control in flowPanel.Controls)
+            foreach (OrderItemUserControl control in flOrder.Controls)
             {
-                try
-                {
-                    MenuItemUserControl menuItemUserControl = (MenuItemUserControl)control;
-                    if (menuItemUserControl.orderItem.Quantity > 0)
-                    {
-                        controls.Add(menuItemUserControl);
-                    }
-                }
-                catch
-                {
-                    //item was just a label
-                }
-            }
-            return controls;
-        }
-        private void AddOrderItemsFromList(List<MenuItemUserControl> controls, Order order)
-        {
-            foreach (MenuItemUserControl control in controls)
-            {
-                order.OrderItems.Add(control.orderItem);
+                order.AddOrderItem((OrderItem)control.Tag);
             }
         }
-
-        private void listviewItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnComment.Show();
-        }
-
-        private void btnComment_Click(object sender, EventArgs e)
+        public void OpenComment(OrderItemUserControl control)
         {
             HideButtons();
             pnlComment.Show();
-            //btnOrder.Hide();
-            //Get orderItem from the tag
-            MenuItemUserControl control = (MenuItemUserControl)listviewItems.SelectedItems[0].Tag;
-            //adding a tag to the comment box to connect it with the item the comment will be for
-            txtComment.Tag = control;
-            txtComment.Text = control.orderItem.Comment;
+            //store control in the tag so it can access it later
+            pnlComment.Tag = control;
+            txtComment.Text = ((OrderItem)control.Tag).Comment;
         }
-
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
             Order order = GetOrder();
-            OrderService orderService = new OrderService();
+
             bool result = orderService.AddToExistingOrder(order);
             if (result)
             {
@@ -250,6 +203,67 @@ namespace UI
             {
                 //no order has been added to
                 MessageBox.Show("Sorry, no previous orders for table " + order.Table.TableNumber + " to add to have been found.");
+            }
+        }
+        public void AddItemToOrder(OrderItem item)
+        {
+            flOrder.Controls.Add(new OrderItemUserControl(item, this));
+        }
+        public void RemoveItemFromOrder(MenuItem item)
+        {
+            //can't use an order item since it might have changed by getting a comment or something else
+            foreach (OrderItemUserControl control in flOrder.Controls)
+            {
+                if (((OrderItem)control.Tag).MenuItem == item)
+                {
+                    flOrder.Controls.Remove(control);
+                    //item already found, no need to look further
+                    break;
+                }
+            }
+        }
+        public void ChangeMenuControlQuantity(MenuItem item, int quantity)
+        {
+            //when changing the quantity from the OrderItemControl,
+            //the MenuControl won't change which causes inconsistencies
+            FlowLayoutPanel panel;
+            //lunch, dinner, drinks
+            switch (item.Type)
+            {
+                case Model.Enums.MenuTypes.Lunch:
+                    panel = flowPanelLunch; break;
+                case Model.Enums.MenuTypes.Dinner:
+                    panel = flowPanelDinner; break;
+                case Model.Enums.MenuTypes.Drinks:
+                    panel = flowPanelDrinks; break;
+                default:
+                    throw new Exception("Item does not belong to a valid type");
+            }
+            foreach (object menuItemControl in panel.Controls)
+            {
+                try
+                {
+                    MenuItemUserControl control = (MenuItemUserControl)menuItemControl;
+                    if (control.Tag == item)
+                    {
+                        control.ChangeQuantity(quantity);
+                    }
+                }
+                catch
+                {
+                    //the item was just a label, nothing to worry about
+                }
+            }
+        }
+        public void ChangeOrderControlQuantity(MenuItem item, int quantity)
+        {
+            foreach (object orderItemControl in flOrder.Controls)
+            {
+                OrderItemUserControl control = (OrderItemUserControl)orderItemControl;
+                if (((OrderItem)control.Tag).MenuItem == item)
+                {
+                    control.ChangeQuantity(quantity);
+                }
             }
         }
     }

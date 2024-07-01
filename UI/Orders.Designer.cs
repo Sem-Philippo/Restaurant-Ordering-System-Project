@@ -34,15 +34,12 @@
             btnShowLunch = new Button();
             btnShowDinner = new Button();
             btnShowDrinks = new Button();
-            btnBackToOrders = new Button();
+            btnBackToOverview = new Button();
             btnNewOrder = new Button();
-            listviewItems = new ListView();
-            name = new ColumnHeader();
-            Amount = new ColumnHeader();
-            btnComment = new Button();
             pnlComment = new Panel();
             txtComment = new TextBox();
             btnAddOrder = new Button();
+            flOrder = new FlowLayoutPanel();
             pnlComment.SuspendLayout();
             SuspendLayout();
             // 
@@ -100,58 +97,25 @@
             btnShowDrinks.UseVisualStyleBackColor = true;
             btnShowDrinks.Click += btnShowDrinks_Click;
             // 
-            // btnBackToOrders
+            // btnBackToOverview
             // 
-            btnBackToOrders.Location = new Point(12, 567);
-            btnBackToOrders.Name = "btnBackToOrders";
-            btnBackToOrders.Size = new Size(150, 50);
-            btnBackToOrders.TabIndex = 7;
-            btnBackToOrders.Text = "Back to orders";
-            btnBackToOrders.UseVisualStyleBackColor = true;
-            btnBackToOrders.Click += btnBackToOrders_Click;
+            btnBackToOverview.Location = new Point(12, 567);
+            btnBackToOverview.Name = "btnBackToOverview";
+            btnBackToOverview.Size = new Size(150, 50);
+            btnBackToOverview.TabIndex = 7;
+            btnBackToOverview.Text = "Back to overview";
+            btnBackToOverview.UseVisualStyleBackColor = true;
+            btnBackToOverview.Click += btnBackToOverview_Click;
             // 
             // btnNewOrder
             // 
-            btnNewOrder.Location = new Point(333, 567);
+            btnNewOrder.Location = new Point(332, 567);
             btnNewOrder.Name = "btnNewOrder";
             btnNewOrder.Size = new Size(150, 50);
             btnNewOrder.TabIndex = 8;
             btnNewOrder.Text = "New Order";
             btnNewOrder.UseVisualStyleBackColor = true;
             btnNewOrder.Click += btnNewOrder_Click;
-            // 
-            // listviewItems
-            // 
-            listviewItems.Columns.AddRange(new ColumnHeader[] { name, Amount });
-            listviewItems.FullRowSelect = true;
-            listviewItems.Location = new Point(100, 375);
-            listviewItems.MultiSelect = false;
-            listviewItems.Name = "listviewItems";
-            listviewItems.Size = new Size(300, 186);
-            listviewItems.TabIndex = 9;
-            listviewItems.UseCompatibleStateImageBehavior = false;
-            listviewItems.View = View.Details;
-            listviewItems.SelectedIndexChanged += listviewItems_SelectedIndexChanged;
-            // 
-            // name
-            // 
-            name.Text = "Name";
-            name.Width = 200;
-            // 
-            // Amount
-            // 
-            Amount.Text = "Amount";
-            Amount.Width = 100;
-            // 
-            // btnComment
-            // 
-            btnComment.Location = new Point(12, 567);
-            btnComment.Name = "btnComment";
-            btnComment.Size = new Size(150, 50);
-            btnComment.TabIndex = 10;
-            btnComment.Text = "Comment";
-            btnComment.UseVisualStyleBackColor = true;
-            btnComment.Click += btnComment_Click;
             // 
             // pnlComment
             // 
@@ -179,23 +143,30 @@
             btnAddOrder.UseVisualStyleBackColor = true;
             btnAddOrder.Click += btnAddOrder_Click;
             // 
+            // flOrder
+            // 
+            flOrder.AutoScroll = true;
+            flOrder.Location = new Point(0, 376);
+            flOrder.Name = "flOrder";
+            flOrder.Size = new Size(494, 185);
+            flOrder.TabIndex = 13;
+            // 
             // Orders
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(497, 629);
+            ClientSize = new Size(494, 629);
+            Controls.Add(flOrder);
             Controls.Add(btnAddOrder);
-            Controls.Add(pnlComment);
-            Controls.Add(btnComment);
-            Controls.Add(listviewItems);
             Controls.Add(btnNewOrder);
-            Controls.Add(btnBackToOrders);
+            Controls.Add(btnBackToOverview);
             Controls.Add(btnShowDrinks);
             Controls.Add(btnShowDinner);
             Controls.Add(btnShowLunch);
+            Controls.Add(flowPanelDinner);
+            Controls.Add(pnlComment);
             Controls.Add(flowPanelLunch);
             Controls.Add(flowPanelDrinks);
-            Controls.Add(flowPanelDinner);
             Name = "Orders";
             Text = "Orders";
             Load += Orders_Load;
@@ -212,14 +183,14 @@
         private Button btnShowLunch;
         private Button btnShowDinner;
         private Button btnShowDrinks;
-        private Button btnBackToOrders;
+        private Button btnBackToOverview;
         private Button btnNewOrder;
-        private ListView listviewItems;
-        private ColumnHeader name;
-        private ColumnHeader Amount;
-        private Button btnComment;
         private Panel pnlComment;
         private TextBox txtComment;
         private Button btnAddOrder;
+        private ColumnHeader name;
+        private ColumnHeader Amount;
+        private ListView listviewItems;
+        private FlowLayoutPanel flOrder;
     }
 }
