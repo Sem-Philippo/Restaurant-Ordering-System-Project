@@ -180,6 +180,7 @@ namespace UI
                 Payments payment = new Payments();
                 decimal totalAmount = orderService.ParseAndRemoveEuro(TotalAmountLbl.Text);
                 PaymentTypes paymentTypes = (PaymentTypes)PaymentTypeCombo.SelectedIndex;
+                decimal tip = orderService.ParseAndRemoveEuro(TipAmountLbl.Text);
                 string feedBack = FeedbackBox.Text;
                 int tableNumber = int.Parse(TablesCombo.Text.Trim());
                 payment.PaymentType = paymentTypes;
@@ -187,13 +188,13 @@ namespace UI
                 (bool isSuccess, string message, decimal amountDue) result;
                 if (EvenSplitCheckBox.Checked)
                 {
-                    result = invoiceService.ProcessEvenSplitPayment(totalAmount, invoiceId, payment, tableNumber);
+                    result = invoiceService.ProcessEvenSplitPayment(totalAmount, invoiceId, payment, tableNumber, tip);
                 }
                 else
                 {
                     string input = PaymentAmountTextBox.Text.Trim();
                     decimal singlePayment = orderService.ParseAndRemoveEuro(input);
-                    result = invoiceService.ProcessSinglePayment(singlePayment, invoiceId, totalAmount, payment, tableNumber);
+                    result = invoiceService.ProcessSinglePayment(singlePayment, invoiceId, totalAmount, payment, tableNumber, tip);
                 }
                 MessageBox.Show(result.message, result.isSuccess ? "Payment Successful" : "valid Payment", MessageBoxButtons.OK, result.isSuccess ? MessageBoxIcon.Information : MessageBoxIcon.Information);
 

@@ -151,7 +151,7 @@ namespace Service
         {
             remainingPayments = numberOfPayments;
         }
-        public (bool isSucess, string message, decimal amountDue) ProcessSinglePayment(decimal singlePayment, int invoiceId, decimal totalAmount, Payments payment, int tableNumber)
+        public (bool isSucess, string message, decimal amountDue) ProcessSinglePayment(decimal singlePayment, int invoiceId, decimal totalAmount, Payments payment, int tableNumber, decimal tip)
         {
             decimal temp = totalPayments;
             totalPayments += singlePayment;
@@ -163,6 +163,7 @@ namespace Service
                 payment.PaymentDateTime = DateTime.Now;
                 payment.BillInvoice = invoiceDAO.GetInvoiceByID(invoiceId);
                 payment.BillInvoice.InvoiceId = invoiceId;
+                payment.Tip = tip;
                 invoiceDAO.AddPayment(payment);
 
                 if (totalAmount == totalPayments)
@@ -182,7 +183,7 @@ namespace Service
             return (false, "Unexpected error occurred during payment processing.", totalAmount - totalPayments);
         }
 
-        public (bool isComplete, string message, decimal amountDue) ProcessEvenSplitPayment(decimal totalAmount, int invoiceId, Payments payment, int tableNumber)
+        public (bool isComplete, string message, decimal amountDue) ProcessEvenSplitPayment(decimal totalAmount, int invoiceId, Payments payment, int tableNumber, decimal tip)
         {
             decimal singlePayment = totalAmount / remainingPayments;
             remainingPayments--;
@@ -192,6 +193,7 @@ namespace Service
             tableService.UpdateTable(new Table() { TableNumber = tableNumber });
             payment.BillInvoice = invoiceDAO.GetInvoiceByID(invoiceId);
             payment.BillInvoice.InvoiceId = invoiceId;
+            payment.Tip = tip;
             invoiceDAO.AddPayment(payment);
             if (remainingPayments <= 0)
             {
