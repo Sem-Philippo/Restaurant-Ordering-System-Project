@@ -21,7 +21,7 @@ namespace DAL
 
         public Invoice GetInvoiceByID(int id)
         {
-            string query = "SELECT * FROM INVOICE WHERE ID = @ID";
+            string query = "SELECT * FROM INVOICE WHERE InvoiceID = @ID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ID", id);
             return ReadInvoices(ExecuteSelectQuery(query, sqlParameters))[0];
@@ -31,7 +31,7 @@ namespace DAL
         {
             string query = @"
                         INSERT INTO Invoice (OrderDateTime, OrderID, LowVat, HighVat, TotalAmount, IsPaid, EmployeeName)
-                        VALUES (@OrderDateTime, @OrderID, @LowVat, @HighVat, @TotalAmount, @IsPaid, @EmployeeName);
+                        VALUES (@OrderDateTime, @OrderID, @LowVat, @HighVat, @TotalAmount, @IsPaid, @EmployeeName);SELECT SCOPE_IDENTITY();
                     ";
 
             SqlParameter[] sqlParameters = new SqlParameter[]

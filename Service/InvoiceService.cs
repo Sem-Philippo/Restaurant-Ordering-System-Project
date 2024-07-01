@@ -9,6 +9,7 @@ namespace Service
     {
         private InvoiceDAO invoiceDAO;
         private OrderService orderService;
+        private TableService tableService;
         private decimal totalPayments = 0;
         private int remainingPayments = 0;
         public decimal TotalPayments => totalPayments;
@@ -17,6 +18,7 @@ namespace Service
         {
             invoiceDAO = new InvoiceDAO();
             orderService = new OrderService();
+            tableService = new TableService();
         }
         public List<Invoice> GetAllInvoices()
         {
@@ -149,45 +151,7 @@ namespace Service
         {
             remainingPayments = numberOfPayments;
         }
-
-        /*  public (bool isSuccess, string message, decimal amountDue) ProcessSinglePayment(decimal singlePayment, decimal totalAmount)
-          {
-              decimal temp = totalPayments;
-              totalPayments += singlePayment;
-
-              if (singlePayment <= totalAmount && totalPayments <= totalAmount)
-              {
-                  decimal amountDue = totalAmount - totalPayments;
-                  if (totalAmount == totalPayments)
-                  {
-
-                      return (true, $"Payment is complete. You have paid a total of {orderService.FormatToStringWithEuro(totalPayments)}", amountDue);
-                  }
-                  return (true, $"Payment of {orderService.FormatToStringWithEuro(singlePayment)} is successful. Total paid: {orderService.FormatToStringWithEuro(totalPayments)}", amountDue);
-              }
-              else if (singlePayment > totalAmount || totalPayments > totalAmount)
-              {
-                  totalPayments = temp;
-                  return (false, $"Payment of {orderService.FormatToStringWithEuro(singlePayment)} is too high. You have paid a total of {orderService.FormatToStringWithEuro(totalPayments)} so far.", totalAmount - totalPayments);
-              }
-
-              return (false, "Unexpected error occurred during payment processing.", totalAmount - totalPayments);
-          }
-          public (bool isComplete, string message, decimal amountDue) ProcessEvenSplitPayment(decimal totalAmount)
-          {
-              decimal singlePayment = totalAmount / remainingPayments;
-              remainingPayments--;
-              totalPayments += singlePayment;
-
-              if (remainingPayments <= 0)
-              {
-                  totalPayments = totalAmount;
-                  return (true, $"Payment is complete. You have paid a total of {orderService.FormatToStringWithEuro(totalPayments)}", 0);
-              }
-
-              return (false, $"Payment of {orderService.FormatToStringWithEuro(singlePayment)} is successful. Total paid: {orderService.FormatToStringWithEuro(totalPayments)}", totalAmount - totalPayments);
-          }*/
-        public (bool isSucess, string message, decimal amountDue) ProcessSinglePayment(decimal singlePayment, int invoiceId, decimal totalAmount, Payments payment)
+        public (bool isSucess, string message, decimal amountDue) ProcessSinglePayment(decimal singlePayment, int invoiceId, decimal totalAmount, Payments payment, int tableNumber)
         {
             decimal temp = totalPayments;
             totalPayments += singlePayment;
@@ -197,11 +161,14 @@ namespace Service
                 decimal amountDue = totalAmount - totalPayments;
                 payment.PaymentAmount = singlePayment;
                 payment.PaymentDateTime = DateTime.Now;
+                payment.BillInvoice = invoiceDAO.GetInvoiceByID(invoiceId);
+                payment.BillInvoice.InvoiceId = invoiceId;
                 invoiceDAO.AddPayment(payment);
 
                 if (totalAmount == totalPayments)
                 {
                     UpdateInvoiceStatus(invoiceId);
+                    tableService.UpdateTable(new Table() { TableNumber = tableNumber });
                     return (true, $"Payment is complete. You have paid a total of {orderService.FormatToStringWithEuro(totalPayments)}", amountDue);
                 }
                 return (false, $"Payment of {orderService.FormatToStringWithEuro(singlePayment)} is successful. Total paid: {orderService.FormatToStringWithEuro(totalPayments)}", amountDue);
@@ -215,16 +182,17 @@ namespace Service
             return (false, "Unexpected error occurred during payment processing.", totalAmount - totalPayments);
         }
 
-        public (bool isComplete, string message, decimal amountDue) ProcessEvenSplitPayment(decimal totalAmount, int invoiceId, Payments payment)
+        public (bool isComplete, string message, decimal amountDue) ProcessEvenSplitPayment(decimal totalAmount, int invoiceId, Payments payment, int tableNumber)
         {
             decimal singlePayment = totalAmount / remainingPayments;
             remainingPayments--;
             totalPayments += singlePayment;
-
             payment.PaymentAmount = singlePayment;
             payment.PaymentDateTime = DateTime.Now;
+            tableService.UpdateTable(new Table() { TableNumber = tableNumber });
+            payment.BillInvoice = invoiceDAO.GetInvoiceByID(invoiceId);
+            payment.BillInvoice.InvoiceId = invoiceId;
             invoiceDAO.AddPayment(payment);
-
             if (remainingPayments <= 0)
             {
                 totalPayments = totalAmount;

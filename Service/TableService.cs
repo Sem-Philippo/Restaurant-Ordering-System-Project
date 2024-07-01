@@ -1,4 +1,5 @@
 ﻿using DAL;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -19,5 +20,6 @@ namespace Service
         {
             return tableDAO.GetAllTableNumbers();
         }
+        public void UpdateTable(Table table) { tableDAO.UpdateTable(table); }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Enums;
+using Microsoft.VisualBasic;
+using System.Collections;
 
 namespace DAL
 {
@@ -67,11 +69,26 @@ namespace DAL
             {
                 return null;
             }
-            
+
         }
         private Table CreateTableFromDataRow(DataRow dr)
         {
             return new Table((int)dr["TableId"], (int)dr["Number"], (bool)dr["IsOccupied"]);
+        }
+        public void UpdateTable(Table table)
+        {
+            string query = "UPDATE [Tables] SET IsOccupied = 0 WHERE Number = @TableNumber";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@IsOccupied", table.IsOccupied);
+            sqlParameters[1] = new SqlParameter("@TableNumber", table.TableNumber);
+            try
+            {
+                ExecuteEditQuery(query, sqlParameters);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error updating Table: " + ex.Message);
+            }
         }
     }
 }

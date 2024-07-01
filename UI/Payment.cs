@@ -21,7 +21,7 @@ namespace UI
         private OrderService orderService;
         private InvoiceService invoiceService;
         private decimal totalAmount;
-        private int invoiceId;
+        private int invoiceId=0;
         public Payment()
         {
             InitializeComponent();
@@ -177,19 +177,25 @@ namespace UI
         {
             try
             {
+                Payments payment = new Payments();
                 decimal totalAmount = orderService.ParseAndRemoveEuro(TotalAmountLbl.Text);
+                PaymentTypes paymentTypes = (PaymentTypes)PaymentTypeCombo.SelectedIndex;
+                string feedBack = FeedbackBox.Text;
+                int tableNumber = int.Parse(TablesCombo.Text.Trim());
+                payment.PaymentType = paymentTypes;
+                payment.Feedback = feedBack;
                 (bool isSuccess, string message, decimal amountDue) result;
                 if (EvenSplitCheckBox.Checked)
                 {
-                    result = invoiceService.ProcessEvenSplitPayment(totalAmount, invoiceId, new Payments());
+                    result = invoiceService.ProcessEvenSplitPayment(totalAmount, invoiceId, payment, tableNumber);
                 }
                 else
                 {
                     string input = PaymentAmountTextBox.Text.Trim();
                     decimal singlePayment = orderService.ParseAndRemoveEuro(input);
-                    result = invoiceService.ProcessSinglePayment(singlePayment, invoiceId, totalAmount, new Payments());
+                    result = invoiceService.ProcessSinglePayment(singlePayment, invoiceId, totalAmount, payment, tableNumber);
                 }
-                MessageBox.Show(result.message, result.isSuccess ? "Payment Successful" : "Invalid Payment", MessageBoxButtons.OK, result.isSuccess ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+                MessageBox.Show(result.message, result.isSuccess ? "Payment Successful" : "valid Payment", MessageBoxButtons.OK, result.isSuccess ? MessageBoxIcon.Information : MessageBoxIcon.Information);
 
                 AmountDueLbl.Text = result.amountDue.ToString("0.00") + " €";
 
@@ -202,7 +208,6 @@ namespace UI
             {
                 MessageBox.Show($"Unable to preform payment: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DisableButtons();
         }
         private void PaymentTypeCombo_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -243,6 +248,7 @@ namespace UI
                 string employeeName = EmployeeNameLbl.Text;
                 Invoice invoice = new Invoice(orderDateTime, order, lowVat, highVat, totalAmount, false, employeeName);
                 invoiceService.AddInvoice(invoice, orderid);
+                invoiceId= invoice.InvoiceId;
                 MessageBox.Show("Invoice created successfully and saved to database.");
 
             }
