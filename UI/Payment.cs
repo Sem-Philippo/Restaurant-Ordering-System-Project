@@ -229,7 +229,6 @@ namespace UI
             PaymentTypeCombo.Enabled = true;
             EvenSplitCheckBox.Enabled = true;
             PaymentTypeCombo.Enabled = true;
-
             try
             {
                 if (TablesCombo.SelectedItem == null)
