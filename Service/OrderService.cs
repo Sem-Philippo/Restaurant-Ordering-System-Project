@@ -23,12 +23,18 @@ namespace Service
         {
             return orderDAO.GetServedItemsByTableNumber(tableNumber, out employeeName, out orderId);
         }
-
         public decimal GetOrderDetailsByTableNumber(int tableNumber, out decimal lowVat, out decimal highVat, out string employeeName, out int orderId)
         {
             Order order = GetServedItemsByTableNumber(tableNumber, out employeeName, out orderId);
             decimal orderTotal = 0, vatValue = 0;
             lowVat = 0; highVat = 0;
+
+            if (order == null || order.OrderItems == null)
+            {
+                employeeName = string.Empty;
+                orderId = 0;
+                return orderTotal;
+            }
             foreach (OrderItem item in order.OrderItems)
             {
                 vatValue = (item.MenuItem.Tax * item.MenuItem.Price) * item.Quantity;

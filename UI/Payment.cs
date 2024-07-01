@@ -130,13 +130,17 @@ namespace UI
                 }
             }
         }
-
         public void PaymentListView(int tableNumber)
         {
             OrderItemsList.Items.Clear();
             try
             {
                 Order order = orderService.GetServedItemsByTableNumber(tableNumber, out _, out _);
+                if (order == null || order.OrderItems == null || order.OrderItems.Count == 0)
+                {
+                    MessageBox.Show("No orders found for the selected table.");
+                    return;
+                }
                 foreach (OrderItem item in order.OrderItems)
                 {
                     string vatPercentage = orderService.DisplayVatAsPercantage(item.MenuItem.Tax);
@@ -220,43 +224,6 @@ namespace UI
             PaymentTypeCombo.Enabled = true;
             EvenSplitCheckBox.Enabled = true;
             PaymentTypeCombo.Enabled = true;
-
-            try
-            {
-                if (TablesCombo.SelectedItem == null)
-                {
-                    MessageBox.Show("Please select a table number.");
-                    return;
-                }
-                int tableNumber = Convert.ToInt32(TablesCombo.SelectedItem);
-                Order order = orderService.GetOrderByTableNumber(tableNumber);
-                int orderid = order.Id;
-                DateTime orderDateTime = DateTime.Now;
-                decimal lowVat = orderService.ParseAndRemoveEuro(LowVatLbl.Text);
-                decimal highVat = orderService.ParseAndRemoveEuro(HighVatLbl.Text);
-                decimal totalAmount = orderService.ParseAndRemoveEuro(TotalAmountLbl.Text);
-
-                string employeeName = EmployeeNameLbl.Text;
-                Invoice invoice = new Invoice(orderDateTime, order, lowVat, highVat, totalAmount, false, employeeName);
-                invoiceService.AddInvoice(invoice, orderid);
-                MessageBox.Show("Invoice created successfully and saved to database.");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error creating and saving invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void BeginsPaymentBtn_Click_1(object sender, EventArgs e)
-        {
-            TipsTextBox.Enabled = true;
-            TipBtn.Enabled = true;
-            PaymentAmountTextBox.Enabled = true;
-            PaymentTypeCombo.Enabled = true;
-            EvenSplitCheckBox.Enabled = true;
-            PaymentTypeCombo.Enabled = true;
-            MessageBox.Show("Hello");
 
             try
             {
