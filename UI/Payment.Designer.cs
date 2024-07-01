@@ -49,10 +49,8 @@
             PayBtn = new Button();
             TablesCombo = new ComboBox();
             OverviewBtn = new Button();
-            MenuBtn = new Button();
             OrdersBtn = new Button();
             ManagementBtn = new Button();
-            HistoryBtn = new Button();
             TabelsLbl = new Label();
             PaymentDetails = new GroupBox();
             LowVatLbl = new Label();
@@ -245,48 +243,33 @@
             // 
             // OverviewBtn
             // 
-            OverviewBtn.Location = new Point(18, 12);
+            OverviewBtn.Location = new Point(52, 12);
             OverviewBtn.Name = "OverviewBtn";
             OverviewBtn.Size = new Size(75, 23);
             OverviewBtn.TabIndex = 9;
             OverviewBtn.Text = "Overview";
             OverviewBtn.UseVisualStyleBackColor = true;
-            // 
-            // MenuBtn
-            // 
-            MenuBtn.Location = new Point(99, 12);
-            MenuBtn.Name = "MenuBtn";
-            MenuBtn.Size = new Size(75, 23);
-            MenuBtn.TabIndex = 10;
-            MenuBtn.Text = "Menu";
-            MenuBtn.UseVisualStyleBackColor = true;
+            OverviewBtn.Click += OverviewBtn_Click;
             // 
             // OrdersBtn
             // 
-            OrdersBtn.Location = new Point(180, 12);
+            OrdersBtn.Location = new Point(146, 12);
             OrdersBtn.Name = "OrdersBtn";
             OrdersBtn.Size = new Size(75, 23);
             OrdersBtn.TabIndex = 11;
             OrdersBtn.Text = "Orders";
             OrdersBtn.UseVisualStyleBackColor = true;
+            OrdersBtn.Click += OrdersBtn_Click;
             // 
             // ManagementBtn
             // 
-            ManagementBtn.Location = new Point(261, 12);
+            ManagementBtn.Location = new Point(233, 12);
             ManagementBtn.Name = "ManagementBtn";
             ManagementBtn.Size = new Size(90, 23);
             ManagementBtn.TabIndex = 12;
             ManagementBtn.Text = "Management";
             ManagementBtn.UseVisualStyleBackColor = true;
-            // 
-            // HistoryBtn
-            // 
-            HistoryBtn.Location = new Point(685, 12);
-            HistoryBtn.Name = "HistoryBtn";
-            HistoryBtn.Size = new Size(103, 23);
-            HistoryBtn.TabIndex = 13;
-            HistoryBtn.Text = "Payment history";
-            HistoryBtn.UseVisualStyleBackColor = true;
+            ManagementBtn.Click += ManagementBtn_Click;
             // 
             // TabelsLbl
             // 
@@ -497,11 +480,9 @@
             Controls.Add(FeedbackGroup);
             Controls.Add(PaymentDetails);
             Controls.Add(TabelsLbl);
-            Controls.Add(HistoryBtn);
             Controls.Add(TablesCombo);
             Controls.Add(ManagementBtn);
             Controls.Add(OrdersBtn);
-            Controls.Add(MenuBtn);
             Controls.Add(OverviewBtn);
             Controls.Add(BillOptions);
             Controls.Add(OrderItemsList);
@@ -518,7 +499,6 @@
             PaymentGroup.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         #endregion
@@ -537,11 +517,9 @@
         private GroupBox BillOptions;
         private ComboBox TablesCombo;
         private Button OverviewBtn;
-        private Button MenuBtn;
         private Button OrdersBtn;
         private Button ManagementBtn;
         private Label TabelsLbl;
-        private Button HistoryBtn;
         private Label EvenSplitLbl;
         private Label PaymentTypeLbl;
         private Button PayBtn;

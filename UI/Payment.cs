@@ -21,7 +21,7 @@ namespace UI
         private OrderService orderService;
         private InvoiceService invoiceService;
         private decimal totalAmount;
-        private int invoiceId=0;
+        private int invoiceId = 0;
         public Payment()
         {
             InitializeComponent();
@@ -248,7 +248,7 @@ namespace UI
                 string employeeName = EmployeeNameLbl.Text;
                 Invoice invoice = new Invoice(orderDateTime, order, lowVat, highVat, totalAmount, false, employeeName);
                 invoiceService.AddInvoice(invoice, orderid);
-                invoiceId= invoice.InvoiceId;
+                invoiceId = invoice.InvoiceId;
                 MessageBox.Show("Invoice created successfully and saved to database.");
 
             }
@@ -256,6 +256,27 @@ namespace UI
             {
                 MessageBox.Show($"Error creating and saving invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ManagementBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Stocks stocks = new Stocks();
+            stocks.Show();
+        }
+
+        private void OrdersBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            BarKitchen barKitchen = new BarKitchen();
+            barKitchen.Show();
+        }
+
+        private void OverviewBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
         }
     }
 }
