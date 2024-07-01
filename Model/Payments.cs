@@ -17,7 +17,7 @@ namespace Model
         public decimal Tip { get; set; }
         public string Feedback { get; set; }
         public DateTime PaymentDateTime { get; set; }
-        public Payments(PaymentTypes paymentType, decimal paymentAmount, Invoice billInvoice, decimal tip,string feedback, DateTime paymentDateTime)
+        public Payments(PaymentTypes paymentType, decimal paymentAmount, Invoice billInvoice, decimal tip, string feedback, DateTime paymentDateTime)
         {
             PaymentType = paymentType;
             PaymentAmount = paymentAmount;
@@ -26,7 +26,8 @@ namespace Model
             Feedback = feedback;
             PaymentDateTime = paymentDateTime;
         }
-        
+        public Payments() { }
+
     }
 
 }

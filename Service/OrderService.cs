@@ -5,53 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-using DAL;
 
 namespace Service
 {
     public class OrderService
     {
-<<<<<<< HEAD
-        private OrderDAO orderDAO {  get; set; }
+        private OrderDAO orderDAO { get; set; }
         public OrderService()
         {
             orderDAO = new OrderDAO();
         }
-=======
-
-        private OrderDAO orderDAO;
-        public OrderService()
-        {
-            orderDAO = new OrderDAO();
-            
-        }
-       
-
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         public void SaveOrder(Order order)
         {
             orderDAO.SaveOrder(order);
         }
-<<<<<<< HEAD
-        public List<PaymentOverview> GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int OrderID)
+        public Order GetServedItemsByTableNumber(int tableNumber, out string employeeName, out int orderId)
         {
-            return orderDAO.GetServedItemsByTableNumber(tableNumber, out employeeName, out OrderID);
+            return orderDAO.GetServedItemsByTableNumber(tableNumber, out employeeName, out orderId);
         }
 
-        public decimal GetOrderDetailsByTableNumber(int tableNumber, out decimal lowVat, out decimal highVat, out string employeeName, out int OrderID)
+        public decimal GetOrderDetailsByTableNumber(int tableNumber, out decimal lowVat, out decimal highVat, out string employeeName, out int orderId)
         {
-            List<PaymentOverview> items = GetServedItemsByTableNumber(tableNumber, out employeeName, out OrderID);
+            Order order = GetServedItemsByTableNumber(tableNumber, out employeeName, out orderId);
             decimal orderTotal = 0, vatValue = 0;
             lowVat = 0; highVat = 0;
-            foreach (PaymentOverview item in items)
+            foreach (OrderItem item in order.OrderItems)
             {
-                vatValue = (item.VAT * item.ItemPrice) * item.ItemQuantity;
-                orderTotal += item.ItemTotalPrice;
-                if (item.VAT == 0.06m)
+                vatValue = (item.MenuItem.Tax * item.MenuItem.Price) * item.Quantity;
+                orderTotal += item.MenuItem.Price * item.Quantity;
+                if (item.MenuItem.Tax == 0.06m)
                 {
                     lowVat += vatValue;
                 }
-                else if (item.VAT == 0.21m)
+                else if (item.MenuItem.Tax == 0.21m)
                 {
                     highVat += vatValue;
                 }
@@ -73,12 +59,10 @@ namespace Service
         public Order GetOrderByTableNumber(int tablenumber)
         {
             return orderDAO.GetOrderByTableNumber(tablenumber);
-=======
+        }
         public bool AddToExistingOrder(Order order)
         {
             return orderDAO.AddToExistingOrder(order);
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
     }
-
 }

@@ -1,26 +1,17 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Data.SqlClient;
-=======
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
-using Model;
-=======
-using System.Data.SqlClient;
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
 using Model.Enums;
 
 namespace DAL
 {
     public class TableDAO : BaseDao
     {
-<<<<<<< HEAD
         public List<int> GetAllTableNumbers()
         {
             List<int> tableNumbers = new List<int>();
@@ -62,7 +53,7 @@ namespace DAL
                 TableNumber = Convert.ToInt32(dr["Number"]),
                 IsOccupied = Convert.ToBoolean(dr["IsOccupied"]),
             };
-=======
+        }
         public Table GetTableByID(int id)
         {
             string query = "SELECT TableId, Number, IsOccupied FROM [Tables] WHERE TableId = @id";
@@ -78,21 +69,9 @@ namespace DAL
             }
             
         }
-        private List<Table> ReadTables(DataTable dataTable)
-        {
-            List<Table> tables = new List<Table>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                tables.Add(CreateTableFromDataRow(dr));
-
-            }
-            return tables;
-        }
         private Table CreateTableFromDataRow(DataRow dr)
         {
             return new Table((int)dr["TableId"], (int)dr["Number"], (bool)dr["IsOccupied"]);
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
         }
     }
 }

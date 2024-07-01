@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-﻿using DAL;
+using DAL;
 using Model;
 using Model.Enums;
 using Service;
-=======
-﻿using Service;
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,21 +17,26 @@ namespace UI
 {
     public partial class Payment : Form
     {
-<<<<<<< HEAD
         private TableService tableService;
         private OrderService orderService;
         private InvoiceService invoiceService;
-        private PaymentService paymentService;
-        decimal totalPayments = 0;
-        int remainingPayments = 0;
+        private decimal totalAmount;
+        private int invoiceId;
         public Payment()
         {
             InitializeComponent();
             tableService = new TableService();
             orderService = new OrderService();
-            paymentService = new PaymentService();
             invoiceService = new InvoiceService();
+            DisableButtons();
+            EvenSplitNumeric.Minimum = 1;
+            DateTimeLbl.Text = DateTime.Now.ToString();
 
+            LoadTableComboBox();
+            LoadPaymentTypeComboBox();
+        }
+        private void DisableButtons()
+        {
             EvenSplitNumeric.Enabled = false;
             TipsTextBox.Enabled = false;
             TipBtn.Enabled = false;
@@ -44,11 +45,6 @@ namespace UI
             PaymentAmountTextBox.Enabled = false;
             EvenSplitCheckBox.Enabled = false;
             PaymentTypeCombo.Enabled = false;
-            EvenSplitNumeric.Minimum = 1;
-            DateTimeLbl.Text = DateTime.Now.ToString();
-
-            LoadTableComboBox();
-            LoadPaymentTypeComboBox();
         }
         public void LoadTableComboBox()
         {
@@ -96,7 +92,7 @@ namespace UI
                 EvenSplitNumeric.Enabled = true;
                 PaymentAmountTextBox.Enabled = false;
                 PaymentNrLbl.Text = EvenSplitNumeric.Value.ToString();
-                paymentService.InitializeEvenSplit((int)EvenSplitNumeric.Value);
+                invoiceService.InitializeEvenSplit((int)EvenSplitNumeric.Value);
             }
             else
             {
@@ -108,7 +104,7 @@ namespace UI
         private void EvenSplitNumeric_ValueChanged(object sender, EventArgs e)
         {
             PaymentNrLbl.Text = EvenSplitNumeric.Value.ToString();
-            paymentService.InitializeEvenSplit((int)EvenSplitNumeric.Value);
+            invoiceService.InitializeEvenSplit((int)EvenSplitNumeric.Value);
         }
         private void TablesCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,32 +128,31 @@ namespace UI
                 {
                     MessageBox.Show($"Error occurred while trying to retrieve order details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
+
         public void PaymentListView(int tableNumber)
         {
             OrderItemsList.Items.Clear();
             try
             {
-                List<PaymentOverview> items = orderService.GetServedItemsByTableNumber(tableNumber, out _, out _);
-                foreach (PaymentOverview item in items)
+                Order order = orderService.GetServedItemsByTableNumber(tableNumber, out _, out _);
+                foreach (OrderItem item in order.OrderItems)
                 {
-                    string vatPercentage = orderService.DisplayVatAsPercantage(item.VAT);
-                    ListViewItem listViewItem = new ListViewItem(item.ItemName);
+                    string vatPercentage = orderService.DisplayVatAsPercantage(item.MenuItem.Tax);
+                    ListViewItem listViewItem = new ListViewItem(item.MenuItem.Name);
                     listViewItem.SubItems.Add(vatPercentage);
-                    listViewItem.SubItems.Add(item.ItemDescription);
-                    listViewItem.SubItems.Add(item.ItemPrice.ToString("0.00"));
-                    listViewItem.SubItems.Add(item.ItemQuantity.ToString());
-                    listViewItem.SubItems.Add(item.ItemTotalPrice.ToString("0.00"));
+                    listViewItem.SubItems.Add(item.Comment);
+                    listViewItem.SubItems.Add(item.MenuItem.Price.ToString("0.00"));
+                    listViewItem.SubItems.Add(item.Quantity.ToString());
+                    listViewItem.SubItems.Add((item.MenuItem.Price * item.Quantity).ToString("0.00"));
                     OrderItemsList.Items.Add(listViewItem);
                 }
                 OrderItemsList.Refresh();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error when trying to retrieving order: {ex.Message}");
-
+                MessageBox.Show($"Error when trying to retrieve order: {ex.Message}");
             }
         }
         private void TipBtn_Click(object sender, EventArgs e)
@@ -182,13 +177,13 @@ namespace UI
                 (bool isSuccess, string message, decimal amountDue) result;
                 if (EvenSplitCheckBox.Checked)
                 {
-                    result = paymentService.ProcessEvenSplitPayment(totalAmount);
+                    result = invoiceService.ProcessEvenSplitPayment(totalAmount, invoiceId, new Payments());
                 }
                 else
                 {
                     string input = PaymentAmountTextBox.Text.Trim();
                     decimal singlePayment = orderService.ParseAndRemoveEuro(input);
-                    result = paymentService.ProcessSinglePayment(singlePayment, totalAmount);
+                    result = invoiceService.ProcessSinglePayment(singlePayment, invoiceId, totalAmount, new Payments());
                 }
                 MessageBox.Show(result.message, result.isSuccess ? "Payment Successful" : "Invalid Payment", MessageBoxButtons.OK, result.isSuccess ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
@@ -196,13 +191,14 @@ namespace UI
 
                 if (EvenSplitCheckBox.Checked)
                 {
-                    PaymentNrLbl.Text = paymentService.RemainingPayments.ToString();
+                    PaymentNrLbl.Text = invoiceService.RemainingPayments.ToString();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Unable to preform payment: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            DisableButtons();
         }
         private void PaymentTypeCombo_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -214,7 +210,7 @@ namespace UI
             {
                 PayBtn.Enabled = false;
             }
-            
+
         }
         private void BeginsPaymentBtn_Click(object sender, EventArgs e)
         {
@@ -232,34 +228,61 @@ namespace UI
                     MessageBox.Show("Please select a table number.");
                     return;
                 }
-                int tableNumber = Convert.ToInt32(TablesCombo.SelectedItem) ;
+                int tableNumber = Convert.ToInt32(TablesCombo.SelectedItem);
                 Order order = orderService.GetOrderByTableNumber(tableNumber);
                 int orderid = order.Id;
                 DateTime orderDateTime = DateTime.Now;
                 decimal lowVat = orderService.ParseAndRemoveEuro(LowVatLbl.Text);
                 decimal highVat = orderService.ParseAndRemoveEuro(HighVatLbl.Text);
                 decimal totalAmount = orderService.ParseAndRemoveEuro(TotalAmountLbl.Text);
+
                 string employeeName = EmployeeNameLbl.Text;
                 Invoice invoice = new Invoice(orderDateTime, order, lowVat, highVat, totalAmount, false, employeeName);
                 invoiceService.AddInvoice(invoice, orderid);
                 MessageBox.Show("Invoice created successfully and saved to database.");
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error creating and saving invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-=======
-        private PaymentService service;
-        public Payment()
-        {
-            InitializeComponent();
-            service = new PaymentService();
         }
 
-        private void Payment_Load(object sender, EventArgs e)
+        private void BeginsPaymentBtn_Click_1(object sender, EventArgs e)
         {
+            TipsTextBox.Enabled = true;
+            TipBtn.Enabled = true;
+            PaymentAmountTextBox.Enabled = true;
+            PaymentTypeCombo.Enabled = true;
+            EvenSplitCheckBox.Enabled = true;
+            PaymentTypeCombo.Enabled = true;
+            MessageBox.Show("Hello");
 
->>>>>>> 3116a052fb3deac49d79f7dbf944f18bbef924d6
+            try
+            {
+                if (TablesCombo.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a table number.");
+                    return;
+                }
+                int tableNumber = Convert.ToInt32(TablesCombo.SelectedItem);
+                Order order = orderService.GetOrderByTableNumber(tableNumber);
+                int orderid = order.Id;
+                DateTime orderDateTime = DateTime.Now;
+                decimal lowVat = orderService.ParseAndRemoveEuro(LowVatLbl.Text);
+                decimal highVat = orderService.ParseAndRemoveEuro(HighVatLbl.Text);
+                decimal totalAmount = orderService.ParseAndRemoveEuro(TotalAmountLbl.Text);
+
+                string employeeName = EmployeeNameLbl.Text;
+                Invoice invoice = new Invoice(orderDateTime, order, lowVat, highVat, totalAmount, false, employeeName);
+                invoiceService.AddInvoice(invoice, orderid);
+                MessageBox.Show("Invoice created successfully and saved to database.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating and saving invoice: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
