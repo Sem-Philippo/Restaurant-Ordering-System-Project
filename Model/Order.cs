@@ -12,6 +12,8 @@ namespace Model
         public List<OrderItem> OrderItems { get; set; }
         public DateTime Time { get; set; }
         public Employee Employee { get; set; }
+        public MenuItem menuItem { get; set; }
+        public OrderItem orderItem { get; set; }
         public Table Table { get; set; }
         public decimal Total { get { decimal total = 0; foreach (OrderItem item in OrderItems)
                 {

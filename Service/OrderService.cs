@@ -70,5 +70,14 @@ namespace Service
         {
             return orderDAO.AddToExistingOrder(order);
         }
+        public List<Order> GetOrderItemsForBarKitchen()
+        {
+            List<Order> orders = orderDAO.GetOrderItemsForBarKitchen();
+            return orders;
+        }
+        public void UpdateStatus(Order order)
+        {
+            orderDAO.UpdateStatus(order);
+        }
     }
 }

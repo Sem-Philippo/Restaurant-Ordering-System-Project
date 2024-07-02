@@ -89,6 +89,7 @@ namespace DAL
             {
                 throw new Exception("Error updating Table: " + ex.Message);
             }
+
         }
     }
 }

@@ -298,5 +298,62 @@ namespace DAL
                 throw;
             }
         }
+        public List<Order> GetOrderItemsForBarKitchen()
+        {
+            string query = @"
+                SELECT od.TableID, od.Time,o.OrderItemID, o.Quantity, o.Status, o.Comment, m.Name, m.Category, O.orderID
+                FROM Orderitem AS o 
+                JOIN Menuitem AS m ON m.MenuitemID = o.MenuitemID 
+                JOIN [Order] AS od ON od.ID = o.OrderID
+                ORDER BY m.Category;";
+
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTablesForBarKitchen(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<Order> ReadTablesForBarKitchen(DataTable dataOrder)
+        {
+            List<Order> orders = new List<Order>();
+
+            foreach (DataRow dr in dataOrder.Rows)
+            {
+                Order order = new Order()
+                {
+                    Time = (DateTime)dr["Time"],
+                    Table = new Table { TableId = (int)dr["TableID"] },
+                    orderItem = new OrderItem
+                    {
+                        OrderItemId = (int)dr["OrderItemID"],
+                        Quantity = (int)dr["Quantity"],
+                        Status = (Status)dr["Status"],
+                        Comment = dr["Comment"].ToString()
+                    },
+                    menuItem = new MenuItem
+                    {
+                        Name = dr["Name"].ToString(),
+                        Category = (Categories)dr["Category"]
+                    }
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
+        public void UpdateStatus(Order order)
+        {
+
+            TimeSpan timeElapsed = DateTime.Now - order.Time;
+
+            DateTime statusTime = DateTime.Now.Date.Add(timeElapsed);
+            string query = @"UPDATE OrderItem 
+                            SET Status = @status, StatusTime = @TimeElapsed
+                            where OrderItemID = @Id;";
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@status", SqlDbType.Int) {Value = order.orderItem.Status},
+                new SqlParameter("@Id", SqlDbType.Int) {Value = order.orderItem.OrderItemId},
+                new SqlParameter("@TimeElapsed", SqlDbType.DateTime) {Value = statusTime}
+            };
+            ExecuteEditQuery(query, parameters);
+        }
     }
 }

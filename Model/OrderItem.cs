@@ -25,5 +25,6 @@ namespace Model
             Comment = comment;
             StatusTime = statusTime;
         }
+        public OrderItem() { }
     }
 }
