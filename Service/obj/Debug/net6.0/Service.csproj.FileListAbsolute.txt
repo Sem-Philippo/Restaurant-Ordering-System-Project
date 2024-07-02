@@ -1,0 +1,34 @@
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\Service.dll
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\DAL.dll
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\Model.dll
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\DAL.pdb
+C:\Users\terku\OneDrive\term4 project\Service\bin\Debug\net6.0\Model.pdb
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.csproj.CopyComplete
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.dll
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\terku\OneDrive\term4 project\Service\obj\Debug\net6.0\ref\Service.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\Service.deps.json
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\Service.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\Service.pdb
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\DAL.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\Model.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\DAL.pdb
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\bin\Debug\net6.0\Model.pdb
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.csproj.AssemblyReference.cache
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.csproj.Up2Date
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\refint\Service.dll
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\Service.pdb
+C:\Users\Gebruikerr\Desktop\Inholland\Term 4\Applicaiton project\Chapeau-Final\Restaurant-Ordering-System-Project\Service\obj\Debug\net6.0\ref\Service.dll

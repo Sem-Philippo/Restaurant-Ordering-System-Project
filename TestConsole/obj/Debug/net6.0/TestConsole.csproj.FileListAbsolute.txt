@@ -1,0 +1,5 @@
+C:\Users\terku\OneDrive\term4 project\TestConsole\obj\Debug\net6.0\TestConsole.csproj.AssemblyReference.cache
+C:\Users\terku\OneDrive\term4 project\TestConsole\obj\Debug\net6.0\TestConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\terku\OneDrive\term4 project\TestConsole\obj\Debug\net6.0\TestConsole.AssemblyInfoInputs.cache
+C:\Users\terku\OneDrive\term4 project\TestConsole\obj\Debug\net6.0\TestConsole.AssemblyInfo.cs
+C:\Users\terku\OneDrive\term4 project\TestConsole\obj\Debug\net6.0\TestConsole.csproj.CoreCompileInputs.cache
